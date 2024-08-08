@@ -5,7 +5,7 @@ source_filename = "test"
 
 define i32 @main() {
 entry:
-  %0 = call i32 (...) @printf(ptr @0, i32 2)
+  %0 = call i32 (...) @printf(ptr @0, i32 1)
   ret i32 0
 }
 

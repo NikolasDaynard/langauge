@@ -16,8 +16,8 @@
 
 std::vector<std::string> lexer::parseFile() {
     std::string home = std::getenv("HOME");
-    std::ifstream file(home + "/dev/lang/examples/hello.w");
-    remove((home + "/dev/lang/examples/hello.wbc").c_str()); // delete old wbc
+    std::ifstream file(home + "/dev/lang/" + filename);
+    remove((home + "/dev/lang/" + filename + "bc").c_str()); // delete old wbc
 
     std::string line;
     std::vector<std::string> lexedCode;
@@ -50,7 +50,7 @@ std::vector<std::string> lexer::parseFile() {
 void lexer::writeLine(std::string line) {
     std::string home = std::getenv("HOME");
 
-    std::ofstream fileOUT(home + "/dev/lang/examples/hello.wbc", std::ios::app); // open filename.txt in append mode
+    std::ofstream fileOUT(home + "/dev/lang/" + filename + "bc", std::ios::app); // open filename.txt in append mode
 
     fileOUT << line << std::endl; // append "some stuff" to the end of the file
 

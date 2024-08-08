@@ -6,7 +6,7 @@
 
 #include "src/codegen.cpp"
 
-int main() {
+int main(int argc, char *argv[]) {
     llvm::LLVMContext Context;
     llvm::Module* Module = new llvm::Module("test", Context);
     llvm::IRBuilder<> Builder(Context);
@@ -20,6 +20,13 @@ int main() {
     gen->print();
 
     delete Module;
+
+    if (argc > 1) { // run el codes
+        int s;
+        s = system("clang output.ll -o output");
+        s = system("./output");
+    }
+
     return 0;
 }
 

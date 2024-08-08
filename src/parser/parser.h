@@ -12,6 +12,7 @@ private:
     std::vector<std::string> lexedCode;
     functions *function;
 
+    std::string filename;
     llvm::Module *Module;
     llvm::IRBuilder<> *Builder;
     llvm::LLVMContext *Context;
@@ -21,11 +22,12 @@ public:
     void writeLine(std::string line);
 
     // Constructor with parameters
-    parser(std::vector<std::string> newCode, llvm::Module *Mod, llvm::IRBuilder<> *Build, llvm::LLVMContext *Con) {
+    parser(std::vector<std::string> newCode, std::string newFilename, llvm::Module *Mod, llvm::IRBuilder<> *Build, llvm::LLVMContext *Con) {
         lexedCode = newCode;
         Module = Mod;
         Builder = Build;
         Context = Con;
+        filename = newFilename;
         function = new functions(Module, Builder);
     }
     
