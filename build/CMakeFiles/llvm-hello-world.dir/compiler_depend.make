@@ -4,6 +4,7 @@
 CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
   /home/nikolasd/dev/lang/src/codegen.cpp \
   /home/nikolasd/dev/lang/src/codegen.h \
+  /home/nikolasd/dev/lang/src/parseHelpers.h \
   /home/nikolasd/dev/lang/src/lexer/lexer.cpp \
   /home/nikolasd/dev/lang/src/lexer/lexer.h \
   /home/nikolasd/dev/lang/src/parser/line.h \
@@ -97,6 +98,7 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
   /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/gnu/stubs-64.h \
   /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/gnu/stubs.h \
   /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/inttypes.h \
+  /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/libintl.h \
   /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/limits.h \
   /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/linux/errno.h \
   /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/linux/limits.h \
@@ -156,8 +158,11 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/list.tcc \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_classes.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_classes.tcc \
+  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_conv.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets.tcc \
+  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets_nonio.h \
+  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets_nonio.tcc \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/localefwd.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/memory_resource.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/memoryfwd.h \
@@ -176,6 +181,7 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/shared_ptr.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/shared_ptr_atomic.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/shared_ptr_base.h \
+  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/sstream.tcc \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/std_abs.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/std_function.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_algo.h \
@@ -217,6 +223,7 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cstdio \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cstdlib \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cstring \
+  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/ctime \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cwchar \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cwctype \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/debug/assertions.h \
@@ -239,6 +246,7 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/iterator \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/limits \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/list \
+  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/locale \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/memory \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/new \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/optional \
@@ -247,6 +255,7 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/glue_algorithm_defs.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/glue_memory_defs.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/pstl_config.h \
+  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/sstream \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/stdexcept \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/streambuf \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/string \
@@ -270,7 +279,9 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/error_constants.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/gthr-default.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/gthr.h \
+  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/messages_members.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/os_defines.h \
+  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/time_members.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/lib/gcc/x86_64-unknown-linux-gnu/13.2.0/include-fixed/pthread.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/lib/gcc/x86_64-unknown-linux-gnu/13.2.0/include/limits.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/lib/gcc/x86_64-unknown-linux-gnu/13.2.0/include/stdarg.h \
@@ -455,8 +466,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Type.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/TrackingMDRef.h:
-
 /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/ProfileSummary.h:
 
 /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/PassManagerInternal.h:
@@ -609,6 +618,12 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/atomic_word.h:
 
+/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/iterator.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/typeinfo:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/tuple:
+
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/allocator.h:
 
 /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/DenseSet.h:
@@ -713,14 +728,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/time_t.h:
 
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/wchar.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/CallingConv.h:
-
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/cookie_io_functions_t.h:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/nested_exception.h:
-
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/cxxabi_forced.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/wint_t.h:
@@ -735,19 +742,13 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/exception_defines.h:
 
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/strings_fortified.h:
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/struct___jmp_buf_tag.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/bit.h:
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/stdio2.h:
 
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/thread-shared-types.h:
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/__mbstate_t.h:
 
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/floatn.h:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/unordered_map:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_vector.h:
-
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/posix2_lim.h:
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/ext/alloc_traits.h:
 
 /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/GlobalIFunc.h:
 
@@ -763,6 +764,18 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cwctype:
 
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/wchar.h:
+
+/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/CallingConv.h:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/cookie_io_functions_t.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/nested_exception.h:
+
+/home/nikolasd/dev/lang/src/parseHelpers.h:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/pthread_stack_min-dynamic.h:
+
 /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Attributes.inc:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/string.h:
@@ -774,6 +787,12 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/stdint.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_iterator.h:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/floatn.h:
+
+/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/bit.h:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/thread-shared-types.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/long-double.h:
 
@@ -787,14 +806,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/pthreadtypes.h:
 
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/struct___jmp_buf_tag.h:
-
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/stdio2.h:
-
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/__mbstate_t.h:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/ext/alloc_traits.h:
-
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/inttypes.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/ios_base.h:
@@ -804,6 +815,8 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ilist_base.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/pthreadtypes-arch.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets_nonio.tcc:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_pair.h:
 
@@ -829,21 +842,27 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/TimeProfiler.h:
 
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/time_members.h:
+
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cstdio:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/features.h:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/timer_t.h:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/uio_lim.h:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/struct_rwlock.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/locale.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/glue_algorithm_defs.h:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/atomic_base.h:
 
 /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/DataTypes.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/endianness.h:
 
 /home/nikolasd/dev/lang/main.cpp:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/string:
 
 /home/nikolasd/dev/lang/src/codegen.cpp:
 
@@ -853,20 +872,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/alloca.h:
 
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/uio_lim.h:
-
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/struct_rwlock.h:
-
-/home/nikolasd/dev/lang/src/lexer/lexer.h:
-
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/features.h:
-
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/timer_t.h:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/basic_ios.h:
-
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/select-decl.h:
-
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/algorithmfwd.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/waitflags.h:
@@ -875,17 +880,35 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/clocale:
 
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/wordsize.h:
+/home/nikolasd/dev/lang/src/lexer/lexer.h:
 
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/unordered_map.h:
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/select-decl.h:
 
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/time64.h:
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/basic_ios.h:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/strings_fortified.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/unordered_map:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/posix2_lim.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_vector.h:
+
+/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/TrackingMDRef.h:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/libintl.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/istream:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_iterator_base_funcs.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/atomic_wide_counter.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/vector:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/__sigset_t.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/shared_ptr.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/struct_timeval.h:
 
@@ -902,6 +925,12 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/posix1_lim.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/struct_mutex.h:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/wordsize.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/unordered_map.h:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/time64.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/select.h:
 
@@ -926,12 +955,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/stdio.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/select2.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/TypeName.h:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/cpu_defines.h:
-
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/struct_tm.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/codecvt.h:
 
@@ -963,8 +986,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/string_fortified.h:
 
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/atomic_lockfree_defines.h:
-
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/timex.h:
 
 /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/DebugLoc.h:
@@ -974,8 +995,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/floatn-common.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/stdint-uintn.h:
-
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/pthread_stack_min-dynamic.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/sched.h:
 
@@ -1003,6 +1022,10 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/__locale_t.h:
 
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/atomic_base.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/atomic_lockfree_defines.h:
+
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/basic_ios.tcc:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/basic_string.h:
@@ -1014,6 +1037,8 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_algo.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/uses_allocator.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/messages_members.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/char_traits.h:
 
@@ -1033,6 +1058,8 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/fstream.tcc:
 
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/locale:
+
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/functexcept.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_bvector.h:
@@ -1043,6 +1070,10 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/istream.tcc:
 
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/string:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_conv.h:
+
 /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/Any.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/list.tcc:
@@ -1052,6 +1083,20 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/setjmp.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets.tcc:
+
+/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/TypeName.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/cpu_defines.h:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/struct_tm.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/ctime:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets_nonio.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/functional_hash.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cstring:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/localefwd.h:
 
@@ -1064,6 +1109,10 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/ostream.tcc:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/execution_defs.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/system_error:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/ptr_traits.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/range_access.h:
 
@@ -1081,7 +1130,25 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/align.h:
 
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/sstream:
+
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/shared_ptr_base.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/sstream.tcc:
+
+/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/FMF.h:
+
+/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/DerivedTypes.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/string_view:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/locale.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/functional:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/wchar2-decl.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/pstl_config.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/std_abs.h:
 
@@ -1147,14 +1214,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cstdint:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/iterator.h:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/typeinfo:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/functional_hash.h:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cstring:
-
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/error_t.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cwchar:
@@ -1175,10 +1234,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/ext/type_traits.h:
 
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/wchar2-decl.h:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/pstl_config.h:
-
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/initializer_list:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/ios:
@@ -1198,25 +1253,3 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/streambuf_iterator.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/stdexcept:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/FMF.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/DerivedTypes.h:
-
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/locale.h:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/functional:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/string_view:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/ptr_traits.h:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/system_error:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/tuple:
-
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/__sigset_t.h:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/shared_ptr.h:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/vector:

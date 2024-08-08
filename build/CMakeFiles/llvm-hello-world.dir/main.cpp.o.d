@@ -404,4 +404,15 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: \
  /home/nikolasd/dev/lang/src/codegen.h \
  /home/nikolasd/dev/lang/src/parser/line.h \
  /home/nikolasd/dev/lang/src/lexer/lexer.cpp \
- /home/nikolasd/dev/lang/src/lexer/lexer.h
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/sstream \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/sstream.tcc \
+ /home/nikolasd/dev/lang/src/lexer/lexer.h \
+ /home/nikolasd/dev/lang/src/lexer/../parseHelpers.h \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/locale \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets_nonio.h \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/ctime \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/time_members.h \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/messages_members.h \
+ /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/libintl.h \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets_nonio.tcc \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_conv.h

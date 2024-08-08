@@ -42,7 +42,6 @@ void codegen::black_box(){
 }
 
 int codegen::parse(std::string filename) {
-    filename = "examples/hello.w"; // hardcoded test
     lexer *lex = new lexer(filename);
     lex->parseFile();
 

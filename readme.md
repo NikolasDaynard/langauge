@@ -72,7 +72,7 @@ while(cond) {
 
 goto foo
 
-foo:
+foo: -- labels are functions so they can be optionally be called like foo()
 print("went")
 ```
 
