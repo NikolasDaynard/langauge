@@ -20,7 +20,7 @@ public:
     int parse(std::string filename);
     
     // Constructor with parameters
-    codegen(llvm::Module* Mod, std::string name) 
+    codegen(llvm::Module* Mod) 
         : Module(Mod),
           Builder(Context) // Initialize Builder using Context
     {

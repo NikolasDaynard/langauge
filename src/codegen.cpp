@@ -1,5 +1,7 @@
 #include <string>
 #include <iostream>
+#include <fstream>
+
 #include <llvm/IR/LLVMContext.h>
 #include <llvm/IR/Module.h>
 #include <llvm/IR/IRBuilder.h>
@@ -8,7 +10,7 @@
 
 #include "codegen.h"
 #include "parser/line.h"
-#include "lexer/lexer.h"
+#include "lexer/lexer.cpp"
 
 int codegen::print() {
     Module->print(llvm::outs(), nullptr);
@@ -40,7 +42,11 @@ void codegen::black_box(){
 }
 
 int codegen::parse(std::string filename) {
-    filename = "examples/hello.w"
-    lexer 
+    filename = "examples/hello.w"; // hardcoded test
+    lexer *lex = new lexer(filename);
+    lex->parseFile();
+
+    free(lex);
+
     return 0;
 }

@@ -396,4 +396,12 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/ostream.tcc \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/istream \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/istream.tcc \
- /home/nikolasd/dev/lang/src/codegen.h
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/fstream \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/codecvt.h \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/basic_file.h \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/c++io.h \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/fstream.tcc \
+ /home/nikolasd/dev/lang/src/codegen.h \
+ /home/nikolasd/dev/lang/src/parser/line.h \
+ /home/nikolasd/dev/lang/src/lexer/lexer.cpp \
+ /home/nikolasd/dev/lang/src/lexer/lexer.h

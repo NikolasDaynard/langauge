@@ -12,12 +12,13 @@ int main() {
     llvm::IRBuilder<> Builder(Context);
 
     codegen *gen = new codegen(Module);
+    gen->parse("");
 
     gen->black_box();
 
     gen->write();
     gen->print();
-    
+
     delete Module;
     return 0;
 }
