@@ -9,7 +9,7 @@
 #include <llvm/Support/raw_ostream.h>
 
 #include "codegen.h"
-#include "parser/line.h"
+#include "parser/parser.cpp"
 #include "lexer/lexer.cpp"
 
 int codegen::print() {
@@ -28,7 +28,7 @@ int codegen::write() {
     Module->print(FileStream, nullptr);
     FileStream.close();    
 
-    return 0;    
+    return 0;
 }
 
 void codegen::black_box(){
@@ -43,9 +43,13 @@ void codegen::black_box(){
 
 int codegen::parse(std::string filename) {
     lexer *lex = new lexer(filename);
-    lex->parseFile();
+    std::vector<std::string> lexedCode = lex->parseFile();
+
+    parser *parse = new parser(lexedCode);
+    std::string irFile = parse->parseFile();
 
     free(lex);
+    free(parse);
 
     return 0;
 }

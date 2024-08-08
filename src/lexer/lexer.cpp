@@ -14,18 +14,19 @@
 #include "lexer.h"
 #include "../parseHelpers.h"
 
-std::string lexer::parseFile() {
+std::vector<std::string> lexer::parseFile() {
     std::string home = std::getenv("HOME");
     std::ifstream file(home + "/dev/lang/examples/hello.w");
     remove((home + "/dev/lang/examples/hello.wbc").c_str()); // delete old wbc
 
     std::string line;
+    std::vector<std::string> lexedCode;
 
     while(true) {
         if (!getline(file, line)) {
             std::cout << std::endl;
             file.close();
-            return line;
+            break;
         }
 
         line = lexer::encodeLine(line);
@@ -33,7 +34,17 @@ std::string lexer::parseFile() {
         std::cout << "----+++-----" << std::endl;
         std::cout << line << std::endl;
         lexer::writeLine(line);
+
+        std::istringstream iss(line);
+        std::string token;
+        
+        while (iss >> token) {
+            lexedCode.push_back(token);
+        }
+        lexedCode.push_back("\n"); // add a new line char for termination 
     }
+
+    return lexedCode;
 }
 
 void lexer::writeLine(std::string line) {
@@ -81,10 +92,6 @@ std::string lexer::encodeLine(std::string line) {
 
             std::cout << keyword << std::endl;
 
-            if (ch == ')') {
-                acceptingParams = false;
-            }
-
             if (acceptingParams) {
                 if  (ch == '(') {
                     result = result + " call " + keyword;
@@ -97,6 +104,8 @@ std::string lexer::encodeLine(std::string line) {
                 if  (ch == '(') {
                     result = "call " + keyword;
                     acceptingParams = true;
+                }else if (ch == ')') {
+                    acceptingParams = false;
                 }
             }
 

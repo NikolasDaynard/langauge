@@ -402,10 +402,13 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/c++io.h \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/fstream.tcc \
  /home/nikolasd/dev/lang/src/codegen.h \
- /home/nikolasd/dev/lang/src/parser/line.h \
- /home/nikolasd/dev/lang/src/lexer/lexer.cpp \
+ /home/nikolasd/dev/lang/src/parser/parser.cpp \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/sstream \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/sstream.tcc \
+ /home/nikolasd/dev/lang/src/parser/functions.cpp \
+ /home/nikolasd/dev/lang/src/parser/functions.h \
+ /home/nikolasd/dev/lang/src/parser/parser.h \
+ /home/nikolasd/dev/lang/src/lexer/lexer.cpp \
  /home/nikolasd/dev/lang/src/lexer/lexer.h \
  /home/nikolasd/dev/lang/src/lexer/../parseHelpers.h \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/locale \

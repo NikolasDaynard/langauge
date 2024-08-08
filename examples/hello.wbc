@@ -1,2 +1,3 @@
-call print "Hellowworld"
-call d call d call r "str"
+call print "Hellowworld" 
+call foo 3 2 "string" 
+call d call d call r "str"   

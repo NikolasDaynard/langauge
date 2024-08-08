@@ -9,14 +9,16 @@
 
 class parser {
 private:
-    std::string filename;
+    std::vector<std::string> lexedCode;
+    functions function;
 public:
     /* returns path to new lexed code */
     std::string parseFile();
+    void writeLine(std::string line);
 
     // Constructor with parameters
-    parser(std::string newFilename) {
-        filename = newFilename;
+    parser(std::vector<std::string> newCode) {
+        lexedCode = newCode;
     }
     
     ~parser() {

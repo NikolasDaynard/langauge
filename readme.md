@@ -11,7 +11,7 @@ make
 
 To compile, then run "clang output.ll -o output" to compile to an exe
 
-lang examples. It's similar to lua sytatically, with optional semicolon terminators. It has the sytatic sugar of feeling like lua but allows for extreme low level programming. It is 0 indexed
+lang examples. It's similar to lua sytatically, with optional semicolon terminators. It has the sytatic sugar of feeling like lua but allows for extreme low level programming. It is 0 indexed. Designed with string manipulation as a core feature
 
 ```
 std = include("std")

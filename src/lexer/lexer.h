@@ -17,8 +17,8 @@ class lexer {
 private:
     std::string filename;
 public:
-    /* returns path to new lexed code */
-    std::string parseFile();
+    /* returns lexed code */
+    std::vector<std::string> parseFile();
     std::string encodeLine(std::string line);
     void writeLine(std::string line);
     std::string readLine();
