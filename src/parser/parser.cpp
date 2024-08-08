@@ -21,14 +21,40 @@ void initFunctions() {
     // Builder.CreateRet(Builder.getInt32(0));
 }
 
+llvm::Value *parser::createVariable(std::string name, std::string value) {
+
+    // check if it's a string
+    if (value.size() >= 2 && value.front() == '"' && value.back() == '"') { 
+        value = value.substr(1, value.size() - 2);
+        llvm::Value *variable = Builder->CreateGlobalStringPtr(value.c_str());
+        return variable;
+    }
+
+    if (std::isdigit(value.c_str()[0])) {
+        std::cout << value << " is a number" << std::endl;
+        
+        llvm::Value *variable = llvm::ConstantInt::get(llvm::Type::getInt32Ty(*Context), std::stoi(value));
+        return variable;
+    }
+
+    std::cout << "varaible initlization failed" << std::endl;
+    return NULL;
+}
+
 std::string parser::parseFile() {
     bool calling = false;
     bool readingArgs = false;
     llvm::FunctionCallee currentFunction;
+    std::vector<llvm::Value *> currentArgs;
 
     for (std::string str : lexedCode) {
         std::cout << str << std::endl;
         if (str == "\n") {
+            if (readingArgs) {
+                Builder->CreateCall(currentFunction, currentArgs);
+                Builder->CreateRet(Builder->getInt32(0));
+            }
+
             calling = false;
             readingArgs = false;
         }else if (str == "call") {
@@ -38,8 +64,9 @@ std::string parser::parseFile() {
             readingArgs = true;
             calling = false;
         }else if(readingArgs) {
-            // Builder.CreateCall(currentFunction, {HelloWorld});
-            // Builder.CreateRet(Builder.getInt32(0));
+            llvm::Value *FormatStr = Builder->CreateGlobalStringPtr("%d\n");
+            currentArgs.push_back(FormatStr);
+            currentArgs.push_back(parser::createVariable("foo", str));
         }
 
     } 

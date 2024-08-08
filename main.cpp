@@ -14,7 +14,7 @@ int main() {
     codegen *gen = new codegen(Module);
     gen->parse("examples/hello.w");
 
-    gen->black_box();
+    // gen->black_box();
 
     gen->write();
     gen->print();

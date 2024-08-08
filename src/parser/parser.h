@@ -14,16 +14,18 @@ private:
 
     llvm::Module *Module;
     llvm::IRBuilder<> *Builder;
+    llvm::LLVMContext *Context;
 public:
-    /* returns path to new lexed code */
+    llvm::Value *createVariable(std::string name, std::string value);
     std::string parseFile();
     void writeLine(std::string line);
 
     // Constructor with parameters
-    parser(std::vector<std::string> newCode, llvm::Module *Mod, llvm::IRBuilder<> *Build) {
+    parser(std::vector<std::string> newCode, llvm::Module *Mod, llvm::IRBuilder<> *Build, llvm::LLVMContext *Con) {
         lexedCode = newCode;
         Module = Mod;
         Builder = Build;
+        Context = Con;
         function = new functions(Module, Builder);
     }
     
