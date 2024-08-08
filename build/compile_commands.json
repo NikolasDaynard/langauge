@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/nikolasd/dev/lang/build",
+  "command": "/nix/store/r73z9i18vbjcph7k2f3isrysxzx6sqjx-gcc-wrapper-13.2.0/bin/g++     -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/llvm-hello-world.dir/main.cpp.o -c /home/nikolasd/dev/lang/main.cpp",
+  "file": "/home/nikolasd/dev/lang/main.cpp",
+  "output": "CMakeFiles/llvm-hello-world.dir/main.cpp.o"
+}
+]
