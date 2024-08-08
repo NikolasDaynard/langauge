@@ -20,6 +20,7 @@ public:
     /* returns path to new lexed code */
     std::string parseFile();
     std::string encodeLine(std::string line);
+    void writeLine(std::string line);
     std::string readLine();
 
     // Constructor with parameters

@@ -17,6 +17,7 @@
 std::string lexer::parseFile() {
     std::string home = std::getenv("HOME");
     std::ifstream file(home + "/dev/lang/examples/hello.w");
+    remove((home + "/dev/lang/examples/hello.wbc").c_str()); // delete old wbc
 
     std::string line;
 
@@ -28,8 +29,21 @@ std::string lexer::parseFile() {
         }
 
         line = lexer::encodeLine(line);
+
+        std::cout << "----+++-----" << std::endl;
         std::cout << line << std::endl;
+        lexer::writeLine(line);
     }
+}
+
+void lexer::writeLine(std::string line) {
+    std::string home = std::getenv("HOME");
+
+    std::ofstream fileOUT(home + "/dev/lang/examples/hello.wbc", std::ios::app); // open filename.txt in append mode
+
+    fileOUT << line << std::endl; // append "some stuff" to the end of the file
+
+    fileOUT.close(); // close the file
 }
 
 std::string lexer::encodeLine(std::string line) {
@@ -40,6 +54,8 @@ std::string lexer::encodeLine(std::string line) {
     // var variableName
     // foo add foo bar // sub div mul too, setting result into first param
     // set foo value
+
+    std::string result = "";
     
     ltrim(line); // clear whitespace
     rtrim(line);
@@ -47,14 +63,48 @@ std::string lexer::encodeLine(std::string line) {
 
     std::string keyword = std::string("");
 
+    bool acceptingParams = false;
+    bool readingString = false;
+
     for (char ch : line) {
         if (!isalnum(ch)){
+
+            if (ch == '\"') {
+                readingString = !readingString;
+                if (!readingString) {
+                    keyword = "\"" + keyword + "\"";
+                }
+            }
+            if (readingString) {
+                continue;
+            }
+
             std::cout << keyword << std::endl;
+
+            if (ch == ')') {
+                acceptingParams = false;
+            }
+
+            if (acceptingParams) {
+                if  (ch == '(') {
+                    result = result + " call " + keyword;
+                    acceptingParams = true;
+                }else {
+                    result = result + " " + keyword;
+                }
+            }else{
+                // if it is ( it is a function call
+                if  (ch == '(') {
+                    result = "call " + keyword;
+                    acceptingParams = true;
+                }
+            }
+
             keyword = "";
         }else {
             keyword = keyword + ch;
         }
     }
 
-    return line;
+    return result;
 }
