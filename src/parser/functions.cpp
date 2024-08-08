@@ -11,8 +11,12 @@
 #include "functions.h"
 
 std::optional<llvm::FunctionCallee> functions::getStdlibFunction(std::string name) {
-    // llvm::FunctionType *PrintfType = llvm::FunctionType::get(Builder.getInt32Ty(), true);
-    // llvm::FunctionCallee Printf = Module->getOrInsertFunction("printf", PrintfType);
+    llvm::FunctionType *PrintfType = llvm::FunctionType::get(Builder->getInt32Ty(), true);
+    llvm::FunctionCallee Printf = Module->getOrInsertFunction("printf", PrintfType);
+    if (name == "print") {
+        return Printf;
+    }
+
     return std::nullopt;
 }
 
@@ -26,4 +30,5 @@ llvm::FunctionCallee functions::getFunction(std::string name) {
     } else {
         std::cout << "Function not found in the standard library." << std::endl;
     }
+    return llvm::FunctionCallee();
 }

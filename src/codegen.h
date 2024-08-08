@@ -18,6 +18,9 @@ public:
     int write();
     void black_box();
     int parse(std::string filename);
+
+    llvm::Module* getModule();
+    llvm::IRBuilder<>& getBuilder(); // return refrence to non-copyable class
     
     // Constructor with parameters
     codegen(llvm::Module* Mod) 

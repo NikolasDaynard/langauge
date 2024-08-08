@@ -23,13 +23,23 @@ void initFunctions() {
 
 std::string parser::parseFile() {
     bool calling = false;
+    bool readingArgs = false;
+    llvm::FunctionCallee currentFunction;
 
     for (std::string str : lexedCode) {
-
-        if (str == "call") {
+        std::cout << str << std::endl;
+        if (str == "\n") {
+            calling = false;
+            readingArgs = false;
+        }else if (str == "call") {
             calling = true;
         }else if(calling) {
-            function.getFunction(str);
+            currentFunction = function->getFunction(str);
+            readingArgs = true;
+            calling = false;
+        }else if(readingArgs) {
+            // Builder.CreateCall(currentFunction, {HelloWorld});
+            // Builder.CreateRet(Builder.getInt32(0));
         }
 
     } 

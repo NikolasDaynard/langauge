@@ -10,15 +10,21 @@
 class parser {
 private:
     std::vector<std::string> lexedCode;
-    functions function;
+    functions *function;
+
+    llvm::Module *Module;
+    llvm::IRBuilder<> *Builder;
 public:
     /* returns path to new lexed code */
     std::string parseFile();
     void writeLine(std::string line);
 
     // Constructor with parameters
-    parser(std::vector<std::string> newCode) {
+    parser(std::vector<std::string> newCode, llvm::Module *Mod, llvm::IRBuilder<> *Build) {
         lexedCode = newCode;
+        Module = Mod;
+        Builder = Build;
+        function = new functions(Module, Builder);
     }
     
     ~parser() {

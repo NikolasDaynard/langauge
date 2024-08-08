@@ -13,14 +13,17 @@
 class functions {
 private:
     std::optional<llvm::FunctionCallee> getStdlibFunction(std::string name);
+    llvm::Module *Module;
+    llvm::IRBuilder<> *Builder;
 public:
 
     llvm::FunctionCallee getFunction(std::string name);
     
     
     // Constructor with parameters
-    functions() {
-
+    functions(llvm::Module *Mod, llvm::IRBuilder<> *Build) {
+        Module = Mod;
+        Builder = Build;
     }
     
     ~functions() {

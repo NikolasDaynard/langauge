@@ -8,6 +8,8 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o
  /home/nikolasd/dev/lang/src/parseHelpers.h
  /home/nikolasd/dev/lang/src/lexer/lexer.cpp
  /home/nikolasd/dev/lang/src/lexer/lexer.h
+ /home/nikolasd/dev/lang/src/parser/functions.cpp
+ /home/nikolasd/dev/lang/src/parser/functions.h
  /home/nikolasd/dev/lang/src/parser/parser.cpp
  /home/nikolasd/dev/lang/src/parser/parser.h
  /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/alloca.h

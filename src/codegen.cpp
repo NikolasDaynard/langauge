@@ -45,7 +45,7 @@ int codegen::parse(std::string filename) {
     lexer *lex = new lexer(filename);
     std::vector<std::string> lexedCode = lex->parseFile();
 
-    parser *parse = new parser(lexedCode);
+    parser *parse = new parser(lexedCode, Module, &Builder);
     std::string irFile = parse->parseFile();
 
     free(lex);
