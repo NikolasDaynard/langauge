@@ -1,5 +1,5 @@
-; ModuleID = 'hello'
-source_filename = "hello"
+; ModuleID = 'test'
+source_filename = "test"
 
 @0 = private unnamed_addr constant [14 x i8] c"Hello, LLVM!\0A\00", align 1
 
