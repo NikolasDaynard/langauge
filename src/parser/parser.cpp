@@ -75,8 +75,9 @@ std::string parser::parseFile() {
 
 void parser::writeLine(std::string line) {
     std::string home = std::getenv("HOME");
-
-    std::ofstream fileOUT(home + "/dev/lang/examples/hello.wbc", std::ios::app); // open filename.txt in append mode
+    std::string fileOutputName = home + "/dev/lang";
+    fileOutputName += filename + "bc";
+    std::ofstream fileOUT(fileOutputName, std::ios::app); // open filename.txt in append mode
 
     fileOUT << line << std::endl; // append "some stuff" to the end of the file
 
