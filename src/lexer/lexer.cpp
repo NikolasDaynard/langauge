@@ -85,8 +85,8 @@ std::string lexer::encodeLine(std::string line) {
                 if (!readingString) {
                     keyword = "\"" + keyword + "\"";
                 }
-            }
-            if (readingString) {
+            }else if (readingString) {
+                keyword = keyword + ch;
                 continue;
             }
 

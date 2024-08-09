@@ -18,12 +18,14 @@ private:
 public:
 
     llvm::FunctionCallee getFunction(std::string name);
+    void initStdLib();
     
     
     // Constructor with parameters
     functions(llvm::Module *Mod, llvm::IRBuilder<> *Build) {
         Module = Mod;
         Builder = Build;
+        initStdLib();
     }
     
     ~functions() {

@@ -64,8 +64,8 @@ std::string parser::parseFile() {
             readingArgs = true;
             calling = false;
         }else if(readingArgs) {
-            llvm::Value *FormatStr = Builder->CreateGlobalStringPtr("%d\n");
-            currentArgs.push_back(FormatStr);
+            // llvm::Value *FormatStr = Builder->CreateGlobalStringPtr("%s\n");
+            // currentArgs.push_back(FormatStr);
             currentArgs.push_back(parser::createVariable("foo", str));
         }
 

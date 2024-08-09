@@ -10,6 +10,29 @@
 
 #include "functions.h"
 
+void functions::initStdLib() {
+    llvm::FunctionType *PrintfType = llvm::FunctionType::get(Builder->getInt32Ty(), true);
+    llvm::FunctionCallee Printf = Module->getOrInsertFunction("printf", PrintfType);
+
+    // llvm::FunctionType *FuncType = llvm::FunctionType::get(Builder->getInt32Ty(), {Builder->getInt32Ty()}, false);
+    // llvm::Function *MyFunction = llvm::Function::Create(FuncType, llvm::Function::ExternalLinkage, "my_function", Module);
+
+    // // Get the function argument (an integer).
+    // llvm::Function::arg_iterator Args = MyFunction->arg_begin();
+    // llvm::Value *InputValue = Args++;
+
+    // // Create the format string for `printf`.
+    // llvm::Value *FormatStr = Builder->CreateGlobalStringPtr("%d\n");
+
+    // // Call `printf` with the format string and the integer value.
+    // Builder->CreateCall(Printf, {FormatStr, InputValue});
+
+    // // Return the integer value.
+    // Builder->CreateRet(InputValue);
+
+    // llvm::verifyFunction(*MyFunction);
+}
+
 std::optional<llvm::FunctionCallee> functions::getStdlibFunction(std::string name) {
     llvm::FunctionType *PrintfType = llvm::FunctionType::get(Builder->getInt32Ty(), true);
     llvm::FunctionCallee Printf = Module->getOrInsertFunction("printf", PrintfType);
