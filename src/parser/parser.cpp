@@ -52,13 +52,13 @@ llvm::Value *parser::createVariable(std::string name, std::string value, bool re
     if (std::isdigit(value.c_str()[0]) && reading) {
         // std::cout << value << " is a number" << std::endl;
         
-        llvm::Value *variable = llvm::ConstantInt::get(llvm::Type::getInt32Ty(*Context), std::stoi(value));
+        llvm::Value *variable = llvm::ConstantFP::get(llvm::Type::getDoubleTy(*Context), (float)std::stoi(value));
         return variable;
     }
 
     llvm::Value *variable = parser::getVariable(name);
     if (variable != nullptr) {
-        return Builder->CreateLoad(Builder->getInt32Ty(), variable, "loadedInt");
+        return Builder->CreateLoad(Builder->getDoubleTy(), variable, "loadedNum");
     }
 
     if (reading) { // don't create if reading
@@ -66,9 +66,9 @@ llvm::Value *parser::createVariable(std::string name, std::string value, bool re
         return NULL;
     }
 
-    llvm::Type *varType = llvm::Type::getInt32Ty(*Context);
+    llvm::Type *varType = llvm::Type::getDoubleTy(*Context);
     variable = Builder->CreateAlloca(varType, nullptr, name);
-    llvm::Value* constValue = llvm::ConstantInt::get(varType, std::stoi(value));
+    llvm::Value* constValue = llvm::ConstantFP::get(varType, (float)std::stoi(value));
     Builder->CreateStore(constValue, variable);
     variableMap[name] = variable;
 

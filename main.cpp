@@ -23,6 +23,7 @@ int main(int argc, char *argv[]) {
 
     if (argc > 1) { // run el codes
         int s;
+        // TODO: llvm-config --host-target and insert the target triple at top of output.ll
         s = system("clang output.ll -o output");
         s = system("./output");
     }

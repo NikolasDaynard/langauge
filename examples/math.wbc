@@ -1,7 +1,6 @@
 set var 2
 set var1 63
-set var  "var1 * var" 
-call print  "var: %d\n"  var 
-call print  "var1: %d\n"  var1 
-call print  "test / more"  
+set var  add var var 1
+call print  "var: %f\n"  var 
+call print  "var1: %f"  var1 
 

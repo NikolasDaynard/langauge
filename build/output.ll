@@ -1,22 +1,20 @@
 ; ModuleID = 'test'
 source_filename = "test"
 
-@constStr = private unnamed_addr constant [11 x i8] c"var1 * var\00", align 1
-@constStr.1 = private unnamed_addr constant [9 x i8] c"var: %d\0A\00", align 1
-@constStr.2 = private unnamed_addr constant [10 x i8] c"var1: %d\0A\00", align 1
-@constStr.3 = private unnamed_addr constant [12 x i8] c"test / more\00", align 1
+@constStr = private unnamed_addr constant [9 x i8] c"var: %f\0A\00", align 1
+@constStr.1 = private unnamed_addr constant [9 x i8] c"var1: %f\00", align 1
 
 define i32 @main() {
 entry:
-  %var = alloca i32, align 4
-  store i32 2, ptr %var, align 4
-  %var1 = alloca i32, align 4
-  store i32 63, ptr %var1, align 4
-  %loadedInt = load i32, ptr %var, align 4
-  %0 = call i32 (...) @printf(ptr @constStr.1, i32 %loadedInt)
-  %loadedInt1 = load i32, ptr %var1, align 4
-  %1 = call i32 (...) @printf(ptr @constStr.2, i32 %loadedInt1)
-  %2 = call i32 (...) @printf(ptr @constStr.3)
+  %var = alloca double, align 8
+  store double 2.000000e+00, ptr %var, align 8
+  %var1 = alloca double, align 8
+  store double 6.300000e+01, ptr %var1, align 8
+  %loadedNum = load double, ptr %var, align 8
+  %loadedNum1 = load double, ptr %var, align 8
+  %0 = call i32 (...) @printf(ptr @constStr, double %loadedNum1)
+  %loadedNum2 = load double, ptr %var1, align 8
+  %1 = call i32 (...) @printf(ptr @constStr.1, double %loadedNum2)
   ret i32 0
 }
 
