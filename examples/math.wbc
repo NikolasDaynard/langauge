@@ -1,6 +1,5 @@
-set var 2
-set var1 63
-set var  add var var 1
-call print  "var: %f\n"  var 
-call print  "var1: %f"  var1 
+set var 10
+set var1 2
+set var1 var
+call print  "var 1: %f\n"  var1 
 

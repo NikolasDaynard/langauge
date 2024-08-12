@@ -11,16 +11,6 @@
 #include "functions.cpp"
 #include "parser.h"
 
-void initFunctions() {
-    // llvm::Value *HelloWorld = Builder.CreateGlobalStringPtr("Hello, LLVM!\n");
-
-    // llvm::FunctionType *PrintfType = llvm::FunctionType::get(Builder.getInt32Ty(), true);
-    // llvm::FunctionCallee Printf = Module->getOrInsertFunction("printf", PrintfType);
-
-    // Builder.CreateCall(Printf, {HelloWorld});
-    // Builder.CreateRet(Builder.getInt32(0));
-}
-
 void replaceAll(std::string &str, const std::string &from, const std::string &to) {
     size_t startPos = 0;
     while ((startPos = str.find(from, startPos)) != std::string::npos) {
@@ -36,6 +26,10 @@ llvm::Value* parser::getVariable(const std::string& name) {
     }
     // std::cout << name << " not ofund" << std::endl;
     // Handle case where variable is not found (e.g., throw an error or return nullptr)
+    return nullptr;
+}
+
+llvm::Value *parser::evaluateValue(std::string name, std::string value) {
     return nullptr;
 }
 
@@ -58,7 +52,20 @@ llvm::Value *parser::createVariable(std::string name, std::string value, bool re
 
     llvm::Value *variable = parser::getVariable(name);
     if (variable != nullptr) {
-        return Builder->CreateLoad(Builder->getDoubleTy(), variable, "loadedNum");
+        if (reading) {
+            return Builder->CreateLoad(Builder->getDoubleTy(), variable, "loadedNum");
+        }else{
+            //parser::evaluateValue(name, str);
+            llvm::Type *varType = llvm::Type::getDoubleTy(*Context);
+            llvm::Value *val = parser::getVariable(value);
+            if (val == nullptr) {
+                val = llvm::ConstantFP::get(varType, (float)std::stoi(value));
+            }else{
+                val = Builder->CreateLoad(Builder->getDoubleTy(), val, "loadedNum");
+            }
+            Builder->CreateStore(val, variable);
+            return variable;
+        }
     }
 
     if (reading) { // don't create if reading
@@ -106,6 +113,8 @@ std::string parser::parseFile() {
             name = str;
             str = lexedCode[++i];
             parser::createVariable(name, str, false);
+            // evaluates add sub and returns a var containing the result
+            // while(parser::evaluateValue(name, str)); 
         }else if(readingArgs) {
             currentArgs.push_back(parser::createVariable(str, str, true)); // args don't have names
         }

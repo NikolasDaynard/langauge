@@ -135,6 +135,12 @@ std::string lexer::encodeLine(std::string line) {
                 keyword = " mul " + keyword;
             }else if (ch == '/') {
                 keyword = " div " + keyword;
+            }else if(ch == '=') {
+                settingVar = true;
+                acceptingParams = true;
+                result = "set " + keyword;
+                keyword = "";
+                continue;
             }
             
             std::cout << i << std::endl;
@@ -154,10 +160,6 @@ std::string lexer::encodeLine(std::string line) {
                     acceptingParams = true;
                 }else if (ch == ')') {
                     acceptingParams = false;
-                }else if(ch == '=') {
-                    settingVar = true;
-                    acceptingParams = true;
-                    result = "set " + keyword;
                 }
             }
 

@@ -22,6 +22,8 @@ private:
 public:
     llvm::Value *createVariable(std::string name, std::string value, bool reading);
     llvm::Value* getVariable(const std::string& name);
+    llvm::Value *evaluateValue(std::string name, std::string value);
+    
     std::string parseFile();
     void writeLine(std::string line);
 
