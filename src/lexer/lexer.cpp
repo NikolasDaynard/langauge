@@ -58,6 +58,8 @@ void lexer::writeLine(std::string line) {
 }
 
 std::string lexer::encodeLine(std::string line) {
+    line = line + ";"; // manually insert semi-colon
+
     // breaks code down into
 
     // resultVar function functionName 3
@@ -75,12 +77,15 @@ std::string lexer::encodeLine(std::string line) {
     std::string keyword = std::string("");
 
     bool acceptingParams = false;
+    bool settingVar = false; // var = z
     bool readingString = false;
 
-    for (char ch : line) {
-        if (!isalnum(ch)){
+    for (size_t i = 0; i < line.length(); ++i) {
+        char ch = line[i];
 
-            if (ch == '\"') {
+        if (!isalnum(ch) || i == line.length() - 1){
+
+            if (ch == '\"') { // string nonsense
                 readingString = !readingString;
                 if (!readingString) {
                     keyword = "\"" + keyword + "\"";
@@ -89,7 +94,8 @@ std::string lexer::encodeLine(std::string line) {
                 keyword = keyword + ch;
                 continue;
             }
-
+            
+            std::cout << i << std::endl;
             std::cout << keyword << std::endl;
 
             if (acceptingParams) {
@@ -106,6 +112,10 @@ std::string lexer::encodeLine(std::string line) {
                     acceptingParams = true;
                 }else if (ch == ')') {
                     acceptingParams = false;
+                }else if(ch == '=') {
+                    settingVar = true;
+                    acceptingParams = true;
+                    result = "set " + keyword;
                 }
             }
 

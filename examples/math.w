@@ -1,4 +1,4 @@
-var = 4
-var = var + 3
+var = 6
+var2 = 4
+print("%p", var)
 
-print(var)
