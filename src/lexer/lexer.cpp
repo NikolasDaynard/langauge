@@ -63,25 +63,6 @@ std::vector<std::string> lexer::parseFile() {
         std::cout << line << std::endl;
         lexer::writeLine(line);
 
-        // std::istringstream iss(line);
-        // std::string token;
-        // std::string stringCaseString = "";
-        
-        // while (iss >> token) {
-        //     if (token.c_str()[0] == '\"') {
-        //         stringCaseString = stringCaseString + token;
-        //     }
-        //     if (stringCaseString != "") {
-        //         if (token.c_str()[token.length() - 1] == '\"') {
-        //             stringCaseString = stringCaseString + " " + token;
-        //             std::cout << "WE ENDED IT'S NEVER BEEN SO BACK" << std::endl;
-        //             lexedCode.push_back(stringCaseString);
-        //             stringCaseString = "";
-        //         }
-        //     }else{
-        //         lexedCode.push_back(token);
-        //     }
-        // }
         for (std::string token : separateTokens(line)) {
             lexedCode.push_back(token);
         }
@@ -143,6 +124,17 @@ std::string lexer::encodeLine(std::string line) {
             }else if (readingString) {
                 keyword = keyword + ch;
                 continue;
+            }
+
+            // math keyword insertion
+            if (ch == '+') {
+                keyword = " add " + keyword;
+            }else if (ch == '-') {
+                keyword = " sub " + keyword;
+            }else if (ch == '*') {
+                keyword = " mul " + keyword;
+            }else if (ch == '/') {
+                keyword = " div " + keyword;
             }
             
             std::cout << i << std::endl;

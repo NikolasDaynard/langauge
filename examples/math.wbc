@@ -1,6 +1,7 @@
 set var 2
 set var1 63
+set var  "var1 * var" 
 call print  "var: %d\n"  var 
 call print  "var1: %d\n"  var1 
-call print  "test   more"  
+call print  "test / more"  
 
