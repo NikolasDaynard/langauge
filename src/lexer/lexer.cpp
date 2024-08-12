@@ -14,6 +14,34 @@
 #include "lexer.h"
 #include "../parseHelpers.h"
 
+std::vector<std::string> separateTokens(const std::string& line) {
+    std::string temp = "";
+    std::vector<std::string> output;
+    bool inString = false;
+    
+    for(char ch : line) {
+        if (ch == '\"') {
+            inString = !inString;
+        }
+
+        if (ch == ' ' && !inString) {
+            if (!temp.empty()) {  // Avoid adding empty tokens
+                output.push_back(temp);
+                temp = "";
+            }
+        } else {
+            temp += ch;
+        }
+    }
+    
+    // Add the last token if any
+    if (!temp.empty()) {
+        output.push_back(temp);
+    }
+    
+    return output;
+}
+
 std::vector<std::string> lexer::parseFile() {
     std::string home = std::getenv("HOME");
     std::ifstream file(home + "/dev/lang/" + filename);
@@ -35,10 +63,26 @@ std::vector<std::string> lexer::parseFile() {
         std::cout << line << std::endl;
         lexer::writeLine(line);
 
-        std::istringstream iss(line);
-        std::string token;
+        // std::istringstream iss(line);
+        // std::string token;
+        // std::string stringCaseString = "";
         
-        while (iss >> token) {
+        // while (iss >> token) {
+        //     if (token.c_str()[0] == '\"') {
+        //         stringCaseString = stringCaseString + token;
+        //     }
+        //     if (stringCaseString != "") {
+        //         if (token.c_str()[token.length() - 1] == '\"') {
+        //             stringCaseString = stringCaseString + " " + token;
+        //             std::cout << "WE ENDED IT'S NEVER BEEN SO BACK" << std::endl;
+        //             lexedCode.push_back(stringCaseString);
+        //             stringCaseString = "";
+        //         }
+        //     }else{
+        //         lexedCode.push_back(token);
+        //     }
+        // }
+        for (std::string token : separateTokens(line)) {
             lexedCode.push_back(token);
         }
         lexedCode.push_back("\n"); // add a new line char for termination 
@@ -73,6 +117,12 @@ std::string lexer::encodeLine(std::string line) {
     ltrim(line); // clear whitespace
     rtrim(line);
     line = removeWhitespaceNotInString(line);
+
+    if (line.length() >= 2) {
+        if (line.c_str()[0] == '-' && line.c_str()[1] == '-') {
+            return "";
+        }
+    }
 
     std::string keyword = std::string("");
 

@@ -1,4 +1,6 @@
-set var 6
-set var2 4
-call print  "%p"  var 
+set var 2
+set var1 63
+call print  "var: %d\n"  var 
+call print  "var1: %d\n"  var1 
+call print  "test   more"  
 

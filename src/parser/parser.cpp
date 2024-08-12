@@ -29,7 +29,17 @@ void replaceAll(std::string &str, const std::string &from, const std::string &to
     }
 }
 
-llvm::Value *parser::createVariable(std::string name, std::string value) {
+llvm::Value* parser::getVariable(const std::string& name) {
+    auto it = variableMap.find(name);
+    if (it != variableMap.end()) {
+        return it->second; // Return variable if found
+    }
+    // std::cout << name << " not ofund" << std::endl;
+    // Handle case where variable is not found (e.g., throw an error or return nullptr)
+    return nullptr;
+}
+
+llvm::Value *parser::createVariable(std::string name, std::string value, bool reading) {
 
     // check if it's a string
     if (value.size() >= 2 && value.front() == '"' && value.back() == '"') { 
@@ -39,17 +49,28 @@ llvm::Value *parser::createVariable(std::string name, std::string value) {
         return variable;
     }
 
-    if (std::isdigit(value.c_str()[0])) {
-        std::cout << value << " is a number" << std::endl;
+    if (std::isdigit(value.c_str()[0]) && reading) {
+        // std::cout << value << " is a number" << std::endl;
         
         llvm::Value *variable = llvm::ConstantInt::get(llvm::Type::getInt32Ty(*Context), std::stoi(value));
         return variable;
     }
 
+    llvm::Value *variable = parser::getVariable(name);
+    if (variable != nullptr) {
+        return Builder->CreateLoad(Builder->getInt32Ty(), variable, "loadedInt");
+    }
+
+    if (reading) { // don't create if reading
+        std::cout << "varaible initlization failed" << std::endl;
+        return NULL;
+    }
+
     llvm::Type *varType = llvm::Type::getInt32Ty(*Context);
-    llvm::Value *variable = Builder->CreateAlloca(varType, nullptr, name);
-    llvm::Value* constValue = llvm::ConstantInt::get(varType, 6);
+    variable = Builder->CreateAlloca(varType, nullptr, name);
+    llvm::Value* constValue = llvm::ConstantInt::get(varType, std::stoi(value));
     Builder->CreateStore(constValue, variable);
+    variableMap[name] = variable;
 
     return variable;
 
@@ -65,31 +86,28 @@ std::string parser::parseFile() {
     std::vector<llvm::Value *> currentArgs;
     std::string name;
 
-    for (std::string str : lexedCode) {
+    for (std::size_t i = 0; i < lexedCode.size(); ++i) {
+        std::string& str = lexedCode[i];
+
         std::cout << str << std::endl;
         if (str == "\n") {
             if (readingArgs) {
                 Builder->CreateCall(currentFunction, currentArgs);
-
                 currentArgs.clear(); // remove all args
             }
 
-            calling = false;
             readingArgs = false;
         }else if (str == "call") {
-            calling = true;
-        }else if (str == "set") {
-            printf("set HELLOW");
-            setting = true;
-        }else if(calling) {
+            str = lexedCode[++i];
             currentFunction = function->getFunction(str);
             readingArgs = true;
-            calling = false;
-        }else if(setting) {
+        }else if (str == "set") {
+            str = lexedCode[++i];
             name = str;
-            setting = false;
+            str = lexedCode[++i];
+            parser::createVariable(name, str, false);
         }else if(readingArgs) {
-            currentArgs.push_back(parser::createVariable(name, str));
+            currentArgs.push_back(parser::createVariable(str, str, true)); // args don't have names
         }
 
     } 

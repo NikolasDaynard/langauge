@@ -408,6 +408,10 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: \
  /home/nikolasd/dev/lang/src/parser/functions.cpp \
  /home/nikolasd/dev/lang/src/parser/functions.h \
  /home/nikolasd/dev/lang/src/parser/parser.h \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/map \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_tree.h \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_map.h \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_multimap.h \
  /home/nikolasd/dev/lang/src/lexer/lexer.cpp \
  /home/nikolasd/dev/lang/src/lexer/lexer.h \
  /home/nikolasd/dev/lang/src/lexer/../parseHelpers.h \

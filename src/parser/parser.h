@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <map>
 #include <llvm/IR/LLVMContext.h>
 #include <llvm/IR/Module.h>
 #include <llvm/IR/IRBuilder.h>
@@ -16,8 +17,11 @@ private:
     llvm::Module *Module;
     llvm::IRBuilder<> *Builder;
     llvm::LLVMContext *Context;
+
+    std::map<std::string, llvm::Value*> variableMap; // holds all vars
 public:
-    llvm::Value *createVariable(std::string name, std::string value);
+    llvm::Value *createVariable(std::string name, std::string value, bool reading);
+    llvm::Value* getVariable(const std::string& name);
     std::string parseFile();
     void writeLine(std::string line);
 

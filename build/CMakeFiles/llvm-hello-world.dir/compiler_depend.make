@@ -197,10 +197,13 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_iterator_base_funcs.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_iterator_base_types.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_list.h \
+  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_map.h \
+  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_multimap.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_pair.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_raw_storage_iter.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_relops.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_tempbuf.h \
+  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_tree.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_uninitialized.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_vector.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stream_iterator.h \
@@ -250,6 +253,7 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/limits \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/list \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/locale \
+  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/map \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/memory \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/new \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/optional \
@@ -631,6 +635,12 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/streambuf:
 
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/glue_memory_defs.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/glue_algorithm_defs.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/execution_defs.h:
+
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/cpu-set.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/enable_special_members.h:
@@ -743,8 +753,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/exception_defines.h:
 
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/struct___jmp_buf_tag.h:
-
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/stdio2.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/__mbstate_t.h:
@@ -815,6 +823,10 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /home/nikolasd/dev/lang/src/lexer/lexer.cpp:
 
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/pstl_config.h:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/wchar2-decl.h:
+
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/endian.h:
 
 /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/IRBuilderFolder.h:
@@ -848,8 +860,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/clocale:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/locale.h:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/glue_algorithm_defs.h:
 
 /home/nikolasd/dev/lang/src/lexer/lexer.h:
 
@@ -1123,8 +1133,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/ostream.tcc:
 
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/execution_defs.h:
-
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/system_error:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/ptr_traits.h:
@@ -1161,10 +1169,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/functional:
 
-/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/wchar2-decl.h:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/pstl_config.h:
-
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/std_abs.h:
 
 /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Operator.h:
@@ -1183,11 +1187,21 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_iterator_base_types.h:
 
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_map.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_multimap.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/map:
+
 /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/StringRef.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_raw_storage_iter.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_relops.h:
+
+/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/struct___jmp_buf_tag.h:
+
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_tree.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/exception_ptr.h:
 
@@ -1260,5 +1274,3 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/iterator:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/limits:
-
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/glue_memory_defs.h:
