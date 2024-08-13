@@ -1,0 +1,16 @@
+- [ ] Finish all math operations
+- [ ] Add comparision operations
+- [ ] Add function calls
+- [ ] Add loops
+- [ ] Add c / cpp interop ( c from w )
+- - [ ] Make it not recompile the whole project, only changed files
+- - [ ] Make c funcs accessible from .w
+- [ ] Make a c / cpp header for the library (to call and execute scripts, w from c)
+- - [ ] MAKE IT CLEAN
+- - [ ] Figure out how embedding clang should go
+- [ ] Write tests (needs c header first)
+- [ ] Make scripts save global var context and serialize before exiting 
+
+- [ ] Make it as easy to use as possible
+- [ ] clean up clean up everybody everywhere!
+- [ ] Release 1.0

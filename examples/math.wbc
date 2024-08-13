@@ -1,4 +1,5 @@
-set var2 2
-set var 1
-set var1  add var2  add var  add var  add 2  add 3 var2
-call print  "test\n%f"  var1 
+set rest 2
+set r 1
+set vaw  add rest  add r  add r  add 2  add 3 rest
+call print  "test\n%f"  vaw 
+call free r 

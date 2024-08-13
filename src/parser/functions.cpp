@@ -34,10 +34,14 @@ void functions::initStdLib() {
 }
 
 std::optional<llvm::FunctionCallee> functions::getStdlibFunction(std::string name) {
-    llvm::FunctionType *PrintfType = llvm::FunctionType::get(Builder->getInt32Ty(), true);
-    llvm::FunctionCallee Printf = Module->getOrInsertFunction("printf", PrintfType);
+    llvm::FunctionType *retI32 = llvm::FunctionType::get(Builder->getInt32Ty(), true);
+    llvm::FunctionCallee Printf = Module->getOrInsertFunction("printf", retI32);
+    llvm::FunctionCallee Free = Module->getOrInsertFunction("free", retI32);
     if (name == "print") {
         return Printf;
+    }
+    if (name == "free") {
+        return Free;
     }
 
     return std::nullopt;

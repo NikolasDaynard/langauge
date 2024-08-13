@@ -51,7 +51,6 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
     if (value == "add") {
         std::cout << "oh dear god it's math" << std::endl;
         while(lexedCode[i] != "\n") {
-            // std::cout << "mathin " <<  lexedCode[i] << std::endl;
             if (lexedCode[i] == "add") {
                 // dear god it's recursion
                 i++;
@@ -125,6 +124,9 @@ std::string parser::parseFile() {
         }
 
     } 
+    // for(std::pair<std::string, llvm::Value *> var : variableMap) {
+        // Builder->CreateCall(function->getFunction("free"), var.second);
+    // }
     Builder->CreateRet(Builder->getInt32(0)); // return at the end of the main
     return "";
 }

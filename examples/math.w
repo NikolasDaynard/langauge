@@ -1,4 +1,5 @@
-var2 = 2
-var = 1
-var1 = var2 + var + var + 2 + 3 + var2
-print("test\n%f", var1)
+rest = 2
+r = 1
+vaw = rest + r + r + 2 + 3 + rest
+print("test\n%f", vaw)
+free(r)

@@ -8,7 +8,10 @@ target triple = "x86_64-unknown-linux-gnu"
 define i32 @main() local_unnamed_addr {
 entry:
   %0 = tail call i32 (...) @printf(ptr nonnull @constStr, double 1.100000e+01)
+  %1 = tail call i32 (...) @free(double 1.000000e+00)
   ret i32 0
 }
 
 declare i32 @printf(...) local_unnamed_addr
+
+declare i32 @free(...) local_unnamed_addr
