@@ -23,7 +23,8 @@ int main(int argc, char *argv[]) {
 
     if (argc > 1) { // run el codes
         int s;
-        // TODO: llvm-config --host-target and insert the target triple at top of output.ll
+        s = system("clang -S -O3 -Wno-unused-command-line-argument -Wno-override-module -emit-llvm output.ll"); // optimize ll
+        // s = system("cat output.ll");
         s = system("clang output.ll -o output");
         s = system("./output");
     }

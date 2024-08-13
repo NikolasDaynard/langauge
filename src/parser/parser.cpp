@@ -24,18 +24,11 @@ llvm::Value* parser::getVariable(const std::string& name) {
     if (it != variableMap.end()) {
         return it->second; // Return variable if found
     }
-    // std::cout << name << " not ofund" << std::endl;
-    // Handle case where variable is not found (e.g., throw an error or return nullptr)
+
     return nullptr;
 }
 
-llvm::Value *parser::evaluateValue(std::string name, std::string value) {
-    return nullptr;
-}
-
-llvm::Value *parser::createVariable(std::string name, std::string value, bool reading) {
-
-    // check if it's a string
+llvm::Value *parser::evaluateValue(std::string name, std::string value, std::size_t i) {
     if (value.size() >= 2 && value.front() == '"' && value.back() == '"') { 
         value = value.substr(1, value.size() - 2);
         replaceAll(value, "\\n", "\n"); // reinsert newlines
@@ -43,40 +36,52 @@ llvm::Value *parser::createVariable(std::string name, std::string value, bool re
         return variable;
     }
 
-    if (std::isdigit(value.c_str()[0]) && reading) {
-        // std::cout << value << " is a number" << std::endl;
-        
+    if (std::isdigit(value.c_str()[0])) {
         llvm::Value *variable = llvm::ConstantFP::get(llvm::Type::getDoubleTy(*Context), (float)std::stoi(value));
         return variable;
     }
 
-    llvm::Value *variable = parser::getVariable(name);
-    if (variable != nullptr) {
-        if (reading) {
-            return Builder->CreateLoad(Builder->getDoubleTy(), variable, "loadedNum");
-        }else{
-            //parser::evaluateValue(name, str);
-            llvm::Type *varType = llvm::Type::getDoubleTy(*Context);
-            llvm::Value *val = parser::getVariable(value);
-            if (val == nullptr) {
-                val = llvm::ConstantFP::get(varType, (float)std::stoi(value));
-            }else{
-                val = Builder->CreateLoad(Builder->getDoubleTy(), val, "loadedNum");
-            }
-            Builder->CreateStore(val, variable);
-            return variable;
-        }
+
+    llvm::Type *varType = llvm::Type::getDoubleTy(*Context);
+    llvm::Value *val = parser::getVariable(value);
+    if (val != nullptr) {
+        return Builder->CreateLoad(Builder->getDoubleTy(), val, "loadedNum");
     }
 
-    if (reading) { // don't create if reading
-        std::cout << "varaible initlization failed" << std::endl;
-        return NULL;
+    if (value == "add") {
+        std::cout << "oh dear god it's math" << std::endl;
+        while(lexedCode[i] != "\n") {
+            // std::cout << "mathin " <<  lexedCode[i] << std::endl;
+            if (lexedCode[i] == "add") {
+                // dear god it's recursion
+                i++;
+                llvm::Value *first = evaluateValue(lexedCode[i], lexedCode[i], i);
+                i++;
+                llvm::Value *second = evaluateValue(lexedCode[i], lexedCode[i], i);
+                val = Builder->CreateFAdd(first, second, "AdditionTemp");
+                std::cout << lexedCode[i-1] << " + " << lexedCode[i - 2] << std::endl; 
+                return val;
+            }
+            i++;
+        }
+        return val;
+    }
+    return nullptr;
+}
+
+llvm::Value *parser::createVariable(std::string name, std::string value, std::size_t i) {
+
+    llvm::Value *variable = parser::getVariable(name);
+    if (variable != nullptr) {
+        //parser::evaluateValue(name, str);
+        Builder->CreateStore(parser::evaluateValue(name, value, i), variable);
+        return variable;
     }
 
     llvm::Type *varType = llvm::Type::getDoubleTy(*Context);
     variable = Builder->CreateAlloca(varType, nullptr, name);
-    llvm::Value* constValue = llvm::ConstantFP::get(varType, (float)std::stoi(value));
-    Builder->CreateStore(constValue, variable);
+    llvm::Value* val = parser::evaluateValue(name, value, i);
+    Builder->CreateStore(val, variable);
     variableMap[name] = variable;
 
     return variable;
@@ -112,11 +117,11 @@ std::string parser::parseFile() {
             str = lexedCode[++i];
             name = str;
             str = lexedCode[++i];
-            parser::createVariable(name, str, false);
+            parser::createVariable(name, str, i);
             // evaluates add sub and returns a var containing the result
             // while(parser::evaluateValue(name, str)); 
         }else if(readingArgs) {
-            currentArgs.push_back(parser::createVariable(str, str, true)); // args don't have names
+            currentArgs.push_back(parser::evaluateValue(str, str, i)); // args don't have names
         }
 
     } 
