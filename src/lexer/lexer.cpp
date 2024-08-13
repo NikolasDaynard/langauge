@@ -130,12 +130,13 @@ std::vector<std::string> tokenize(const std::string& line) {
     return tokens;
 }
 
+/** Evaluates the tokens to generate an optimized list of token placed in operational order */
 std::vector<std::string> shuntingYard(const std::vector<std::string>& tokens) {
     std::vector<std::string> output;
     std::stack<std::string> operators;
 
-    std::map<std::string, int> precedence = {
-        {"+", 1}, {"-", 1}, {"*", 2}, {"/", 2}, {"=", 0}
+    std::map<std::string, int> precedence = { // PEMDAS
+        {"*", 4}, {"/", 3}, {"+", 2}, {"-", 1}, {"=", 0}
     };
 
     for (const std::string& token : tokens) {
@@ -228,13 +229,7 @@ std::string lexer::encodeLine(std::string line) {
     }
 
     auto tokens = tokenize(line);
-    for (std::string token : tokens) {
-        std::cout << "tok: " << token << std::endl;
-    }
     auto postfix = shuntingYard(tokens);
-    for (std::string token : postfix) {
-        std::cout << "pf: " << token << std::endl;
-    }
     std::string result = postfixToLLVM(postfix);
     
     std::cout << "op: " << result << std::endl;
