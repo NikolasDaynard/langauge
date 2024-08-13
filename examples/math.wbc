@@ -1,4 +1,4 @@
 set rest 3
-set r 202329302
-set vaw 2
-call print  "test\n%f\n"   sub rest r 
+set r 2
+set vaw  sub 2  add 1  add 2 r
+call print  "test\n%f\n"   sub 2 r 
