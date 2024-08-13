@@ -15,6 +15,28 @@ bool isMathKeyword(std::string str) {
     return str == "add" || str == "sub" || str == "div" || str == "mul";
 }
 
+void replaceAllNotInString(std::string &str, const std::string &from, const std::string &to) {
+    size_t startPos = 0;
+    bool inString = false;
+    char quoteChar = '\0';
+
+    while (startPos < str.length()) {
+        if (!inString && (str[startPos] == '"' || str[startPos] == '\'')) {
+            inString = true;
+            quoteChar = str[startPos];
+        } else if (inString && str[startPos] == quoteChar) {
+            inString = false;
+        }
+
+        if (!inString && str.find(from, startPos) == startPos) {
+            str.replace(startPos, from.length(), to);
+            startPos += to.length(); // Advance startPos to avoid infinite loop if 'to' contains 'from'
+        } else {
+            ++startPos;
+        }
+    }
+}
+
 void replaceAll(std::string &str, const std::string &from, const std::string &to) {
     size_t startPos = 0;
     while ((startPos = str.find(from, startPos)) != std::string::npos) {

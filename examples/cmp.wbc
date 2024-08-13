@@ -1,4 +1,4 @@
-set var1var 3
-eql ifvar  3 
-call print  "it was 3!"  
+set var 3
+eql var  3
+call print  3  
 

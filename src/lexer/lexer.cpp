@@ -97,6 +97,8 @@ std::string lexer::encodeLine(std::string line) {
     
     ltrim(line); // clear whitespace
     rtrim(line);
+    replaceAllNotInString(line, "if ", ""); // remove if
+    replaceAllNotInString(line, " then", ""); // remove then
     line = removeWhitespaceNotInString(line);
 
     if (line.length() >= 2) {
@@ -108,7 +110,6 @@ std::string lexer::encodeLine(std::string line) {
     std::string keyword = std::string("");
 
     bool acceptingParams = false;
-    bool settingVar = false; // var = z
     bool readingString = false;
 
     for (size_t i = 0; i < line.length(); ++i) {
@@ -138,12 +139,10 @@ std::string lexer::encodeLine(std::string line) {
             }else if(ch == '=') {
                 if(line[i + 1] == '=') { // ==
                     i++; // skip next '='
-                    settingVar = true;
                     acceptingParams = true;
                     result = "eql " + keyword;
                     keyword = "";
                 }else { // =
-                    settingVar = true;
                     acceptingParams = true;
                     result = "set " + keyword;
                     keyword = "";
