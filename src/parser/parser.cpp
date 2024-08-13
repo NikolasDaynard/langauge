@@ -11,6 +11,10 @@
 #include "functions.cpp"
 #include "parser.h"
 
+bool isMathKeyword(std::string str) {
+    return str == "add" || str == "sub" || str == "div" || str == "mul";
+}
+
 void replaceAll(std::string &str, const std::string &from, const std::string &to) {
     size_t startPos = 0;
     while ((startPos = str.find(from, startPos)) != std::string::npos) {
@@ -48,18 +52,27 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
         return Builder->CreateLoad(Builder->getDoubleTy(), val, "loadedNum");
     }
 
-    if (value == "add") {
+    if (isMathKeyword(value)) {
         std::cout << "oh dear god it's math" << std::endl;
+        llvm::Value *first;
+        llvm::Value *second;
+        int originalIndex = i;
         while(lexedCode[i] != "\n") {
-            if (lexedCode[i] == "add") {
-                // dear god it's recursion
+            if (isMathKeyword(lexedCode[i])) {
                 i++;
-                llvm::Value *first = evaluateValue(lexedCode[i], lexedCode[i], i);
+                first = evaluateValue(lexedCode[i], lexedCode[i], i);
                 i++;
-                llvm::Value *second = evaluateValue(lexedCode[i], lexedCode[i], i);
-                val = Builder->CreateFAdd(first, second, "AdditionTemp");
-                std::cout << lexedCode[i-1] << " + " << lexedCode[i - 2] << std::endl; 
-                return val;
+                second = evaluateValue(lexedCode[i], lexedCode[i], i);
+            }
+
+            if (lexedCode[originalIndex] == "add") {
+                return Builder->CreateFAdd(first, second, "AdditionTemp");
+            }else if (lexedCode[originalIndex] == "sub") {
+                return Builder->CreateFSub(first, second, "SubTemp");
+            }else if (lexedCode[originalIndex] == "mul") {
+                return Builder->CreateFMul(first, second, "MultiplicationTemp");
+            }else if (lexedCode[originalIndex] == "div") {
+                return Builder->CreateFDiv(first, second, "DivisionTemp");
             }
             i++;
         }

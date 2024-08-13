@@ -1,0 +1,4 @@
+set var1var 3
+eql ifvar  3 
+call print  "it was 3!"  
+

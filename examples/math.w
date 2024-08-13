@@ -1,5 +1,4 @@
-rest = 2
-r = 1
-vaw = rest + r + r + 2 + 3 + rest
-print("test\n%f", vaw)
-free(r)
+rest = 3
+r = 202329302
+vaw = 2
+print("test\n%f\n", rest - r)

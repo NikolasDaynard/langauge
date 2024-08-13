@@ -31,16 +31,6 @@ int codegen::write() {
     return 0;
 }
 
-void codegen::black_box(){
-    llvm::Value *HelloWorld = Builder.CreateGlobalStringPtr("Hello, LLVM!\n");
-
-    llvm::FunctionType *PrintfType = llvm::FunctionType::get(Builder.getInt32Ty(), true);
-    llvm::FunctionCallee Printf = Module->getOrInsertFunction("printf", PrintfType);
-
-    Builder.CreateCall(Printf, {HelloWorld});
-    Builder.CreateRet(Builder.getInt32(0));
-}
-
 int codegen::parse(std::string filename) {
     lexer *lex = new lexer(filename);
     std::vector<std::string> lexedCode = lex->parseFile();

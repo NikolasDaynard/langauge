@@ -11,8 +11,8 @@
 #include "functions.h"
 
 void functions::initStdLib() {
-    llvm::FunctionType *PrintfType = llvm::FunctionType::get(Builder->getInt32Ty(), true);
-    llvm::FunctionCallee Printf = Module->getOrInsertFunction("printf", PrintfType);
+    // llvm::FunctionType *PrintfType = llvm::FunctionType::get(Builder->getInt32Ty(), true);
+    // llvm::FunctionCallee Printf = Module->getOrInsertFunction("printf", PrintfType);
 
     // llvm::FunctionType *FuncType = llvm::FunctionType::get(Builder->getInt32Ty(), {Builder->getInt32Ty()}, false);
     // llvm::Function *MyFunction = llvm::Function::Create(FuncType, llvm::Function::ExternalLinkage, "my_function", Module);

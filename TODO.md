@@ -1,4 +1,6 @@
-- [ ] Finish all math operations
+- [x] Finish all math operations
+- [ ] Eval l -> r rather than r -> l
+- [ ] Parenthisis (4 + 3) - 1 
 - [ ] Add comparision operations
 - [ ] Add function calls
 - [ ] Add loops

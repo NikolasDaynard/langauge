@@ -136,11 +136,19 @@ std::string lexer::encodeLine(std::string line) {
             }else if (ch == '/') {
                 keyword = " div " + keyword;
             }else if(ch == '=') {
-                settingVar = true;
-                acceptingParams = true;
-                result = "set " + keyword;
-                keyword = "";
-                continue;
+                if(line[i + 1] == '=') { // ==
+                    i++; // skip next '='
+                    settingVar = true;
+                    acceptingParams = true;
+                    result = "eql " + keyword;
+                    keyword = "";
+                }else { // =
+                    settingVar = true;
+                    acceptingParams = true;
+                    result = "set " + keyword;
+                    keyword = "";
+                    continue;
+                }
             }
             
             std::cout << i << std::endl;
@@ -158,8 +166,6 @@ std::string lexer::encodeLine(std::string line) {
                 if  (ch == '(') {
                     result = "call " + keyword;
                     acceptingParams = true;
-                }else if (ch == ')') {
-                    acceptingParams = false;
                 }
             }
 
