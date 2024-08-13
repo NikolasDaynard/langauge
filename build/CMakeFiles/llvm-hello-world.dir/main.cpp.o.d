@@ -422,4 +422,9 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/messages_members.h \
  /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/libintl.h \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets_nonio.tcc \
- /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_conv.h
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_conv.h \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/stack \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/deque \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_deque.h \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/deque.tcc \
+ /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_stack.h

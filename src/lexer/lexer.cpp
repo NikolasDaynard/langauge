@@ -13,6 +13,7 @@
 
 #include "lexer.h"
 #include "../parseHelpers.h"
+#include <stack>
 
 std::vector<std::string> separateTokens(const std::string& line) {
     std::string temp = "";
@@ -24,7 +25,7 @@ std::vector<std::string> separateTokens(const std::string& line) {
             inString = !inString;
         }
 
-        if (ch == ' ' && !inString) {
+        if ((ch == ' ' && !inString) || ch == '\n') {
             if (!temp.empty()) {  // Avoid adding empty tokens
                 output.push_back(temp);
                 temp = "";
@@ -82,23 +83,142 @@ void lexer::writeLine(std::string line) {
     fileOUT.close(); // close the file
 }
 
+std::vector<std::string> tokenize(const std::string& line) {
+    std::vector<std::string> tokens;
+    std::string token;
+    bool readingString = false;
+
+    for (size_t i = 0; i < line.length(); ++i) {
+        char ch = line[i];
+
+        if (ch == '\"') {
+            readingString = !readingString;
+            token += ch;
+            if (!readingString) {
+                tokens.push_back(token);
+                token.clear();
+            }
+            continue;
+        }
+
+        if (readingString) {
+            token += ch;
+            continue;
+        }
+
+        if (isalnum(ch) || ch == '.' || ch == '_') {
+            token += ch;
+        } else {
+            if (ch == '(' && isalnum(line[i - 1])) { // function calls
+                token += ch;
+            }
+
+            if (!token.empty()) {
+                tokens.push_back(token);
+                token.clear();
+            }
+            if (!isspace(ch)) {
+                tokens.push_back(std::string(1, ch));
+            }
+        }
+    }
+
+    if (!token.empty()) {
+        tokens.push_back(token);
+    }
+
+    return tokens;
+}
+
+std::vector<std::string> shuntingYard(const std::vector<std::string>& tokens) {
+    std::vector<std::string> output;
+    std::stack<std::string> operators;
+
+    std::map<std::string, int> precedence = {
+        {"+", 1}, {"-", 1}, {"*", 2}, {"/", 2}, {"=", 0}
+    };
+
+    for (const std::string& token : tokens) {
+        if (isalnum(token[0]) || token[0] == '\"') {
+            output.push_back(token);
+        } else if (token == "+" || token == "-" || token == "*" || token == "/") {
+            while (!operators.empty() && precedence[operators.top()] >= precedence[token]) {
+                output.push_back(operators.top());
+                operators.pop();
+            }
+            operators.push(token);
+        }else if (token == "(") {
+            operators.push(token);
+        } else if (token == ")") {
+            while (!operators.empty() && operators.top() != "(") {
+                output.push_back(operators.top());
+                operators.pop();
+            }
+            operators.pop(); // Pop '('
+        }
+    }
+
+    while (!operators.empty()) {
+        output.push_back(operators.top());
+        operators.pop();
+    }
+
+    return output;
+}
+
+std::string postfixToLLVM(const std::vector<std::string>& postfix) {
+    std::stack<std::string> evalStack;
+    std::string result;
+    std::string originalVar = postfix[0];
+    int tempVarCounter = 0;  // Counter for temporary variables
+
+    for (const std::string& token : postfix) {
+        if (isalnum(token[0]) || token[0] == '\"') {
+            evalStack.push(token);
+        } else {
+            std::string rhs = evalStack.top(); evalStack.pop();
+            std::string lhs = evalStack.top(); evalStack.pop();
+
+            std::string tempVar = "tmp" + std::to_string(tempVarCounter++);
+            result += "set " + tempVar + " " + 
+                (token == "+" ? "add " : token == "-" ? "sub " : token == "*" ? "mul " : token == "/" ? "div ": "") + 
+                lhs + " " + rhs + "\n";
+
+            evalStack.push(tempVar);
+        }
+    }
+    if (originalVar.back() != '(') { // not call
+        std::string finalResult = evalStack.top();
+        evalStack.pop();
+
+        result += "set " + originalVar + " " + finalResult + "\n";
+    }else{
+        std::string finalResult;
+        std::string arguments = "";
+
+        while (evalStack.size() > 1) {
+            finalResult = evalStack.top();
+            evalStack.pop();
+            std::cout << "res: " << finalResult << std::endl; 
+
+            arguments = finalResult + " " + arguments; // invert because it's top element
+        }
+        originalVar.pop_back(); // remove '(' char
+        result = result + "call " + originalVar + " " + arguments;
+
+        result += "\n";
+    }
+    return result;
+}
+
+
 std::string lexer::encodeLine(std::string line) {
     line = line + ";"; // manually insert semi-colon
-
-    // breaks code down into
-
-    // resultVar function functionName 3
-    // call functionName param1 param2 
-    // var variableName
-    // foo add foo bar // sub div mul too, setting result into first param
-    // set foo value
-
-    std::string result = "";
-    
-    ltrim(line); // clear whitespace
+    ltrim(line);
     rtrim(line);
-    replaceAllNotInString(line, "if ", ""); // remove if
-    replaceAllNotInString(line, " then", ""); // remove then
+
+    replaceAllNotInString(line, "if ", "");
+    replaceAllNotInString(line, " then", "");
     line = removeWhitespaceNotInString(line);
 
     if (line.length() >= 2) {
@@ -107,72 +227,17 @@ std::string lexer::encodeLine(std::string line) {
         }
     }
 
-    std::string keyword = std::string("");
-
-    bool acceptingParams = false;
-    bool readingString = false;
-
-    for (size_t i = 0; i < line.length(); ++i) {
-        char ch = line[i];
-
-        if (!isalnum(ch) || i == line.length() - 1){
-
-            if (ch == '\"') { // string nonsense
-                readingString = !readingString;
-                if (!readingString) {
-                    keyword = "\"" + keyword + "\"";
-                }
-            }else if (readingString) {
-                keyword = keyword + ch;
-                continue;
-            }
-
-            // math keyword insertion
-            if (ch == '+') {
-                keyword = " add " + keyword;
-            }else if (ch == '-') {
-                keyword = " sub " + keyword;
-            }else if (ch == '*') {
-                keyword = " mul " + keyword;
-            }else if (ch == '/') {
-                keyword = " div " + keyword;
-            }else if(ch == '=') {
-                if(line[i + 1] == '=') { // ==
-                    i++; // skip next '='
-                    acceptingParams = true;
-                    result = "eql " + keyword;
-                    keyword = "";
-                }else { // =
-                    acceptingParams = true;
-                    result = "set " + keyword;
-                    keyword = "";
-                    continue;
-                }
-            }
-            
-            std::cout << i << std::endl;
-            std::cout << keyword << std::endl;
-
-            if (acceptingParams) {
-                if  (ch == '(' && isalnum(line[i - 1])) {
-                    result = result + " call " + keyword;
-                    acceptingParams = true;
-                }else {
-                    result = result + " " + keyword;
-                }
-            }else{
-                // if it is ( it is a function call
-                if  (ch == '(' && isalnum(line[i - 1])) {
-                    result = "call " + keyword;
-                    acceptingParams = true;
-                }
-            }
-
-            keyword = "";
-        }else {
-            keyword = keyword + ch;
-        }
+    auto tokens = tokenize(line);
+    for (std::string token : tokens) {
+        std::cout << "tok: " << token << std::endl;
     }
+    auto postfix = shuntingYard(tokens);
+    for (std::string token : postfix) {
+        std::cout << "pf: " << token << std::endl;
+    }
+    std::string result = postfixToLLVM(postfix);
+    
+    std::cout << "op: " << result << std::endl;
 
     return result;
 }
