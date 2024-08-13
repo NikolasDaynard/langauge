@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     llvm::IRBuilder<> Builder(Context);
 
     codegen *gen = new codegen(Module);
-    gen->parse("examples/cmp.w");
+    gen->parse("examples/math.w");
 
     // gen->black_box();
 

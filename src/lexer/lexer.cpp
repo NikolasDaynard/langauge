@@ -154,7 +154,7 @@ std::string lexer::encodeLine(std::string line) {
             std::cout << keyword << std::endl;
 
             if (acceptingParams) {
-                if  (ch == '(') {
+                if  (ch == '(' && isalnum(line[i - 1])) {
                     result = result + " call " + keyword;
                     acceptingParams = true;
                 }else {
@@ -162,7 +162,7 @@ std::string lexer::encodeLine(std::string line) {
                 }
             }else{
                 // if it is ( it is a function call
-                if  (ch == '(') {
+                if  (ch == '(' && isalnum(line[i - 1])) {
                     result = "call " + keyword;
                     acceptingParams = true;
                 }

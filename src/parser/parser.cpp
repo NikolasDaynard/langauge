@@ -79,25 +79,24 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
         llvm::Value *first;
         llvm::Value *second;
         int originalIndex = i;
-        while(lexedCode[i] != "\n") {
-            if (isMathKeyword(lexedCode[i])) {
-                i++;
-                first = evaluateValue(lexedCode[i], lexedCode[i], i);
-                i++;
-                second = evaluateValue(lexedCode[i], lexedCode[i], i);
-            }
-
-            if (lexedCode[originalIndex] == "add") {
-                return Builder->CreateFAdd(first, second, "AdditionTemp");
-            }else if (lexedCode[originalIndex] == "sub") {
-                return Builder->CreateFSub(first, second, "SubTemp");
-            }else if (lexedCode[originalIndex] == "mul") {
-                return Builder->CreateFMul(first, second, "MultiplicationTemp");
-            }else if (lexedCode[originalIndex] == "div") {
-                return Builder->CreateFDiv(first, second, "DivisionTemp");
-            }
+        if (isMathKeyword(lexedCode[i])) {
             i++;
+            first = evaluateValue(lexedCode[i], lexedCode[i], i);
+            i++;
+            second = evaluateValue(lexedCode[i], lexedCode[i], i);
         }
+
+        if (lexedCode[originalIndex] == "add") {
+            return Builder->CreateFAdd(first, second, "AdditionTemp");
+        }else if (lexedCode[originalIndex] == "sub") {
+            return Builder->CreateFSub(first, second, "SubTemp");
+        }else if (lexedCode[originalIndex] == "mul") {
+            return Builder->CreateFMul(first, second, "MultiplicationTemp");
+        }else if (lexedCode[originalIndex] == "div") {
+            return Builder->CreateFDiv(first, second, "DivisionTemp");
+        }
+        i++;
+        
         return val;
     }
     return nullptr;
