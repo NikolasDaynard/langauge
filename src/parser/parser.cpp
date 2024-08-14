@@ -12,7 +12,7 @@
 #include "parser.h"
 
 bool isMathKeyword(std::string str) {
-    return str == "add" || str == "sub" || str == "div" || str == "mul" || str == "pow";
+    return str == "add" || str == "sub" || str == "div" || str == "mul" || str == "cmp" || str == "pow";
 }
 
 void replaceAllNotInString(std::string &str, const std::string &from, const std::string &to) {
@@ -94,6 +94,16 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
             return Builder->CreateFMul(first, second, "MultiplicationTemp");
         }else if (lexedCode[originalIndex] == "div") {
             return Builder->CreateFDiv(first, second, "DivisionTemp");
+        }else if (lexedCode[originalIndex] == "cmp") {
+        // Create the floating-point comparison
+        llvm::Value *FCmp = Builder->CreateFCmpOEQ(first, second, "FCMP");
+
+        // Convert the i1 result (boolean) to i32 (32-bit integer)
+        llvm::Value *IntResult = Builder->CreateZExt(FCmp, llvm::Type::getInt32Ty(*Context), "zext");
+
+        // Convert the i32 result to a double (64-bit floating point)
+        llvm::Value *DoubleResult = Builder->CreateSIToFP(IntResult, llvm::Type::getDoubleTy(*Context), "boolToDouble");
+        return DoubleResult;
         }else if (lexedCode[originalIndex] == "pow") {
             return Builder->CreateCall(function->getFunction("pow"), {first, second}); // TODO: this is undefined
         }

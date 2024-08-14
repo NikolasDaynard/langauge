@@ -50,6 +50,8 @@ std::optional<llvm::FunctionCallee> functions::getStdlibFunction(std::string nam
         return Pow;
     }
 
+    std::cout << "Function " + name + " NOT FOUND" << std::endl;
+
     return std::nullopt;
 }
 

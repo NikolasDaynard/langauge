@@ -225,11 +225,13 @@ std::string postfixToLLVM(const std::vector<std::string>& postfix) {
 
 
 std::string lexer::encodeLine(std::string line) {
+    if (line == "") { return ""; };
+
     line = line + ";"; // manually insert semi-colon
     ltrim(line);
     rtrim(line);
 
-    replaceAllNotInString(line, "if ", "");
+    // replaceAllNotInString(line, "if ", "");
     replaceAllNotInString(line, " then", "");
     line = removeWhitespaceNotInString(line);
 
