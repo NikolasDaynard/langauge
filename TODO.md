@@ -1,15 +1,23 @@
 - [x] Finish all math operations
-- [ ] Eval l -> r rather than r -> l
-- [ ] Parenthisis (4 + 3) - 1 
+- [x] Eval l -> r rather than r -> l
+- [x] Parenthisis (4 + 3) - 1 
 - [ ] Add comparision operations
 - [ ] Add function calls
 - [ ] Add loops
+- [ ] Tables ( synatic sugar ily (for e in table {})) 
+- [ ] Finish stdlib
+- - [ ] Math funcs (pow max min sin atan2)
+- - [ ] Cli arg support
+- - [ ] Check compilation speed and only include required imports
+- - [ ] String operations, (substring, concat ect.)
+- - [ ] Table functions (push pop index len)
 - [ ] Add c / cpp interop ( c from w )
 - - [ ] Make it not recompile the whole project, only changed files
 - - [ ] Make c funcs accessible from .w
 - [ ] Make a c / cpp header for the library (to call and execute scripts, w from c)
 - - [ ] MAKE IT CLEAN
 - - [ ] Figure out how embedding clang should go
+- [ ] Add operators to custom types like in c++ (opt.)
 - [ ] Write tests (needs c header first)
 - [ ] Make scripts save global var context and serialize before exiting 
 

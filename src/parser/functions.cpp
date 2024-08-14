@@ -35,13 +35,19 @@ void functions::initStdLib() {
 
 std::optional<llvm::FunctionCallee> functions::getStdlibFunction(std::string name) {
     llvm::FunctionType *retI32 = llvm::FunctionType::get(Builder->getInt32Ty(), true);
-    llvm::FunctionCallee Printf = Module->getOrInsertFunction("printf", retI32);
-    llvm::FunctionCallee Free = Module->getOrInsertFunction("free", retI32);
+    llvm::FunctionType *retDouble = llvm::FunctionType::get(Builder->getDoubleTy(), true);
     if (name == "print") {
+        llvm::FunctionCallee Printf = Module->getOrInsertFunction("printf", retI32);
         return Printf;
     }
     if (name == "free") {
+        llvm::FunctionCallee Free = Module->getOrInsertFunction("free", retI32);
         return Free;
+    }
+
+    if (name == "pow") {
+        llvm::FunctionCallee Pow = Module->getOrInsertFunction("pow", retDouble);
+        return Pow;
     }
 
     return std::nullopt;

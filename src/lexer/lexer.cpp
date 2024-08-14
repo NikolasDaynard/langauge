@@ -136,13 +136,13 @@ std::vector<std::string> shuntingYard(const std::vector<std::string>& tokens) {
     std::stack<std::string> operators;
 
     std::map<std::string, int> precedence = { // PEMDAS
-        {"*", 4}, {"/", 3}, {"+", 2}, {"-", 1}, {"=", 0}
+        {"^", 5}, {"*", 4}, {"/", 3}, {"+", 2}, {"-", 1}, {"=", 0}
     };
 
     for (const std::string& token : tokens) {
         if (isalnum(token[0]) || token[0] == '\"') {
             output.push_back(token);
-        } else if (token == "+" || token == "-" || token == "*" || token == "/") {
+        } else if (token == "+" || token == "-" || token == "*" || token == "/" || token == "^") {
             while (!operators.empty() && precedence[operators.top()] >= precedence[token]) {
                 output.push_back(operators.top());
                 operators.pop();
@@ -182,7 +182,7 @@ std::string postfixToLLVM(const std::vector<std::string>& postfix) {
 
             std::string tempVar = "tmp" + std::to_string(tempVarCounter++);
             result += "set " + tempVar + " " + 
-                (token == "+" ? "add " : token == "-" ? "sub " : token == "*" ? "mul " : token == "/" ? "div ": "") + 
+                (token == "+" ? "add " : token == "-" ? "sub " : token == "*" ? "mul " : token == "/" ? "div " : token == "^" ? "pow " :  "") + 
                 lhs + " " + rhs + "\n";
 
             evalStack.push(tempVar);
