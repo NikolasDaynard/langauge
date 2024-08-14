@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(LLVMHelloWorld)
 
+SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -lm")
+
 find_package(ZLIB REQUIRED)
 
 set(LLVM_DIR, $(llvm-config --prefix))

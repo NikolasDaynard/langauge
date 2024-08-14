@@ -1,4 +1,8 @@
-set var 3
-eql var  3
-call print  3  
+set tmp0 add 3 2
+set tmp1 sub tmp0 4
+set var tmp1
+
+set tmp0 add 3 2
+set tmp1 cmp var tmp0
+call if tmp1 
 

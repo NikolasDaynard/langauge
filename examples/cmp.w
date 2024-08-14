@@ -1,4 +1,2 @@
-var = 3
-if var == 3 then
-    print('3')
-end
+var = 3 + 2 - 4
+if(var == 3 + 2)

@@ -4,6 +4,7 @@
 - [ ] Add comparision operations
 - [ ] Add function calls
 - [ ] Add loops
+- [ ] String vars
 - [ ] Tables ( synatic sugar ily (for e in table {})) 
 - [ ] Finish stdlib
 - - [ ] Math funcs (pow max min sin atan2)
@@ -15,6 +16,7 @@
 - - [ ] Make it not recompile the whole project, only changed files
 - - [ ] Make c funcs accessible from .w
 - [ ] Make a c / cpp header for the library (to call and execute scripts, w from c)
+- [ ] Fix comments
 - - [ ] MAKE IT CLEAN
 - - [ ] Figure out how embedding clang should go
 - [ ] Add operators to custom types like in c++ (opt.)

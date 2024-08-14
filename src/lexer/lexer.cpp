@@ -15,6 +15,7 @@
 #include "../parseHelpers.h"
 #include <stack>
 
+
 std::vector<std::string> separateTokens(const std::string& line) {
     std::string temp = "";
     std::vector<std::string> output;
@@ -118,8 +119,13 @@ std::vector<std::string> tokenize(const std::string& line) {
                 token.clear();
             }
             if (!isspace(ch)) {
-                tokens.push_back(std::string(1, ch));
+                if (ch == '=' && i + 1 != line.length() && line[(int)std::min(line.length() - 1, i + 1)] == '=') { // special case for ==
+                    tokens.push_back(std::string(1, ch) + std::string(1, line[i++]));
+                }else{
+                    tokens.push_back(std::string(1, ch));
+                }
             }
+
         }
     }
 
@@ -136,13 +142,14 @@ std::vector<std::string> shuntingYard(const std::vector<std::string>& tokens) {
     std::stack<std::string> operators;
 
     std::map<std::string, int> precedence = { // PEMDAS
-        {"^", 5}, {"*", 4}, {"/", 3}, {"+", 2}, {"-", 1}, {"=", 0}
+        {"^", 6}, {"*", 5}, {"/", 4}, {"+", 3}, {"-", 2}, {"==", 1}, {"=", 0}
     };
 
     for (const std::string& token : tokens) {
+        std::cout << "sy: " << token << std::endl;
         if (isalnum(token[0]) || token[0] == '\"') {
             output.push_back(token);
-        } else if (token == "+" || token == "-" || token == "*" || token == "/" || token == "^") {
+        } else if (precedence.find(token) != precedence.end() && token != "=") {
             while (!operators.empty() && precedence[operators.top()] >= precedence[token]) {
                 output.push_back(operators.top());
                 operators.pop();
@@ -173,6 +180,10 @@ std::string postfixToLLVM(const std::vector<std::string>& postfix) {
     std::string originalVar = postfix[0];
     int tempVarCounter = 0;  // Counter for temporary variables
 
+    std::map<std::string, std::string> associations = {
+        {"^", "pow"}, {"*", "mul"}, {"/", "div"}, {"+", "add"}, {"-", "sub"}, {"=", "set"}, {"==", "cmp"}
+    };
+
     for (const std::string& token : postfix) {
         if (isalnum(token[0]) || token[0] == '\"') {
             evalStack.push(token);
@@ -182,8 +193,8 @@ std::string postfixToLLVM(const std::vector<std::string>& postfix) {
 
             std::string tempVar = "tmp" + std::to_string(tempVarCounter++);
             result += "set " + tempVar + " " + 
-                (token == "+" ? "add " : token == "-" ? "sub " : token == "*" ? "mul " : token == "/" ? "div " : token == "^" ? "pow " :  "") + 
-                lhs + " " + rhs + "\n";
+                (associations.find(token) != associations.end() ? associations.find(token)->second : "") + 
+                " " + lhs + " " + rhs + "\n";
 
             evalStack.push(tempVar);
         }
@@ -228,8 +239,14 @@ std::string lexer::encodeLine(std::string line) {
         }
     }
 
-    auto tokens = tokenize(line);
-    auto postfix = shuntingYard(tokens);
+    std::vector<std::string> tokens = tokenize(line);
+    for (std::string tok : tokens) {
+        std::cout << "tok: " << tok << std::endl;
+    }
+    std::vector<std::string> postfix = shuntingYard(tokens);
+    for (std::string pf : postfix) {
+        std::cout << "pf: " << pf << std::endl;
+    }
     std::string result = postfixToLLVM(postfix);
     
     std::cout << "op: " << result << std::endl;
