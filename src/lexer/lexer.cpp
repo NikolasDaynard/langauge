@@ -149,7 +149,7 @@ std::vector<std::string> shuntingYard(const std::vector<std::string>& tokens) {
         std::cout << "sy: " << token << std::endl;
         if (isalnum(token[0]) || token[0] == '\"') {
             output.push_back(token);
-        } else if (precedence.find(token) != precedence.end() && token != "=") {
+        } else if (precedence.find(token) != precedence.end()) {
             while (!operators.empty() && precedence[operators.top()] >= precedence[token]) {
                 output.push_back(operators.top());
                 operators.pop();
@@ -191,20 +191,18 @@ std::string postfixToLLVM(const std::vector<std::string>& postfix) {
             std::string rhs = evalStack.top(); evalStack.pop();
             std::string lhs = evalStack.top(); evalStack.pop();
 
-            std::string tempVar = "tmp" + std::to_string(tempVarCounter++);
-            result += "set " + tempVar + " " + 
-                (associations.find(token) != associations.end() ? associations.find(token)->second : "") + 
-                " " + lhs + " " + rhs + "\n";
+            if (token != "=") {
+                result += "set tmp" + std::to_string(tempVarCounter) + " ";
+            }
 
-            evalStack.push(tempVar);
+            // technically this fails on the last set, but because lua doesn't have double assigment, we chillin 
+            evalStack.push("tmp" + std::to_string(tempVarCounter++)); 
+
+            result += (associations.find(token) != associations.end() ? associations.find(token)->second : "") + 
+                    " " + lhs + " " + rhs + "\n";
         }
     }
-    if (originalVar.back() != '(') { // not call
-        std::string finalResult = evalStack.top();
-        evalStack.pop();
-
-        result += "set " + originalVar + " " + finalResult + "\n";
-    }else{
+    if (originalVar.back() == '(') { // call
         std::string finalResult;
         std::string arguments = "";
 
@@ -216,9 +214,7 @@ std::string postfixToLLVM(const std::vector<std::string>& postfix) {
             arguments = finalResult + " " + arguments; // invert because it's top element
         }
         originalVar.pop_back(); // remove '(' char
-        result = result + "call " + originalVar + " " + arguments;
-
-        result += "\n";
+        result += "call " + originalVar + " " + arguments + "\n";
     }
     return result;
 }
@@ -231,7 +227,7 @@ std::string lexer::encodeLine(std::string line) {
     ltrim(line);
     rtrim(line);
 
-    // replaceAllNotInString(line, "if ", "");
+    // replaceAllNotInString(line, "if", "if (");
     replaceAllNotInString(line, " then", "");
     line = removeWhitespaceNotInString(line);
 

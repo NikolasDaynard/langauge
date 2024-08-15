@@ -1,4 +1,8 @@
 var = 2 + 3 * (3)
--- if (var == 3 + 2) then
+test = var + 2 == 13
+funcT = foo(test)
 
--- end
+
+print("%f", test)
+-- test = g( 3 )
+-- test = call (3)
