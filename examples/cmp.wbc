@@ -9,7 +9,8 @@ set test tmp2
 
 
 
-call print "%f" test 
+
+call print "%f" test
 
 
 

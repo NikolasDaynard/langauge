@@ -55,6 +55,9 @@ llvm::Value* parser::getVariable(const std::string& name) {
 }
 
 llvm::Value *parser::evaluateValue(std::string name, std::string value, std::size_t i) {
+        if (lexedCode[i] == "call") {
+            std::cout << "funcs are broken enjoy seg fault loser " << std::endl;
+        }
     if (value.size() >= 2 && value.front() == '"' && value.back() == '"') { 
         value = value.substr(1, value.size() - 2);
         replaceAll(value, "\\n", "\n"); // reinsert newlines
@@ -146,7 +149,7 @@ std::string parser::parseFile() {
     for (std::size_t i = 0; i < lexedCode.size(); ++i) {
         std::string& str = lexedCode[i];
 
-        std::cout << str << std::endl;
+        std::cout << "reading: " << str << std::endl;
         if (str == "\n") {
             if (readingArgs) {
                 Builder->CreateCall(currentFunction, currentArgs);

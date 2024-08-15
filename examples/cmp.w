@@ -1,6 +1,7 @@
 var = 2 + 3 * (3)
 test = (var + 2 == 13) * 1
--- funcT = foo(test)
+-- test = 3
+-- funcT = print("%f", test)
 
 print("%f", test)
 -- var = foo(test)

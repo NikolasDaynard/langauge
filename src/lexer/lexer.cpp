@@ -88,6 +88,7 @@ std::vector<std::string> tokenize(const std::string& line) {
     std::vector<std::string> tokens;
     std::string token;
     bool readingString = false;
+    int functionNests = 0;
 
     for (size_t i = 0; i < line.length(); ++i) {
         char ch = line[i];
@@ -111,7 +112,12 @@ std::vector<std::string> tokenize(const std::string& line) {
             token += ch;
         } else {
             if (ch == '(' && isalnum(line[i - 1])) { // function calls
-                token = "#" + token;
+                token = "#" + token; // #" is a function string
+                functionNests++;
+            }
+            if (functionNests != 0 && ch == ')') {
+                token = token + "#"; // insert function end char
+                functionNests--;
             }
 
             if (!token.empty()) {
@@ -184,10 +190,39 @@ std::string postfixToLLVM(const std::vector<std::string>& postfix) {
         {"^", "pow"}, {"*", "mul"}, {"/", "div"}, {"+", "add"}, {"-", "sub"}, {"=", "set"}, {"==", "cmp"}
     };
 
-    for (const std::string& token : postfix) {
-        if (isalnum(token[0]) || token[0] == '\"' || token[0] == '#') {
+    for (size_t i = 0; i < postfix.size(); ++i) {
+        const std::string &token = postfix[i];
+        std::cout << "parsing token" << token << std::endl;
+        if ((isalnum(token[0]) || token[0] == '\"') && token.back() != '#') {
             evalStack.push(token);
         } else {
+            if (token.front() == '#') { // call TODO: this is janky
+                std::string arguments = "";
+                i++;
+
+                while (true) {
+                    std::cout << "res: " << postfix[i] << std::endl; 
+
+                    if (postfix[i].back() != '#') {
+                        arguments += " " + postfix[i]; // invert because it's top element
+                    }else{
+                        arguments += " " + postfix[i].substr(0, postfix[i].length() - 1); // invert because it's top elements
+                        std::cout << "break on" << postfix[i].substr(0, postfix[i].length() - 1) << std::endl;
+                        break;
+                    }
+                    i++;
+                }
+                // token =  // remove '#"' char
+                // result += "call " + token.substr(1, token.length()) + " " + arguments + "\n";
+                evalStack.push("call " + token.substr(1, token.length()) + arguments + "\n");
+                // if this is true, there is no set, so pushing to the eval stack does nothing
+                // Meaning, we have to do it ourselves, += just in case someone wants to do something with this
+                if (originalVar == token) { 
+                    result += evalStack.top();
+                    std::cout << "func call: " << "call " + token.substr(1, token.length()) + arguments + "\n" << std::endl;
+                }
+                continue;
+            }
             std::string rhs = evalStack.top(); evalStack.pop();
             std::string lhs = evalStack.top(); evalStack.pop();
 
@@ -203,23 +238,8 @@ std::string postfixToLLVM(const std::vector<std::string>& postfix) {
         }
     }
 
-    for (std::string token : postfix) {
-        if (token.front() == '#') { // call TODO: this is janky
-            std::string finalResult;
-            std::string arguments = "";
-
-            while (evalStack.size() > 1) {
-                finalResult = evalStack.top();
-                evalStack.pop();
-                std::cout << "res: " << finalResult << std::endl; 
-
-                arguments = finalResult + " " + arguments; // invert because it's top element
-            }
-            token = token.substr(1, token.length()); // remove '(' char
-            result += "call " + token + " " + arguments + "\n";
-            break;
-        }
-    }
+    // for (std::string token : postfix) {
+    // }
     return result;
 }
 
