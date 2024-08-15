@@ -4,13 +4,14 @@ set var tmp1
 
 set tmp0 add var 2
 set tmp1 cmp tmp0 13
-set test tmp1
-
-set foo( test
+set tmp2 mul tmp1 1
+set test tmp2
 
 
 
 call print "%f" test 
+
+
 
 
 

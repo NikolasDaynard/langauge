@@ -111,7 +111,7 @@ std::vector<std::string> tokenize(const std::string& line) {
             token += ch;
         } else {
             if (ch == '(' && isalnum(line[i - 1])) { // function calls
-                token += ch;
+                token = "#" + token;
             }
 
             if (!token.empty()) {
@@ -147,7 +147,7 @@ std::vector<std::string> shuntingYard(const std::vector<std::string>& tokens) {
 
     for (const std::string& token : tokens) {
         std::cout << "sy: " << token << std::endl;
-        if (isalnum(token[0]) || token[0] == '\"') {
+        if (isalnum(token[0]) || token[0] == '\"' || token[0] == '#') {
             output.push_back(token);
         } else if (precedence.find(token) != precedence.end()) {
             while (!operators.empty() && precedence[operators.top()] >= precedence[token]) {
@@ -185,7 +185,7 @@ std::string postfixToLLVM(const std::vector<std::string>& postfix) {
     };
 
     for (const std::string& token : postfix) {
-        if (isalnum(token[0]) || token[0] == '\"') {
+        if (isalnum(token[0]) || token[0] == '\"' || token[0] == '#') {
             evalStack.push(token);
         } else {
             std::string rhs = evalStack.top(); evalStack.pop();
@@ -202,19 +202,23 @@ std::string postfixToLLVM(const std::vector<std::string>& postfix) {
                     " " + lhs + " " + rhs + "\n";
         }
     }
-    if (originalVar.back() == '(') { // call
-        std::string finalResult;
-        std::string arguments = "";
 
-        while (evalStack.size() > 1) {
-            finalResult = evalStack.top();
-            evalStack.pop();
-            std::cout << "res: " << finalResult << std::endl; 
+    for (std::string token : postfix) {
+        if (token.front() == '#') { // call TODO: this is janky
+            std::string finalResult;
+            std::string arguments = "";
 
-            arguments = finalResult + " " + arguments; // invert because it's top element
+            while (evalStack.size() > 1) {
+                finalResult = evalStack.top();
+                evalStack.pop();
+                std::cout << "res: " << finalResult << std::endl; 
+
+                arguments = finalResult + " " + arguments; // invert because it's top element
+            }
+            token = token.substr(1, token.length()); // remove '(' char
+            result += "call " + token + " " + arguments + "\n";
+            break;
         }
-        originalVar.pop_back(); // remove '(' char
-        result += "call " + originalVar + " " + arguments + "\n";
     }
     return result;
 }
