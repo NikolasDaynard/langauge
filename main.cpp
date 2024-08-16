@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
         int s;
         s = system("clang -S -O3 -Wno-unused-command-line-argument -Wno-override-module -emit-llvm output.ll"); // optimize ll
         // s = system("cat output.ll");
-        s = system("clang output.ll -o output");
+        s = system("clang output.ll -Wno-unused-command-line-argument -o output");
         s = system("./output");
     }
 

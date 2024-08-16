@@ -412,9 +412,7 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_tree.h \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_map.h \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_multimap.h \
- /home/nikolasd/dev/lang/src/lexer/lexer.cpp \
- /home/nikolasd/dev/lang/src/lexer/lexer.h \
- /home/nikolasd/dev/lang/src/lexer/../parseHelpers.h \
+ /home/nikolasd/dev/lang/src/parser/../parseHelpers.h \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/locale \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets_nonio.h \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/ctime \
@@ -423,6 +421,8 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: \
  /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/libintl.h \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets_nonio.tcc \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_conv.h \
+ /home/nikolasd/dev/lang/src/lexer/lexer.cpp \
+ /home/nikolasd/dev/lang/src/lexer/lexer.h \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/stack \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/deque \
  /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_deque.h \

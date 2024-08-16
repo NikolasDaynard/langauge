@@ -18,7 +18,7 @@
 - [ ] Make a c / cpp header for the library (to call and execute scripts, w from c)
 - [ ] Fix comments
 - - [ ] MAKE IT CLEAN
-- - [ ] Figure out how embedding clang should go
+- - [ ] Remove clang and use own thing
 - [ ] Add operators to custom types like in c++ (opt.)
 - [ ] Write tests (needs c header first)
 - [ ] Make scripts save global var context and serialize before exiting 

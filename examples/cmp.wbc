@@ -8,9 +8,11 @@ set tmp2 mul tmp1 1
 set test tmp2
 
 
+set funcT call foo call foo "%f" test end "tr"  end
 
 
-call print "%f" test
+
+call print "%f" "test"  end
 
 
 

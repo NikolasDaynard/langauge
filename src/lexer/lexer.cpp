@@ -14,6 +14,7 @@
 #include "lexer.h"
 #include "../parseHelpers.h"
 #include <stack>
+#include <map>
 
 
 std::vector<std::string> separateTokens(const std::string& line) {
@@ -197,23 +198,30 @@ std::string postfixToLLVM(const std::vector<std::string>& postfix) {
             evalStack.push(token);
         } else {
             if (token.front() == '#') { // call TODO: this is janky
+                int functionNests = 1;
                 std::string arguments = "";
                 i++;
 
                 while (true) {
                     std::cout << "res: " << postfix[i] << std::endl; 
-
-                    if (postfix[i].back() != '#') {
-                        arguments += " " + postfix[i]; // invert because it's top element
-                    }else{
-                        arguments += " " + postfix[i].substr(0, postfix[i].length() - 1); // invert because it's top elements
+                    
+                    if (postfix[i].back() == '#') { // This has to be default case for blank "#" lines
+                        arguments += " " + postfix[i].substr(0, postfix[i].length() - 1) + " end"; // invert because it's top elements
                         std::cout << "break on" << postfix[i].substr(0, postfix[i].length() - 1) << std::endl;
-                        break;
+                        functionNests--;
+                        if (functionNests == 0) {
+                            break;
+                        }
+                    }else if (postfix[i].front() == '#') {
+                        arguments += " call " + token.substr(1, token.length());
+                        functionNests++;
+                    }else{
+                        arguments += " " + postfix[i]; // invert because it's top element
                     }
+
                     i++;
                 }
-                // token =  // remove '#"' char
-                // result += "call " + token.substr(1, token.length()) + " " + arguments + "\n";
+                
                 evalStack.push("call " + token.substr(1, token.length()) + arguments + "\n");
                 // if this is true, there is no set, so pushing to the eval stack does nothing
                 // Meaning, we have to do it ourselves, += just in case someone wants to do something with this

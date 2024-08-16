@@ -7,6 +7,7 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
   /home/nikolasd/dev/lang/src/parseHelpers.h \
   /home/nikolasd/dev/lang/src/lexer/lexer.cpp \
   /home/nikolasd/dev/lang/src/lexer/lexer.h \
+  /home/nikolasd/dev/lang/src/parseHelpers.h \
   /home/nikolasd/dev/lang/src/parser/functions.cpp \
   /home/nikolasd/dev/lang/src/parser/functions.h \
   /home/nikolasd/dev/lang/src/parser/parser.cpp \
