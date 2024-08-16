@@ -22,9 +22,10 @@ llvm::Value* parser::getVariable(const std::string& name) {
 }
 
 llvm::Value *parser::evaluateValue(std::string name, std::string value, std::size_t i) {
-        if (lexedCode[i] == "call") {
-            std::cout << "funcs are broken enjoy seg fault loser " << std::endl;
-        }
+    if (lexedCode[i] == "call") {
+        std::cout << "funcs are broken enjoy seg fault loser " << std::endl;
+    }
+
     if (value.size() >= 2 && value.front() == '"' && value.back() == '"') { 
         value = value.substr(1, value.size() - 2);
         replaceAll(value, "\\n", "\n"); // reinsert newlines
@@ -109,6 +110,7 @@ std::string parser::parseFile() {
     bool calling = false;
     bool setting = false;
     bool readingArgs = false;
+    int functionNests = 0;
     llvm::FunctionCallee currentFunction;
     std::vector<llvm::Value *> currentArgs;
     std::string name;
@@ -118,16 +120,11 @@ std::string parser::parseFile() {
 
         std::cout << "reading: " << str << std::endl;
         if (str == "\n") {
-            if (readingArgs) {
-                Builder->CreateCall(currentFunction, currentArgs);
-                currentArgs.clear(); // remove all args
-            }
-
-            readingArgs = false;
+            functionNests = 0;
         }else if (str == "call") {
             str = lexedCode[++i];
             currentFunction = function->getFunction(str);
-            readingArgs = true;
+            functionNests++;
         }else if (str == "set") {
             str = lexedCode[++i];
             name = str;
@@ -135,8 +132,15 @@ std::string parser::parseFile() {
             parser::createVariable(name, str, i);
             // evaluates add sub and returns a var containing the result
             // while(parser::evaluateValue(name, str)); 
-        }else if(readingArgs) {
-            currentArgs.push_back(parser::evaluateValue(str, str, i)); // args don't have names
+        }else if(functionNests != 0) {
+            if (str != "end") {
+                currentArgs.push_back(parser::evaluateValue(str, str, i)); // args don't have names
+            }else{
+                Builder->CreateCall(currentFunction, currentArgs);
+                std::cout << "--" << std::endl;
+                currentArgs.clear(); // remove all args
+                functionNests--;
+            }
         }
 
     } 

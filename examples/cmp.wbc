@@ -1,18 +1,11 @@
-set tmp0 mul 3 3
-set tmp1 add 2 tmp0
-set var tmp1
-
-set tmp0 add var 2
-set tmp1 cmp tmp0 13
-set tmp2 mul tmp1 1
-set test tmp2
-
-
-set funcT call foo call foo "%f" test end "tr"  end
 
 
 
-call print "%f" "test"  end
+set funcT call foo call print "%f" test end "tr"  end
+
+
+
+
 
 
 

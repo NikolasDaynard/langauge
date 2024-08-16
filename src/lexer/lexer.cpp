@@ -213,7 +213,7 @@ std::string postfixToLLVM(const std::vector<std::string>& postfix) {
                             break;
                         }
                     }else if (postfix[i].front() == '#') {
-                        arguments += " call " + token.substr(1, token.length());
+                        arguments += " call " + postfix[i].substr(1, postfix[i].length());
                         functionNests++;
                     }else{
                         arguments += " " + postfix[i]; // invert because it's top element

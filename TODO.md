@@ -1,7 +1,16 @@
 - [x] Finish all math operations
 - [x] Eval l -> r rather than r -> l
 - [x] Parenthisis (4 + 3) - 1 
-- [ ] Add comparision operations
+- [ ] Add more operators
+- - [ ] ==
+- - [ ] >=
+- - [ ] <=
+- - [ ] >
+- - [ ] <
+- - [ ] != # != or ~= ?
+- - [ ] ?= # nullish safe set operator
+
+- [ ] Add conditionals (if)
 - [ ] Add function calls
 - [ ] Add loops
 - [ ] String vars
@@ -18,7 +27,7 @@
 - [ ] Make a c / cpp header for the library (to call and execute scripts, w from c)
 - [ ] Fix comments
 - - [ ] MAKE IT CLEAN
-- - [ ] Remove clang and use own thing
+- - [ ] Remove clang and use own thing (jit faster? check.)
 - [ ] Add operators to custom types like in c++ (opt.)
 - [ ] Write tests (needs c header first)
 - [ ] Make scripts save global var context and serialize before exiting 

@@ -50,7 +50,10 @@ std::optional<llvm::FunctionCallee> functions::getStdlibFunction(std::string nam
         return Pow;
     }
 
-    std::cout << "Function " + name + " NOT FOUND" << std::endl;
+    std::cout << "Function " + name + " NOT FOUND, defaulting to print" << std::endl;
+
+    llvm::FunctionCallee Printf = Module->getOrInsertFunction("printf", retI32);
+    return Printf;
 
     return std::nullopt;
 }
