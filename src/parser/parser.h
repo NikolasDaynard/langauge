@@ -19,6 +19,10 @@ private:
     llvm::LLVMContext *Context;
 
     std::map<std::string, llvm::Value*> variableMap; // holds all vars
+
+    int functionNests = 0;
+    llvm::FunctionCallee currentFunction;
+    std::vector<llvm::Value *> currentArgs;
 public:
     llvm::Value *createVariable(std::string name, std::string value, std::size_t i);
     llvm::Value* getVariable(const std::string& name);

@@ -180,8 +180,44 @@ std::vector<std::string> shuntingYard(const std::vector<std::string>& tokens) {
 
     return output;
 }
+/* returns a pair of the call and the temp var */
+std::pair<std::string, std::string> lexer::expandFunction(const std::vector<std::string>& postfix, size_t *originalIt, int &tmpCounter) {
+    int i = *originalIt;
+    std::string originalFunc = postfix[i].substr(1, postfix[i].length());
+    i++;
+    functionNests++;
+    std::string call = "";
+    std::string setTmp = "";
+    std::string tmpVar = "tmp" + std::to_string(tmpCounter++); // Generate tmp variable
+    
+    while (true) {
+        std::cout << "res: " << postfix[i] << std::endl;
+        
+        if (postfix[i].back() == '#') { // ending with # is a closing brace
+            functionNests--;
+            break;
+        } else if (postfix[i].front() == '#') { // starting with # is a function call
+            *originalIt = i;
+            std::pair<std::string, std::string> expanded = expandFunction(postfix, originalIt, tmpCounter);
+            i = *originalIt;
+            call += " " + expanded.second;
+            setTmp += expanded.first + "\n"; // Append nested call results
+        } else {
+            call += " " + postfix[i];
+        }
+        
+        i++;
+    }
 
-std::string postfixToLLVM(const std::vector<std::string>& postfix) {
+    call += " " + postfix[i].substr(0, postfix[i].length() - 1); // Handle final token
+    *originalIt = i;
+    
+    setTmp += "set " + tmpVar + " call " + originalFunc + call; // Set current function call
+
+    return std::make_pair(setTmp, tmpVar); // Return the tmp variable for further use
+}
+
+std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
     std::stack<std::string> evalStack;
     std::string result;
     std::string originalVar = postfix[0];
@@ -198,39 +234,49 @@ std::string postfixToLLVM(const std::vector<std::string>& postfix) {
             evalStack.push(token);
         } else {
             if (token.front() == '#') { // call TODO: this is janky
-                int functionNests = 1;
-                std::string arguments = "";
-                i++;
+                functionNests = 0;
+                // while (true) {
+                size_t temp = i;
+                int tmps = 0;
+                result = expandFunction(postfix, &temp, tmps).first;
+                i = temp;
+                //     if (i == -1) {
+                //         break;
+                //     }
+                // }
+                // std::string arguments = "";
 
-                while (true) {
-                    std::cout << "res: " << postfix[i] << std::endl; 
+                // while (true) {
+                //     std::cout << "res: " << postfix[i] << std::endl; 
                     
-                    if (postfix[i].back() == '#') { // This has to be default case for blank "#" lines
-                        arguments += " " + postfix[i].substr(0, postfix[i].length() - 1) + " end"; // invert because it's top elements
-                        std::cout << "break on" << postfix[i].substr(0, postfix[i].length() - 1) << std::endl;
-                        functionNests--;
-                        if (functionNests == 0) {
-                            break;
-                        }
-                    }else if (postfix[i].front() == '#') {
-                        arguments += " call " + postfix[i].substr(1, postfix[i].length());
-                        functionNests++;
-                    }else{
-                        arguments += " " + postfix[i]; // invert because it's top element
-                    }
+                //     if (postfix[i].back() == '#') { // This has to be default case for blank "#" lines
+                //         arguments += " " + postfix[i].substr(0, postfix[i].length() - 1) + " end"; // invert because it's top elements
+                //         std::cout << "break on" << postfix[i].substr(0, postfix[i].length() - 1) << std::endl;
+                //         functionNests--;
+                //         if (functionNests == 0) {
+                //             break;
+                //         }
+                //     }else if (postfix[i].front() == '#') {
+                //         // result += "\nset tmp" + std::to_string(tempVarCounter++) + " call " + postfix[i].substr(1, postfix[i].length());
+                //         expandFunction(postfix, &i);
+                //         functionNests++;
+                //     }else{
+                //         arguments += " " + postfix[i]; // invert because it's top element
+                //     }
 
-                    i++;
-                }
-                
-                evalStack.push("call " + token.substr(1, token.length()) + arguments + "\n");
-                // if this is true, there is no set, so pushing to the eval stack does nothing
-                // Meaning, we have to do it ourselves, += just in case someone wants to do something with this
-                if (originalVar == token) { 
-                    result += evalStack.top();
-                    std::cout << "func call: " << "call " + token.substr(1, token.length()) + arguments + "\n" << std::endl;
-                }
+                //     i++;
+                // }
+                // evalStack.push(arguments + "\n");
+                // // evalStack.push("call " + token.substr(1, token.length()) + arguments + "\n");
+                // // if this is true, there is no set, so pushing to the eval stack does nothing
+                // // Meaning, we have to do it ourselves, += just in case someone wants to do something with this
+                // if (originalVar == token) { 
+                //     result += evalStack.top();
+                //     std::cout << "func call: " << "call " + token.substr(1, token.length()) + arguments + "\n" << std::endl;
+                // }
                 continue;
             }
+
             std::string rhs = evalStack.top(); evalStack.pop();
             std::string lhs = evalStack.top(); evalStack.pop();
 

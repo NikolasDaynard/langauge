@@ -25,6 +25,17 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
     if (lexedCode[i] == "call") {
         std::cout << "funcs are broken enjoy seg fault loser " << std::endl;
     }
+    if (lexedCode[i] == "call") {
+        lexedCode[i] = lexedCode[++i];
+        currentFunction = function->getFunction(lexedCode[i]);
+        functionNests++;
+    }
+    if(functionNests != 0 && lexedCode[i] == "end") {
+        Builder->CreateCall(currentFunction, currentArgs);
+        std::cout << "--" << std::endl;
+        currentArgs.clear(); // remove all args
+        functionNests--;
+    }
 
     if (value.size() >= 2 && value.front() == '"' && value.back() == '"') { 
         value = value.substr(1, value.size() - 2);
@@ -110,9 +121,6 @@ std::string parser::parseFile() {
     bool calling = false;
     bool setting = false;
     bool readingArgs = false;
-    int functionNests = 0;
-    llvm::FunctionCallee currentFunction;
-    std::vector<llvm::Value *> currentArgs;
     std::string name;
 
     for (std::size_t i = 0; i < lexedCode.size(); ++i) {
@@ -133,14 +141,7 @@ std::string parser::parseFile() {
             // evaluates add sub and returns a var containing the result
             // while(parser::evaluateValue(name, str)); 
         }else if(functionNests != 0) {
-            if (str != "end") {
-                currentArgs.push_back(parser::evaluateValue(str, str, i)); // args don't have names
-            }else{
-                Builder->CreateCall(currentFunction, currentArgs);
-                std::cout << "--" << std::endl;
-                currentArgs.clear(); // remove all args
-                functionNests--;
-            }
+            currentArgs.push_back(parser::evaluateValue(str, str, i)); // args don't have names
         }
 
     } 

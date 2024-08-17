@@ -12,6 +12,7 @@
 
 - [ ] Add conditionals (if)
 - [ ] Add function calls
+- - [ ] NOTE: lex function that goes over every token, if it see's a call, recursivly calc and then push the var back and iterate var, insert into main func call also insert at the beginning the new call set to the var. 
 - [ ] Add loops
 - [ ] String vars
 - [ ] Tables ( synatic sugar ily (for e in table {})) 

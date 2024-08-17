@@ -300,309 +300,311 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/lib/gcc/x86_64-unknown-linux-gnu/13.2.0/include/stddef.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/lib/gcc/x86_64-unknown-linux-gnu/13.2.0/include/stdint.h \
   /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/lib/gcc/x86_64-unknown-linux-gnu/13.2.0/include/syslimits.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm-c/DataTypes.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm-c/Error.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm-c/ExternC.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm-c/Types.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ADL.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/APFloat.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/APInt.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/Any.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ArrayRef.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/Bitfields.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/BitmaskEnum.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/DenseMap.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/DenseMapInfo.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/DenseSet.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/EpochTracker.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/FloatingPointMode.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/FunctionExtras.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/GraphTraits.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/Hashing.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/MapVector.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/PointerIntPair.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/PointerUnion.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/STLExtras.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/STLForwardCompat.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/STLFunctionalExtras.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/Sequence.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/SmallPtrSet.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/SmallVector.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/StringMap.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/StringMapEntry.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/StringRef.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/StringSwitch.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/TinyPtrVector.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/Twine.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/bit.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ilist.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ilist_base.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ilist_iterator.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ilist_node.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ilist_node_base.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ilist_node_options.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/iterator.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/iterator_range.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/simple_ilist.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Config/abi-breaking.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Config/llvm-config.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Argument.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Attributes.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Attributes.inc \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/BasicBlock.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/CFG.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/CallingConv.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Comdat.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Constant.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/ConstantFold.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/ConstantFolder.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Constants.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/DataLayout.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/DebugLoc.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/DebugProgramInstruction.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/DerivedTypes.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/DiagnosticHandler.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/FMF.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/FPEnv.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/FixedMetadataKinds.def \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Function.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/GlobalAlias.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/GlobalIFunc.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/GlobalObject.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/GlobalValue.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/GlobalVariable.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/IRBuilder.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/IRBuilderFolder.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/InstrTypes.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Instruction.def \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Instruction.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Instructions.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/IntrinsicEnums.inc \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Intrinsics.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/LLVMContext.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Metadata.def \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Metadata.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Module.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/OperandTraits.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Operator.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/PassInstrumentation.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/PassManager.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/PassManagerInternal.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/ProfileSummary.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/SymbolTableListTraits.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/TrackingMDRef.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Type.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Use.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/User.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Value.def \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Value.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/ValueHandle.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Verifier.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/AlignOf.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Alignment.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Allocator.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/AllocatorBase.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/AtomicOrdering.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/CBindingWrapping.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Casting.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/CodeGen.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/CommandLine.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Compiler.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/DataTypes.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Debug.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Endian.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Error.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/ErrorHandling.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/ErrorOr.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Format.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/MD5.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/ManagedStatic.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/MathExtras.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/MemAlloc.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/ModRef.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/PointerLikeTypeTraits.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/ReverseIteration.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/StringSaver.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/SwapByteOrder.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/TimeProfiler.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/TrailingObjects.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/TypeName.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/TypeSize.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/raw_ostream.h \
-  /nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/type_traits.h
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm-c/DataTypes.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm-c/Error.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm-c/ExternC.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm-c/Types.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ADL.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/APFloat.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/APInt.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/Any.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ArrayRef.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/Bitfields.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/BitmaskEnum.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/DenseMap.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/DenseMapInfo.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/DenseSet.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/EpochTracker.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/FloatingPointMode.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/FunctionExtras.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/GraphTraits.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/Hashing.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/MapVector.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/PointerIntPair.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/PointerUnion.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/STLExtras.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/STLForwardCompat.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/STLFunctionalExtras.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/Sequence.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/SmallPtrSet.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/SmallVector.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/StringMap.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/StringMapEntry.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/StringRef.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/StringSwitch.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/TinyPtrVector.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/Twine.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/bit.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ilist.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ilist_base.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ilist_iterator.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ilist_node.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ilist_node_base.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ilist_node_options.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/iterator.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/iterator_range.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/simple_ilist.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Config/abi-breaking.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Config/llvm-config.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Argument.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Attributes.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Attributes.inc \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/BasicBlock.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/CFG.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/CallingConv.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Comdat.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Constant.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/ConstantFold.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/ConstantFolder.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Constants.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/DataLayout.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/DebugLoc.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/DebugProgramInstruction.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/DerivedTypes.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/DiagnosticHandler.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/FMF.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/FPEnv.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/FixedMetadataKinds.def \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Function.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/GlobalAlias.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/GlobalIFunc.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/GlobalObject.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/GlobalValue.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/GlobalVariable.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/IRBuilder.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/IRBuilderFolder.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/InstrTypes.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Instruction.def \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Instruction.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Instructions.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/IntrinsicEnums.inc \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Intrinsics.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/LLVMContext.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Metadata.def \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Metadata.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Module.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/OperandTraits.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Operator.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/PassInstrumentation.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/PassManager.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/PassManagerInternal.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/ProfileSummary.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/SymbolTableListTraits.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/TrackingMDRef.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Type.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Use.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/User.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Value.def \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Value.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/ValueHandle.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Verifier.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/AlignOf.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Alignment.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Allocator.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/AllocatorBase.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/AtomicOrdering.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/CBindingWrapping.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Casting.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/CodeGen.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/CommandLine.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Compiler.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/DataTypes.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Debug.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Endian.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Error.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/ErrorHandling.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/ErrorOr.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Format.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/MD5.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/ManagedStatic.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/MathExtras.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/MemAlloc.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/ModRef.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/PointerLikeTypeTraits.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/ReverseIteration.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/StringSaver.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/SwapByteOrder.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/TimeProfiler.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/TrailingObjects.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/TypeName.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/TypeSize.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/raw_ostream.h \
+  /nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/type_traits.h
 
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/type_traits.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/type_traits.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/raw_ostream.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/raw_ostream.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/TypeSize.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/TypeName.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/SwapByteOrder.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/StringSaver.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/StringSaver.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/ReverseIteration.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/ReverseIteration.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/PointerLikeTypeTraits.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/PointerLikeTypeTraits.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/ModRef.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/ModRef.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/ManagedStatic.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Error.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/MD5.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Compiler.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Format.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Endian.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/ErrorHandling.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/CommandLine.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Error.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Casting.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Debug.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/CBindingWrapping.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Compiler.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/AllocatorBase.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/CommandLine.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/AlignOf.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/MathExtras.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Verifier.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/CodeGen.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/ValueHandle.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Allocator.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Value.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/AlignOf.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Value.def:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Value.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/AtomicOrdering.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/User.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Use.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/SymbolTableListTraits.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Type.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/PassManager.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/ProfileSummary.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/PassInstrumentation.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/PassManagerInternal.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Operator.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/PassManager.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/OperandTraits.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/OperandTraits.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/TypeSize.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Module.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Module.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Metadata.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Metadata.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Metadata.def:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Metadata.def:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Alignment.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Intrinsics.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Intrinsics.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/IntrinsicEnums.inc:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Instructions.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Instruction.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/GlobalObject.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/InstrTypes.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/GlobalAlias.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/IRBuilderFolder.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Function.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/IRBuilder.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/FixedMetadataKinds.def:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/GlobalObject.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/FPEnv.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/GlobalIFunc.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/DebugProgramInstruction.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Function.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/DataLayout.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/FixedMetadataKinds.def:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Constants.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/FPEnv.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/ConstantFolder.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/FMF.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/PassInstrumentation.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/DerivedTypes.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/DiagnosticHandler.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/DebugProgramInstruction.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/ConstantFold.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/DataLayout.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Constant.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Constant.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Instruction.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/CallingConv.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Comdat.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/BasicBlock.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/BasicBlock.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Attributes.inc:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Attributes.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Argument.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Config/abi-breaking.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Config/llvm-config.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/simple_ilist.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/GlobalAlias.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ilist_node_options.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/iterator_range.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ilist_node_base.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/TrackingMDRef.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ilist_iterator.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ilist_node_options.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/Twine.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/GlobalVariable.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/StringSwitch.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ilist_node_base.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/StringMap.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ilist_node.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/SmallVector.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ilist_iterator.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/LLVMContext.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ilist_base.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/SmallPtrSet.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Value.def:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/STLFunctionalExtras.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ilist.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/STLForwardCompat.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/bit.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/PointerUnion.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/TinyPtrVector.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Config/llvm-config.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/StringSwitch.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/MapVector.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/StringRef.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/Hashing.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/StringMap.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/GraphTraits.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/STLFunctionalExtras.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/FloatingPointMode.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/STLForwardCompat.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/EpochTracker.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/STLExtras.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/DenseMapInfo.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/PointerUnion.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/DenseMap.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/PointerIntPair.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/BitmaskEnum.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/MapVector.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/ErrorOr.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/Hashing.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/Bitfields.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/GraphTraits.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/APInt.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/EpochTracker.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/APFloat.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/DenseMapInfo.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ADL.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/DenseMap.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm-c/Types.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ArrayRef.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm-c/ExternC.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/TimeProfiler.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/CodeGen.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/Any.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/User.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/APFloat.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/STLExtras.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/DebugLoc.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm-c/Error.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm-c/Types.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/ManagedStatic.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm-c/DataTypes.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/lib/gcc/x86_64-unknown-linux-gnu/13.2.0/include/stddef.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/SmallVector.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/lib/gcc/x86_64-unknown-linux-gnu/13.2.0/include/stdarg.h:
 
@@ -618,11 +620,13 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/error_constants.h:
 
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/DataTypes.h:
+
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/c++locale.h:
 
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/c++config.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/ADL.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/PointerIntPair.h:
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/c++config.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/c++allocator.h:
 
@@ -630,7 +634,7 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/atomic_word.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/iterator.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Endian.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/typeinfo:
 
@@ -640,7 +644,11 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/streambuf:
 
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Attributes.h:
+
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/stack:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/SwapByteOrder.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/pstl/glue_memory_defs.h:
 
@@ -658,11 +666,15 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/enable_special_members.h:
 
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/AllocatorBase.h:
+
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/array:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/assert.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/time.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm-c/Error.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/sys/types.h:
 
@@ -683,8 +695,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/predefined_ops.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/stdc-predef.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/MD5.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/gnu/stubs.h:
 
@@ -708,11 +718,9 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/strings.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/TrailingObjects.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/Sequence.h:
-
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/xopen_lim.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/DiagnosticHandler.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/wctype-wchar.h:
 
@@ -727,8 +735,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/compare:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/typesizes.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/MemAlloc.h:
 
 /home/nikolasd/dev/lang/src/parser/functions.cpp:
 
@@ -746,9 +752,9 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/mbstate_t.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/GlobalVariable.h:
-
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/__fpos_t.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/APInt.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/features-time64.h:
 
@@ -764,7 +770,7 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/asm-generic/errno-base.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/InstrTypes.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/FloatingPointMode.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/exception_defines.h:
 
@@ -774,11 +780,7 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/ext/alloc_traits.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/GlobalIFunc.h:
-
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_classes.tcc:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Instruction.def:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/clockid_t.h:
 
@@ -788,13 +790,9 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_list.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/IntrinsicEnums.inc:
-
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cwctype:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/wchar.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/CallingConv.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/cookie_io_functions_t.h:
 
@@ -803,8 +801,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /home/nikolasd/dev/lang/src/parseHelpers.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/pthread_stack_min-dynamic.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Attributes.inc:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/string.h:
 
@@ -822,19 +818,23 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/timex.h:
 
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/ProfileSummary.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/SmallPtrSet.h:
+
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/timesize.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stream_iterator.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/FILE.h:
 
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/CFG.h:
+
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/optional:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/node_handle.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/floatn.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/bit.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/thread-shared-types.h:
 
@@ -848,15 +848,13 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/endian.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/IRBuilderFolder.h:
-
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/stdlib.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/TimeProfiler.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/time_members.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cstdio:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/Twine.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/features.h:
 
@@ -866,9 +864,9 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/struct_rwlock.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ArrayRef.h:
-
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/alloca.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/iterator.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/algorithmfwd.h:
 
@@ -882,15 +880,17 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /home/nikolasd/dev/lang/src/lexer/lexer.h:
 
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Use.h:
+
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/select-decl.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/basic_ios.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/DataTypes.h:
-
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/endianness.h:
 
 /home/nikolasd/dev/lang/main.cpp:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/ValueHandle.h:
 
 /home/nikolasd/dev/lang/src/codegen.cpp:
 
@@ -898,33 +898,31 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_iterator_base_funcs.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/DebugLoc.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm-c/DataTypes.h:
-
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/stdint-uintn.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/floatn-common.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Config/abi-breaking.h:
 
 /home/nikolasd/dev/lang/src/codegen.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_uninitialized.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/DenseSet.h:
-
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/local_lim.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/allocator.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/LLVMContext.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/posix1_lim.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/struct_mutex.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/iterator_range.h:
-
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/iosfwd:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/atomic_wide_counter.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/Bitfields.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/vector:
 
@@ -958,11 +956,11 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_vector.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/TrackingMDRef.h:
-
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/libintl.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/inttypes.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/AtomicOrdering.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/ios_base.h:
 
@@ -974,19 +972,17 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/move.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/FunctionExtras.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/PassManagerInternal.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/iostream:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ilist_base.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Instructions.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/pthreadtypes-arch.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets_nonio.tcc:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_pair.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ilist_node.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/pthreadtypes.h:
 
@@ -1004,6 +1000,8 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/struct_itimerspec.h:
 
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Verifier.h:
+
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/exception.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/errno.h:
@@ -1012,7 +1010,13 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/uintn-identity.h:
 
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/TrailingObjects.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/DenseSet.h:
+
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/stdio.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Instruction.def:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/select2.h:
 
@@ -1022,11 +1026,7 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/codecvt.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/StringMapEntry.h:
-
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/cxxabi_init_exception.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/TinyPtrVector.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/ctype_base.h:
 
@@ -1040,15 +1040,17 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/stdlib-float.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/GlobalValue.h:
-
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/stdlib.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/time.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_algobase.h:
 
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/ConstantFold.h:
+
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/string_fortified.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/ConstantFolder.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/sched.h:
 
@@ -1056,21 +1058,29 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_construct.h:
 
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm-c/ExternC.h:
+
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/alloc_traits.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/ostream_insert.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/atomic_base.h:
 
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Type.h:
+
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/atomic_lockfree_defines.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/ErrorOr.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/basic_ios.tcc:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/basic_string.h:
 
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/BitmaskEnum.h:
+
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/basic_string.tcc:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/MathExtras.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/Sequence.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_algo.h:
 
@@ -1084,13 +1094,15 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/fstream:
 
-/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/concept_check.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/GlobalValue.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Debug.h:
+/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/concept_check.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/libc-header-start.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/cpp_type_traits.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Alignment.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/requires_hosted.h:
 
@@ -1099,6 +1111,8 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/locale:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/functexcept.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/FunctionExtras.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_bvector.h:
 
@@ -1112,7 +1126,7 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_conv.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/Any.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Constants.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/list.tcc:
 
@@ -1121,8 +1135,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/setjmp.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets.tcc:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/TypeName.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/cpu_defines.h:
 
@@ -1162,19 +1174,15 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/ext/atomicity.h:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Argument.h:
-
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/sstream:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/align.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/shared_ptr_base.h:
 
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/CBindingWrapping.h:
+
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/sstream.tcc:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/FMF.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/DerivedTypes.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/string_view:
 
@@ -1183,10 +1191,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/functional:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/std_abs.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/Operator.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/IRBuilder.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/std_function.h:
 
@@ -1200,6 +1204,8 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_heap.h:
 
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/MemAlloc.h:
+
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_iterator_base_types.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_map.h:
@@ -1208,11 +1214,11 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/map:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/StringRef.h:
-
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_raw_storage_iter.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stl_relops.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/IR/Comdat.h:
 
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/bits/types/struct___jmp_buf_tag.h:
 
@@ -1226,21 +1232,21 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/string_view.tcc:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/ADT/ilist.h:
-
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/stringfwd.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/simple_ilist.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/uniform_int_dist.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/unique_ptr.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Format.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/utility.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/lib/gcc/x86_64-unknown-linux-gnu/13.2.0/include/syslimits.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/debug/assertions.h:
+
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/Support/Casting.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/uses_allocator_args.h:
 
@@ -1252,10 +1258,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cstddef:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/ErrorHandling.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/SymbolTableListTraits.h:
-
 /nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include/linux/errno.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cstdint:
@@ -1264,7 +1266,7 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/cwchar:
 
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/Support/Allocator.h:
+/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include/llvm/ADT/StringMapEntry.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bit:
 
@@ -1273,8 +1275,6 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/utility:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/ext/string_conversions.h:
-
-/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include/llvm/IR/CFG.h:
 
 /nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/bits/hash_bytes.h:
 
