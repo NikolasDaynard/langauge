@@ -212,7 +212,7 @@ std::pair<std::string, std::string> lexer::expandFunction(const std::vector<std:
     call += " " + postfix[i].substr(0, postfix[i].length() - 1); // Handle final token
     *originalIt = i;
     
-    setTmp += "set " + tmpVar + " call " + originalFunc + call; // Set current function call
+    setTmp += "set " + tmpVar + " call " + originalFunc + call + " end"; // Set current function call
 
     return std::make_pair(setTmp, tmpVar); // Return the tmp variable for further use
 }
@@ -240,40 +240,6 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
                 int tmps = 0;
                 result = expandFunction(postfix, &temp, tmps).first;
                 i = temp;
-                //     if (i == -1) {
-                //         break;
-                //     }
-                // }
-                // std::string arguments = "";
-
-                // while (true) {
-                //     std::cout << "res: " << postfix[i] << std::endl; 
-                    
-                //     if (postfix[i].back() == '#') { // This has to be default case for blank "#" lines
-                //         arguments += " " + postfix[i].substr(0, postfix[i].length() - 1) + " end"; // invert because it's top elements
-                //         std::cout << "break on" << postfix[i].substr(0, postfix[i].length() - 1) << std::endl;
-                //         functionNests--;
-                //         if (functionNests == 0) {
-                //             break;
-                //         }
-                //     }else if (postfix[i].front() == '#') {
-                //         // result += "\nset tmp" + std::to_string(tempVarCounter++) + " call " + postfix[i].substr(1, postfix[i].length());
-                //         expandFunction(postfix, &i);
-                //         functionNests++;
-                //     }else{
-                //         arguments += " " + postfix[i]; // invert because it's top element
-                //     }
-
-                //     i++;
-                // }
-                // evalStack.push(arguments + "\n");
-                // // evalStack.push("call " + token.substr(1, token.length()) + arguments + "\n");
-                // // if this is true, there is no set, so pushing to the eval stack does nothing
-                // // Meaning, we have to do it ourselves, += just in case someone wants to do something with this
-                // if (originalVar == token) { 
-                //     result += evalStack.top();
-                //     std::cout << "func call: " << "call " + token.substr(1, token.length()) + arguments + "\n" << std::endl;
-                // }
                 continue;
             }
 

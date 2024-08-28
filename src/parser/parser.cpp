@@ -26,15 +26,26 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
         std::cout << "funcs are broken enjoy seg fault loser " << std::endl;
     }
     if (lexedCode[i] == "call") {
-        lexedCode[i] = lexedCode[++i];
+        i++;
         currentFunction = function->getFunction(lexedCode[i]);
+        currentArgs.clear();
+        while (true) {
+            i++;
+            if (lexedCode[i] == "end") {
+                break;
+            }
+            std::cout << "looped " + lexedCode[i] << std::endl;
+            currentArgs.push_back(evaluateValue(lexedCode[i], lexedCode[i], i));
+        }
+
         functionNests++;
     }
     if(functionNests != 0 && lexedCode[i] == "end") {
-        Builder->CreateCall(currentFunction, currentArgs);
+        llvm::Value *call = Builder->CreateCall(currentFunction, currentArgs);
         std::cout << "--" << std::endl;
         currentArgs.clear(); // remove all args
         functionNests--;
+        return call;
     }
 
     if (value.size() >= 2 && value.front() == '"' && value.back() == '"') { 

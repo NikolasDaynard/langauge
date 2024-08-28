@@ -2,11 +2,11 @@
 
 
 
-set tmp1 call print "%f" 3
-set tmp2 call g 4 4 + 4 + 4
-set tmp0 call foo tmp1 tmp2 + 5 4
+set tmp1 call print "%f" 3 end
+set tmp2 call g 4 end
+set tmp0 call foo tmp1 2 tmp2 "4"  end
 
-set tmp0 call print "%f" test
+
 
 
 
