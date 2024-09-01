@@ -5,11 +5,12 @@
 
 set foo 1
 
-set tmp0 add 1 1
-set tmp1 mul 3 9
-set tmp2 add tmp1 foo
-set tmp3 add 3 3
-call print tmp0 tmp2 tmp3 1   end
+
+set tmp0 add 3 3
+set tmp1 call foo tmp0   end
+set tmp2 mul 4 2
+set tmp3 call print tmp1 tmp2   end
+set r tmp3
 
 
 

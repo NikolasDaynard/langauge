@@ -115,17 +115,17 @@ std::vector<std::string> tokenize(const std::string& line) {
             if (ch == '(') { // function calls
                 if (isalnum(line[i - 1])) {
                     token = "#" + token; // #" is a function string
+                    functionNests++;
                 }
-                functionNests++;
             }
             if (ch == ')') {
-                functionNests--;
-                if (functionNests == 0) {
+                if (functionNests != 0) {
                     tokens.push_back(token);
                     tokens.push_back(",");
                     tokens.push_back("#");
                     token.clear();
                 }
+                functionNests--;
             }
 
             if (!token.empty()) {
@@ -232,11 +232,10 @@ std::pair<std::string, std::string> lexer::expandFunction(const std::vector<std:
 
 std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
     std::stack<std::string> evalStack;
+    std::stack<std::string> functionNames;
     std::string result;
     std::string originalVar = postfix[0];
     int tempVarCounter = 0;  // Counter for temporary variables
-    bool inFunction = false;
-    std::string functionName;
 
     std::map<std::string, std::string> associations = {
         {"^", "pow"}, {"*", "mul"}, {"/", "div"}, {"+", "add"}, {"-", "sub"}, {"=", "set"}, {"==", "cmp"}
@@ -250,43 +249,36 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
             continue;
         }
         if (token.back() == '#') {
-            result += "call " + functionName;
+            result += "set tmp" + std::to_string(tempVarCounter) + " ";
+            result += "call " + functionNames.top();
+            functionNames.pop();
+
             std::string args = "";
-            while (!evalStack.empty()) {
+            while (evalStack.top() != "|") {
                 args = evalStack.top() + " " + args; // invert args
                 evalStack.pop();
             }
-            result += " " + args + " " + token.substr(0, token.length() - 1) + " end";
+            result += " " + args + " " + token.substr(0, token.length() - 1) + " end\n";
+            evalStack.push("tmp" + std::to_string(tempVarCounter++)); 
             continue;
         }
-        // if (inFunction) {
-        //     result += " ";
-            
-        //     if (token.back() == '#') {
-        //         result += token.substr(0, token.length() - 1);
-        //         inFunction = false;
-        //     }else {
-        //         result += token;
-        //     }
-        //     continue;
-        // }
+
         if ((isalnum(token[0]) || token[0] == '\"') && token.back() != '#') {
             evalStack.push(token);
         } else {
-            if (token.front() == '#') { // call TODO: this is janky
-                // functionNests = 0;
-                // size_t temp = i;
-                // int tmps = 0;
-                // result = expandFunction(postfix, &temp, tmps).first;
-                // i = temp;
-                // continue;
-                // result += "call " + token.substr(1, token.length());
-                inFunction = true;
-                functionName = token.substr(1, token.length());
+            if (token.front() == '#') {
+                if (functionNames.size() == 0) { // if this is the first function call, safeguard the stack
+                    evalStack.push("|");
+                }
+                functionNames.push(token.substr(1, token.length()));
                 continue;
             }
 
             std::string rhs = evalStack.top(); evalStack.pop();
+            
+            if (evalStack.top() == "|") { // pop safeguard
+                evalStack.pop();
+            }
             std::string lhs = evalStack.top(); evalStack.pop();
 
             if (token != "=") {
@@ -301,8 +293,6 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
         }
     }
 
-    // for (std::string token : postfix) {
-    // }
     return result;
 }
 

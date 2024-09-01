@@ -5,7 +5,10 @@ target triple = "x86_64-unknown-linux-gnu"
 
 define i32 @main() local_unnamed_addr {
 entry:
-  %0 = tail call i32 (...) @printf(double 2.000000e+00, double 2.800000e+01, double 6.000000e+00, double 1.000000e+00)
+  %0 = tail call i32 (...) @printf(double 6.000000e+00)
+  %tmp1.0.insert.ext = zext i32 %0 to i64
+  %1 = bitcast i64 %tmp1.0.insert.ext to double
+  %2 = tail call i32 (...) @printf(double %1, double 8.000000e+00)
   ret i32 0
 }
 
