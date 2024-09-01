@@ -104,6 +104,9 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
 
         return val;
     }
+
+    std::cout << value + " was not evaluated" << std::endl;
+
     return nullptr;
 }
 
@@ -133,6 +136,7 @@ std::string parser::parseFile() {
     bool setting = false;
     bool readingArgs = false;
     std::string name;
+    functionNests = 90000;
 
     for (std::size_t i = 0; i < lexedCode.size(); ++i) {
         std::string& str = lexedCode[i];
@@ -141,9 +145,10 @@ std::string parser::parseFile() {
         if (str == "\n") {
             functionNests = 0;
         }else if (str == "call") {
-            str = lexedCode[++i];
-            currentFunction = function->getFunction(str);
-            functionNests++;
+            // str = lexedCode[++i];
+            // currentFunction = function->getFunction(str);
+            // functionNests++;
+            parser::evaluateValue(str, str, i);
         }else if (str == "set") {
             str = lexedCode[++i];
             name = str;

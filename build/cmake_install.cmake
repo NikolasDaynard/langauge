@@ -39,7 +39,7 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/nix/store/r73z9i18vbjcph7k2f3isrysxzx6sqjx-gcc-wrapper-13.2.0/bin/objdump")
+  set(CMAKE_OBJDUMP "/run/current-system/sw/bin/objdump")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

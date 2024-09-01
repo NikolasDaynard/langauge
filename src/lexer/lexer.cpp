@@ -112,13 +112,20 @@ std::vector<std::string> tokenize(const std::string& line) {
         if (isalnum(ch) || ch == '.' || ch == '_') {
             token += ch;
         } else {
-            if (ch == '(' && isalnum(line[i - 1])) { // function calls
-                token = "#" + token; // #" is a function string
+            if (ch == '(') { // function calls
+                if (isalnum(line[i - 1])) {
+                    token = "#" + token; // #" is a function string
+                }
                 functionNests++;
             }
-            if (functionNests != 0 && ch == ')') {
-                token = token + "#"; // insert function end char
+            if (ch == ')') {
                 functionNests--;
+                if (functionNests == 0) {
+                    tokens.push_back(token);
+                    tokens.push_back(",");
+                    tokens.push_back("#");
+                    token.clear();
+                }
             }
 
             if (!token.empty()) {
@@ -170,6 +177,12 @@ std::vector<std::string> shuntingYard(const std::vector<std::string>& tokens) {
                 operators.pop();
             }
             operators.pop(); // Pop '('
+        } else if (token == ",") { // separate args into seprate token blocks
+            while (!operators.empty() && operators.top() != "(") {
+                output.push_back(operators.top());
+                operators.pop();
+            }
+            output.push_back(token);
         }
     }
 
@@ -222,6 +235,8 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
     std::string result;
     std::string originalVar = postfix[0];
     int tempVarCounter = 0;  // Counter for temporary variables
+    bool inFunction = false;
+    std::string functionName;
 
     std::map<std::string, std::string> associations = {
         {"^", "pow"}, {"*", "mul"}, {"/", "div"}, {"+", "add"}, {"-", "sub"}, {"=", "set"}, {"==", "cmp"}
@@ -230,16 +245,44 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
     for (size_t i = 0; i < postfix.size(); ++i) {
         const std::string &token = postfix[i];
         std::cout << "parsing token" << token << std::endl;
+
+        if (token == ",") {
+            continue;
+        }
+        if (token.back() == '#') {
+            result += "call " + functionName;
+            std::string args = "";
+            while (!evalStack.empty()) {
+                args = evalStack.top() + " " + args; // invert args
+                evalStack.pop();
+            }
+            result += " " + args + " " + token.substr(0, token.length() - 1) + " end";
+            continue;
+        }
+        // if (inFunction) {
+        //     result += " ";
+            
+        //     if (token.back() == '#') {
+        //         result += token.substr(0, token.length() - 1);
+        //         inFunction = false;
+        //     }else {
+        //         result += token;
+        //     }
+        //     continue;
+        // }
         if ((isalnum(token[0]) || token[0] == '\"') && token.back() != '#') {
             evalStack.push(token);
         } else {
             if (token.front() == '#') { // call TODO: this is janky
-                functionNests = 0;
-                // while (true) {
-                size_t temp = i;
-                int tmps = 0;
-                result = expandFunction(postfix, &temp, tmps).first;
-                i = temp;
+                // functionNests = 0;
+                // size_t temp = i;
+                // int tmps = 0;
+                // result = expandFunction(postfix, &temp, tmps).first;
+                // i = temp;
+                // continue;
+                // result += "call " + token.substr(1, token.length());
+                inFunction = true;
+                functionName = token.substr(1, token.length());
                 continue;
             }
 

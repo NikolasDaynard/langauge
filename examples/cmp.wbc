@@ -2,9 +2,15 @@
 
 
 
-set tmp1 call print "%f" 3 end
-set tmp2 call g 4 end
-set tmp0 call foo tmp1 2 tmp2 "4"  end
+
+set foo 1
+
+set tmp0 add 1 1
+set tmp1 mul 3 9
+set tmp2 add tmp1 foo
+set tmp3 add 3 3
+call print tmp0 tmp2 tmp3 1   end
+
 
 
 

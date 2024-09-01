@@ -73,15 +73,15 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: CMakeFiles/llvm-hello-world.dir/flag
 CMakeFiles/llvm-hello-world.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp
 CMakeFiles/llvm-hello-world.dir/main.cpp.o: CMakeFiles/llvm-hello-world.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nikolasd/dev/lang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/llvm-hello-world.dir/main.cpp.o"
-	/nix/store/r73z9i18vbjcph7k2f3isrysxzx6sqjx-gcc-wrapper-13.2.0/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/llvm-hello-world.dir/main.cpp.o -MF CMakeFiles/llvm-hello-world.dir/main.cpp.o.d -o CMakeFiles/llvm-hello-world.dir/main.cpp.o -c /home/nikolasd/dev/lang/main.cpp
+	/run/current-system/sw/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/llvm-hello-world.dir/main.cpp.o -MF CMakeFiles/llvm-hello-world.dir/main.cpp.o.d -o CMakeFiles/llvm-hello-world.dir/main.cpp.o -c /home/nikolasd/dev/lang/main.cpp
 
 CMakeFiles/llvm-hello-world.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/llvm-hello-world.dir/main.cpp.i"
-	/nix/store/r73z9i18vbjcph7k2f3isrysxzx6sqjx-gcc-wrapper-13.2.0/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nikolasd/dev/lang/main.cpp > CMakeFiles/llvm-hello-world.dir/main.cpp.i
+	/run/current-system/sw/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nikolasd/dev/lang/main.cpp > CMakeFiles/llvm-hello-world.dir/main.cpp.i
 
 CMakeFiles/llvm-hello-world.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/llvm-hello-world.dir/main.cpp.s"
-	/nix/store/r73z9i18vbjcph7k2f3isrysxzx6sqjx-gcc-wrapper-13.2.0/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nikolasd/dev/lang/main.cpp -o CMakeFiles/llvm-hello-world.dir/main.cpp.s
+	/run/current-system/sw/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nikolasd/dev/lang/main.cpp -o CMakeFiles/llvm-hello-world.dir/main.cpp.s
 
 # Object files for target llvm-hello-world
 llvm__hello__world_OBJECTS = \
@@ -92,20 +92,20 @@ llvm__hello__world_EXTERNAL_OBJECTS =
 
 llvm-hello-world: CMakeFiles/llvm-hello-world.dir/main.cpp.o
 llvm-hello-world: CMakeFiles/llvm-hello-world.dir/build.make
-llvm-hello-world: /nix/store/cssyz5m1s32d5cakp8k0a49pyv2cg1hg-llvm-18.1.8-lib/lib/libLLVMSupport.a
-llvm-hello-world: /nix/store/cssyz5m1s32d5cakp8k0a49pyv2cg1hg-llvm-18.1.8-lib/lib/libLLVMCore.a
-llvm-hello-world: /nix/store/cssyz5m1s32d5cakp8k0a49pyv2cg1hg-llvm-18.1.8-lib/lib/libLLVMIRReader.a
-llvm-hello-world: /nix/store/cssyz5m1s32d5cakp8k0a49pyv2cg1hg-llvm-18.1.8-lib/lib/libLLVMAsmParser.a
-llvm-hello-world: /nix/store/cssyz5m1s32d5cakp8k0a49pyv2cg1hg-llvm-18.1.8-lib/lib/libLLVMBitReader.a
-llvm-hello-world: /nix/store/cssyz5m1s32d5cakp8k0a49pyv2cg1hg-llvm-18.1.8-lib/lib/libLLVMCore.a
-llvm-hello-world: /nix/store/cssyz5m1s32d5cakp8k0a49pyv2cg1hg-llvm-18.1.8-lib/lib/libLLVMBinaryFormat.a
-llvm-hello-world: /nix/store/cssyz5m1s32d5cakp8k0a49pyv2cg1hg-llvm-18.1.8-lib/lib/libLLVMRemarks.a
-llvm-hello-world: /nix/store/cssyz5m1s32d5cakp8k0a49pyv2cg1hg-llvm-18.1.8-lib/lib/libLLVMTargetParser.a
-llvm-hello-world: /nix/store/cssyz5m1s32d5cakp8k0a49pyv2cg1hg-llvm-18.1.8-lib/lib/libLLVMBitstreamReader.a
-llvm-hello-world: /nix/store/cssyz5m1s32d5cakp8k0a49pyv2cg1hg-llvm-18.1.8-lib/lib/libLLVMSupport.a
-llvm-hello-world: /nix/store/v2ny69wp81ch6k4bxmp4lnhh77r0n4h1-zlib-1.3.1/lib/libz.so
-llvm-hello-world: /nix/store/7ka1d6qli0bci8d1k9b7zw0jrd2s2q1k-ncurses-6.4/lib/libtinfo.so
-llvm-hello-world: /nix/store/cssyz5m1s32d5cakp8k0a49pyv2cg1hg-llvm-18.1.8-lib/lib/libLLVMDemangle.a
+llvm-hello-world: /nix/store/43sm5p1bv96avgb1gakcmdsgjc1kwqk9-llvm-18.1.8-lib/lib/libLLVMSupport.a
+llvm-hello-world: /nix/store/43sm5p1bv96avgb1gakcmdsgjc1kwqk9-llvm-18.1.8-lib/lib/libLLVMCore.a
+llvm-hello-world: /nix/store/43sm5p1bv96avgb1gakcmdsgjc1kwqk9-llvm-18.1.8-lib/lib/libLLVMIRReader.a
+llvm-hello-world: /nix/store/43sm5p1bv96avgb1gakcmdsgjc1kwqk9-llvm-18.1.8-lib/lib/libLLVMAsmParser.a
+llvm-hello-world: /nix/store/43sm5p1bv96avgb1gakcmdsgjc1kwqk9-llvm-18.1.8-lib/lib/libLLVMBitReader.a
+llvm-hello-world: /nix/store/43sm5p1bv96avgb1gakcmdsgjc1kwqk9-llvm-18.1.8-lib/lib/libLLVMCore.a
+llvm-hello-world: /nix/store/43sm5p1bv96avgb1gakcmdsgjc1kwqk9-llvm-18.1.8-lib/lib/libLLVMBinaryFormat.a
+llvm-hello-world: /nix/store/43sm5p1bv96avgb1gakcmdsgjc1kwqk9-llvm-18.1.8-lib/lib/libLLVMRemarks.a
+llvm-hello-world: /nix/store/43sm5p1bv96avgb1gakcmdsgjc1kwqk9-llvm-18.1.8-lib/lib/libLLVMTargetParser.a
+llvm-hello-world: /nix/store/43sm5p1bv96avgb1gakcmdsgjc1kwqk9-llvm-18.1.8-lib/lib/libLLVMBitstreamReader.a
+llvm-hello-world: /nix/store/43sm5p1bv96avgb1gakcmdsgjc1kwqk9-llvm-18.1.8-lib/lib/libLLVMSupport.a
+llvm-hello-world: /nix/store/2k9k3q1vk8z6w7743k6nb22vnb05xv06-zlib-1.3.1/lib/libz.so
+llvm-hello-world: /nix/store/qdbfy1ndpz2n868b8y1y3nlfsixgz106-ncurses-6.4/lib/libtinfo.so
+llvm-hello-world: /nix/store/43sm5p1bv96avgb1gakcmdsgjc1kwqk9-llvm-18.1.8-lib/lib/libLLVMDemangle.a
 llvm-hello-world: CMakeFiles/llvm-hello-world.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/nikolasd/dev/lang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable llvm-hello-world"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/llvm-hello-world.dir/link.txt --verbose=$(VERBOSE)

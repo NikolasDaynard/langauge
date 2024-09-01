@@ -1,4 +1,4 @@
-set(CMAKE_CXX_COMPILER "/nix/store/r73z9i18vbjcph7k2f3isrysxzx6sqjx-gcc-wrapper-13.2.0/bin/g++")
+set(CMAKE_CXX_COMPILER "/run/current-system/sw/bin/c++")
 set(CMAKE_CXX_COMPILER_ARG1 "")
 set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_COMPILER_VERSION "13.2.0")
@@ -22,14 +22,14 @@ set(CMAKE_CXX_SIMULATE_VERSION "")
 
 
 
-set(CMAKE_AR "/nix/store/r73z9i18vbjcph7k2f3isrysxzx6sqjx-gcc-wrapper-13.2.0/bin/ar")
-set(CMAKE_CXX_COMPILER_AR "/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/bin/gcc-ar")
-set(CMAKE_RANLIB "/nix/store/r73z9i18vbjcph7k2f3isrysxzx6sqjx-gcc-wrapper-13.2.0/bin/ranlib")
-set(CMAKE_CXX_COMPILER_RANLIB "/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/bin/gcc-ranlib")
-set(CMAKE_LINKER "/nix/store/r73z9i18vbjcph7k2f3isrysxzx6sqjx-gcc-wrapper-13.2.0/bin/ld")
+set(CMAKE_AR "/run/current-system/sw/bin/ar")
+set(CMAKE_CXX_COMPILER_AR "CMAKE_CXX_COMPILER_AR-NOTFOUND")
+set(CMAKE_RANLIB "/run/current-system/sw/bin/ranlib")
+set(CMAKE_CXX_COMPILER_RANLIB "CMAKE_CXX_COMPILER_RANLIB-NOTFOUND")
+set(CMAKE_LINKER "/run/current-system/sw/bin/ld")
 set(CMAKE_LINKER_LINK "")
 set(CMAKE_LINKER_LLD "")
-set(CMAKE_CXX_COMPILER_LINKER "/nix/store/r73z9i18vbjcph7k2f3isrysxzx6sqjx-gcc-wrapper-13.2.0/bin/ld")
+set(CMAKE_CXX_COMPILER_LINKER "/nix/store/q6afjcz9h6ybcrai8w4z4k6ld7yqi9nd-gcc-wrapper-13.2.0/bin/ld")
 set(CMAKE_CXX_COMPILER_LINKER_ID "GNU")
 set(CMAKE_CXX_COMPILER_LINKER_VERSION 2.41)
 set(CMAKE_CXX_COMPILER_LINKER_FRONTEND_VARIANT GNU)
@@ -85,8 +85,8 @@ endif()
 
 
 
-set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/include;/nix/store/d2hxg9l2k4n0kykcxiqnn5ch9wbp25g2-ncurses-6.4-dev/include;/nix/store/db47qd7nbfwzdjfk8r6q5kd3g9k6b89d-zlib-1.3.1-dev/include;/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0;/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu;/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include/c++/13.2.0/backward;/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/lib/gcc/x86_64-unknown-linux-gnu/13.2.0/include;/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/include;/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/lib/gcc/x86_64-unknown-linux-gnu/13.2.0/include-fixed;/nix/store/0c5jp9d9h9818arr6s21xibgjl1ybql0-glibc-2.39-52-dev/include")
+set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0;/nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu;/nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/backward;/nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/lib/gcc/x86_64-unknown-linux-gnu/13.2.0/include;/nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include;/nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/lib/gcc/x86_64-unknown-linux-gnu/13.2.0/include-fixed;/nix/store/rzs2mn1lv3dsiyilygfz9vv1p8r36jvn-glibc-2.39-52-dev/include;/usr/include")
 set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "stdc++;m;gcc_s;gcc;c;gcc_s;gcc")
-set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/nix/store/7ka1d6qli0bci8d1k9b7zw0jrd2s2q1k-ncurses-6.4/lib;/nix/store/v2ny69wp81ch6k4bxmp4lnhh77r0n4h1-zlib-1.3.1/lib;/nix/store/cssyz5m1s32d5cakp8k0a49pyv2cg1hg-llvm-18.1.8-lib/lib;/nix/store/dbcw19dshdwnxdv5q2g6wldj6syyvq7l-glibc-2.39-52/lib;/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/lib/gcc/x86_64-unknown-linux-gnu/13.2.0;/nix/store/p44qan69linp3ii0xrviypsw2j4qdcp2-gcc-13.2.0-lib/lib;/nix/store/r73z9i18vbjcph7k2f3isrysxzx6sqjx-gcc-wrapper-13.2.0/bin;/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/lib64;/nix/store/llmjvk4i2yncv8xqdvs4382wr3kgdmvp-gcc-13.2.0/lib")
+set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/usr/lib;/usr/lib32;/nix/store/87848rvrg5c7jmplpi0iapvbxyj9kfid-glibc-2.39-52/lib;/nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/lib/gcc/x86_64-unknown-linux-gnu/13.2.0;/nix/store/40yjzm7r5ki59kkk9423dnwbm86x7pyd-gcc-13.2.0-lib/lib;/nix/store/q6afjcz9h6ybcrai8w4z4k6ld7yqi9nd-gcc-wrapper-13.2.0/bin;/nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/lib64;/nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/lib")
 set(CMAKE_CXX_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")
 set(CMAKE_CXX_COMPILER_CLANG_RESOURCE_DIR "")

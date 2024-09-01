@@ -36,3 +36,7 @@
 - [ ] Make it as easy to use as possible
 - [ ] clean up clean up everybody everywhere!
 - [ ] Release 1.0
+
+
+OTHERS:
+- [ ] strip edge case ','
