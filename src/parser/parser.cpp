@@ -136,34 +136,23 @@ std::string parser::parseFile() {
     bool setting = false;
     bool readingArgs = false;
     std::string name;
-    functionNests = 90000;
 
     for (std::size_t i = 0; i < lexedCode.size(); ++i) {
         std::string& str = lexedCode[i];
 
         std::cout << "reading: " << str << std::endl;
         if (str == "\n") {
-            functionNests = 0;
-        }else if (str == "call") {
-            // str = lexedCode[++i];
-            // currentFunction = function->getFunction(str);
-            // functionNests++;
-            parser::evaluateValue(str, str, i);
         }else if (str == "set") {
             str = lexedCode[++i];
             name = str;
             str = lexedCode[++i];
             parser::createVariable(name, str, i);
-            // evaluates add sub and returns a var containing the result
-            // while(parser::evaluateValue(name, str)); 
-        }else if(functionNests != 0) {
+        }else {
             currentArgs.push_back(parser::evaluateValue(str, str, i)); // args don't have names
         }
 
-    } 
-    // for(std::pair<std::string, llvm::Value *> var : variableMap) {
-        // Builder->CreateCall(function->getFunction("free"), var.second);
-    // }
+    }
+
     Builder->CreateRet(Builder->getInt32(0)); // return at the end of the main
     return "";
 }
