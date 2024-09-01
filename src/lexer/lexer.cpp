@@ -109,6 +109,10 @@ std::vector<std::string> tokenize(const std::string& line) {
             continue;
         }
 
+        if (token.substr(0, std::min(2, (int)token.length())) == "if") {
+            token = token.substr(2, token.length());
+        }
+
         if (isalnum(ch) || ch == '.' || ch == '_') {
             token += ch;
         } else {
@@ -156,7 +160,7 @@ std::vector<std::string> shuntingYard(const std::vector<std::string>& tokens) {
     std::stack<std::string> operators;
 
     std::map<std::string, int> precedence = { // PEMDAS
-        {"^", 6}, {"*", 5}, {"/", 4}, {"+", 3}, {"-", 2}, {"==", 1}, {"=", 0}
+        {"^", 6}, {"*", 5}, {"/", 4}, {"+", 3}, {"-", 2}, {"==", 1}, {"=", 0}, {"{", -1}, {"}", -2}
     };
 
     for (const std::string& token : tokens) {
@@ -235,6 +239,14 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
                     evalStack.push("|");
                 }
                 functionNames.push(token.substr(1, token.length()));
+                continue;
+            }
+            if (token == "{") {
+                result += "cond " + evalStack.top();
+                continue;
+            }
+            if (token == "}") {
+                result += "endcond";
                 continue;
             }
 
