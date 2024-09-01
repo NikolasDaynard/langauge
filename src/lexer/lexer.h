@@ -22,7 +22,6 @@ public:
     std::vector<std::string> parseFile();
     std::string encodeLine(std::string line);
     std::string postfixToLLVM(const std::vector<std::string>& postfix);
-    std::pair<std::string, std::string> expandFunction(const std::vector<std::string>& postfix, size_t *originalIt, int &tmpCounter);
     void writeLine(std::string line);
     std::string readLine();
 

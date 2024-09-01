@@ -6,12 +6,10 @@
 set foo 1
 
 
-set tmp0 add 3 3
-set tmp1 call foo tmp0   end
-set tmp2 mul 4 2
-set tmp3 call print tmp1 tmp2   end
-set r tmp3
 
+set tmp0 mul 5 4
+set tmp1 add foo tmp0
+set tmp2 call print "%f" tmp1   end
 
 
 

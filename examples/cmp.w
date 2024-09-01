@@ -5,8 +5,8 @@
 -- foo(print("%f", 3), 2, g(4), "4")
 foo = 1
 -- print(1 + 1, 3 * 9 + foo, 3 + 3, 1)
-r = print(foo(3 + 3), 4 * 2)
-
+-- r = print(foo(3 + 3) * 3, 4 * 2)
+print("%f", foo + 5 * 4)
 
 -- var = foo(test)
 -- #test

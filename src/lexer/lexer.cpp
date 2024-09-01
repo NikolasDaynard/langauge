@@ -193,42 +193,6 @@ std::vector<std::string> shuntingYard(const std::vector<std::string>& tokens) {
 
     return output;
 }
-/* returns a pair of the call and the temp var */
-std::pair<std::string, std::string> lexer::expandFunction(const std::vector<std::string>& postfix, size_t *originalIt, int &tmpCounter) {
-    int i = *originalIt;
-    std::string originalFunc = postfix[i].substr(1, postfix[i].length());
-    i++;
-    functionNests++;
-    std::string call = "";
-    std::string setTmp = "";
-    std::string tmpVar = "tmp" + std::to_string(tmpCounter++); // Generate tmp variable
-    
-    while (true) {
-        std::cout << "res: " << postfix[i] << std::endl;
-        
-        if (postfix[i].back() == '#') { // ending with # is a closing brace
-            functionNests--;
-            break;
-        } else if (postfix[i].front() == '#') { // starting with # is a function call
-            *originalIt = i;
-            std::pair<std::string, std::string> expanded = expandFunction(postfix, originalIt, tmpCounter);
-            i = *originalIt;
-            call += " " + expanded.second;
-            setTmp += expanded.first + "\n"; // Append nested call results
-        } else {
-            call += " " + postfix[i];
-        }
-        
-        i++;
-    }
-
-    call += " " + postfix[i].substr(0, postfix[i].length() - 1); // Handle final token
-    *originalIt = i;
-    
-    setTmp += "set " + tmpVar + " call " + originalFunc + call + " end"; // Set current function call
-
-    return std::make_pair(setTmp, tmpVar); // Return the tmp variable for further use
-}
 
 std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
     std::stack<std::string> evalStack;
@@ -275,7 +239,7 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
             }
 
             std::string rhs = evalStack.top(); evalStack.pop();
-            
+
             if (evalStack.top() == "|") { // pop safeguard
                 evalStack.pop();
             }
