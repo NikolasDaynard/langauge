@@ -1,18 +1,4 @@
+set tmp0 cmp if3 3
 
-
-
-
-
-set foo 1
-
-
-
-set tmp0 mul 5 4
-set tmp1 add foo tmp0
-set tmp2 call print "%f" tmp1   end
-
-
-
-
-
+set tmp0 call print "it equal"   end
 
