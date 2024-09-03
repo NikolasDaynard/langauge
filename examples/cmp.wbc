@@ -1,5 +1,6 @@
-set tmp0 cmp 3 3
+set tmp0 cmp 3 4
 cond tmp0
 set tmp0 call print "it equal"   end
 
 endcond
+

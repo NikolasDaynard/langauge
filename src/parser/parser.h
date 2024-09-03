@@ -27,6 +27,7 @@ public:
     llvm::Value *createVariable(std::string name, std::string value, std::size_t i);
     llvm::Value* getVariable(const std::string& name);
     llvm::Value *evaluateValue(std::string name, std::string value, std::size_t i);
+    void evaluateConditional(std::string name, std::string value, std::size_t i);
 
     std::string parseFile();
     void writeLine(std::string line);

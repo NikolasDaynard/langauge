@@ -7,6 +7,7 @@
 #include <llvm/IR/IRBuilder.h>
 #include <llvm/IR/Verifier.h>
 #include <llvm/Support/raw_ostream.h>
+#include <llvm/IR/BasicBlock.h>
 
 #include "functions.cpp"
 #include "parser.h"
@@ -23,9 +24,6 @@ llvm::Value* parser::getVariable(const std::string& name) {
 
 llvm::Value *parser::evaluateValue(std::string name, std::string value, std::size_t i) {
     if (lexedCode[i] == "call") {
-        std::cout << "funcs are broken enjoy seg fault loser " << std::endl;
-    }
-    if (lexedCode[i] == "call") {
         i++;
         currentFunction = function->getFunction(lexedCode[i]);
         currentArgs.clear();
@@ -40,6 +38,7 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
 
         functionNests++;
     }
+
     if(functionNests != 0 && lexedCode[i] == "end") {
         llvm::Value *call = Builder->CreateCall(currentFunction, currentArgs);
         std::cout << "--" << std::endl;
@@ -48,6 +47,7 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
         return call;
     }
 
+    // strings
     if (value.size() >= 2 && value.front() == '"' && value.back() == '"') { 
         value = value.substr(1, value.size() - 2);
         replaceAll(value, "\\n", "\n"); // reinsert newlines
@@ -55,7 +55,8 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
         return variable;
     }
 
-    if (std::isdigit(value.c_str()[0])) {
+    // numbers
+    if (std::isdigit(value.c_str()[0])) { 
         llvm::Value *variable = llvm::ConstantFP::get(llvm::Type::getDoubleTy(*Context), std::stod(value));
         return variable;
     }
@@ -110,11 +111,66 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
     return nullptr;
 }
 
+void parser::evaluateConditional(std::string name, std::string value, std::size_t i) {
+    // Step 1: Save the current insertion point of the Builder (to return later)
+    llvm::IRBuilder<>::InsertPoint savedIP = Builder->saveIP();
+
+    // Step 2: Create a temporary function to hold the conditional logic
+    std::vector<llvm::Type *> FuncArgs = {llvm::Type::getDoubleTy(*Context)}; // One double argument
+    llvm::FunctionType *FuncType = llvm::FunctionType::get(llvm::Type::getVoidTy(*Context), FuncArgs, false);
+    llvm::Function *TempFunc = llvm::Function::Create(FuncType, llvm::Function::PrivateLinkage, "tempFunction", Module);
+
+    llvm::Argument *boolArg = TempFunc->getArg(0);
+    boolArg->setName("boolArg");
+
+    // Step 3: Create an entry block for the temporary function
+    llvm::BasicBlock *EntryBB = llvm::BasicBlock::Create(*Context, "entry", TempFunc);
+    Builder->SetInsertPoint(EntryBB);
+
+    // Step 4: Evaluate the condition (assuming evaluateValue already returns an llvm::Value *)
+    llvm::Value *Condition = Builder->CreateFCmpOEQ(
+        boolArg, 
+        llvm::ConstantFP::get(llvm::Type::getDoubleTy(*Context), 1.0), 
+        "cond"
+    );
+
+    // Step 5: Create the "then", "else", and "merge" blocks
+    llvm::BasicBlock *ThenBB = llvm::BasicBlock::Create(*Context, "then", TempFunc);
+    llvm::BasicBlock *ElseBB = llvm::BasicBlock::Create(*Context, "else", TempFunc);
+    llvm::BasicBlock *MergeBB = llvm::BasicBlock::Create(*Context, "merge", TempFunc);
+
+    // Step 6: Create a conditional branch based on the condition
+    Builder->CreateCondBr(Condition, ThenBB, ElseBB);
+
+    // Step 7: Populate the "then" block
+    Builder->SetInsertPoint(ThenBB);
+    llvm::FunctionCallee PrintF = function->getFunction("print");
+    Builder->CreateCall(PrintF, Builder->CreateGlobalStringPtr("then", "constStr")); // Example call to a print function
+    Builder->CreateBr(MergeBB);
+
+    // Step 8: Populate the "else" block
+    Builder->SetInsertPoint(ElseBB);
+    llvm::FunctionCallee FooFunc = function->getFunction("foo");
+    Builder->CreateCall(FooFunc, Builder->CreateGlobalStringPtr("else", "constStr")); // Example call to a foo function
+    Builder->CreateBr(MergeBB);
+
+    // Return to block
+    Builder->SetInsertPoint(MergeBB);
+    Builder->CreateRet(nullptr);
+
+    // Step 10: Restore the original insertion point to continue building in the main function
+    Builder->restoreIP(savedIP);
+
+    llvm::ArrayRef<llvm::Value *> Args = evaluateValue(value, value, i); // pass value to function
+    Builder->CreateCall(TempFunc, Args);
+}
+
+
+
 llvm::Value *parser::createVariable(std::string name, std::string value, std::size_t i) {
 
     llvm::Value *variable = parser::getVariable(name);
     if (variable != nullptr) {
-        //parser::evaluateValue(name, str);
         Builder->CreateStore(parser::evaluateValue(name, value, i), variable);
         return variable;
     }
@@ -147,6 +203,10 @@ std::string parser::parseFile() {
             name = str;
             str = lexedCode[++i];
             parser::createVariable(name, str, i);
+        }else if (str == "cond") {
+            name = lexedCode[i++];
+            std::string value = lexedCode[i++];
+            parser:evaluateConditional(name, value, i);
         }else {
             currentArgs.push_back(parser::evaluateValue(str, str, i)); // args don't have names
         }
