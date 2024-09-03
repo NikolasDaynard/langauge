@@ -113,56 +113,71 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
 
 void parser::evaluateConditional(std::string name, std::string value, std::size_t i) {
     // Step 1: Save the current insertion point of the Builder (to return later)
-    llvm::IRBuilder<>::InsertPoint savedIP = Builder->saveIP();
+    if (name == "cond") {
+        functionStack.push({Builder->saveIP(), {}, nullptr, "ifPrev"}); // push previous ip
 
-    // Step 2: Create a temporary function to hold the conditional logic
-    std::vector<llvm::Type *> FuncArgs = {llvm::Type::getDoubleTy(*Context)}; // One double argument
-    llvm::FunctionType *FuncType = llvm::FunctionType::get(llvm::Type::getVoidTy(*Context), FuncArgs, false);
-    llvm::Function *TempFunc = llvm::Function::Create(FuncType, llvm::Function::PrivateLinkage, "tempFunction", Module);
+        // Step 2: Create a temporary function to hold the conditional logic
+        std::vector<llvm::Type *> FuncArgs = {llvm::Type::getDoubleTy(*Context)}; // One double argument
+        llvm::FunctionType *FuncType = llvm::FunctionType::get(llvm::Type::getVoidTy(*Context), FuncArgs, false);
+        llvm::Function *TempFunc = llvm::Function::Create(FuncType, llvm::Function::PrivateLinkage, "tempFunction", Module);
 
-    llvm::Argument *boolArg = TempFunc->getArg(0);
-    boolArg->setName("boolArg");
+        llvm::ArrayRef<llvm::Value *> Args = evaluateValue(value, value, i); // pass value to function
+        Builder->CreateCall(TempFunc, Args);
 
-    // Step 3: Create an entry block for the temporary function
-    llvm::BasicBlock *EntryBB = llvm::BasicBlock::Create(*Context, "entry", TempFunc);
-    Builder->SetInsertPoint(EntryBB);
+        llvm::Argument *boolArg = TempFunc->getArg(0);
+        boolArg->setName("boolArg");
 
-    // Step 4: Evaluate the condition (assuming evaluateValue already returns an llvm::Value *)
-    llvm::Value *Condition = Builder->CreateFCmpOEQ(
-        boolArg, 
-        llvm::ConstantFP::get(llvm::Type::getDoubleTy(*Context), 1.0), 
-        "cond"
-    );
+        // Step 3: Create an entry block for the temporary function
+        llvm::BasicBlock *EntryBB = llvm::BasicBlock::Create(*Context, "entry", TempFunc);
+        Builder->SetInsertPoint(EntryBB);
 
-    // Step 5: Create the "then", "else", and "merge" blocks
-    llvm::BasicBlock *ThenBB = llvm::BasicBlock::Create(*Context, "then", TempFunc);
-    llvm::BasicBlock *ElseBB = llvm::BasicBlock::Create(*Context, "else", TempFunc);
-    llvm::BasicBlock *MergeBB = llvm::BasicBlock::Create(*Context, "merge", TempFunc);
+        // Step 4: Evaluate the condition (assuming evaluateValue already returns an llvm::Value *)
+        llvm::Value *Condition = Builder->CreateFCmpOEQ(
+            boolArg, 
+            llvm::ConstantFP::get(llvm::Type::getDoubleTy(*Context), 1.0), 
+            "cond"
+        );
 
-    // Step 6: Create a conditional branch based on the condition
-    Builder->CreateCondBr(Condition, ThenBB, ElseBB);
+        // Step 5: Create the "then", "else", and "merge" blocks
+        llvm::BasicBlock *ThenBB = llvm::BasicBlock::Create(*Context, "then", TempFunc);
+        llvm::BasicBlock *ElseBB = llvm::BasicBlock::Create(*Context, "else", TempFunc);
+        llvm::BasicBlock *MergeBB = llvm::BasicBlock::Create(*Context, "merge", TempFunc);
 
-    // Step 7: Populate the "then" block
-    Builder->SetInsertPoint(ThenBB);
-    llvm::FunctionCallee PrintF = function->getFunction("print");
-    Builder->CreateCall(PrintF, Builder->CreateGlobalStringPtr("then", "constStr")); // Example call to a print function
-    Builder->CreateBr(MergeBB);
+        functionStack.push({Builder->saveIP(), {{"then", ThenBB}, {"else", ElseBB}, {"merge", MergeBB}}, TempFunc, "ifEntry"});
 
-    // Step 8: Populate the "else" block
-    Builder->SetInsertPoint(ElseBB);
-    llvm::FunctionCallee FooFunc = function->getFunction("foo");
-    Builder->CreateCall(FooFunc, Builder->CreateGlobalStringPtr("else", "constStr")); // Example call to a foo function
-    Builder->CreateBr(MergeBB);
+        // Step 6: Create a conditional branch based on the condition
+        Builder->CreateCondBr(Condition, ThenBB, ElseBB);
 
-    // Return to block
-    Builder->SetInsertPoint(MergeBB);
-    Builder->CreateRet(nullptr);
+        // Step 7: Populate the "then" block
+        Builder->SetInsertPoint(ThenBB);
 
-    // Step 10: Restore the original insertion point to continue building in the main function
-    Builder->restoreIP(savedIP);
+    }else if (name == "else") {
+        llvm::BasicBlock *ElseBB = functionStack.top().basicBlocks.find("else")->second;
+        llvm::BasicBlock *MergeBB = functionStack.top().basicBlocks.find("merge")->second;
 
-    llvm::ArrayRef<llvm::Value *> Args = evaluateValue(value, value, i); // pass value to function
-    Builder->CreateCall(TempFunc, Args);
+        Builder->CreateBr(MergeBB);
+
+        // Step 8: Populate the "else" block
+        Builder->SetInsertPoint(ElseBB);
+
+        llvm::FunctionCallee FooFunc = function->getFunction("foo");
+        Builder->CreateCall(FooFunc, Builder->CreateGlobalStringPtr("else", "constStr")); // Example call to a foo function
+    }else if (name == "endcond") {
+        llvm::BasicBlock *MergeBB = functionStack.top().basicBlocks.find("merge")->second;
+        llvm::BasicBlock *ElseBB = functionStack.top().basicBlocks.find("else")->second;
+        Builder->CreateBr(MergeBB);
+        Builder->SetInsertPoint(ElseBB);
+        Builder->CreateBr(MergeBB);
+
+        // Return to block
+        Builder->SetInsertPoint(MergeBB);
+        Builder->CreateRet(nullptr);
+
+        // Step 10: Restore the original insertion point to continue building in the main function
+        functionStack.pop();
+        Builder->restoreIP(functionStack.top().insertionPoint);
+    }
+
 }
 
 
@@ -203,7 +218,7 @@ std::string parser::parseFile() {
             name = str;
             str = lexedCode[++i];
             parser::createVariable(name, str, i);
-        }else if (str == "cond") {
+        }else if (str == "cond" || str == "endcond") {
             name = lexedCode[i++];
             std::string value = lexedCode[i++];
             parser:evaluateConditional(name, value, i);

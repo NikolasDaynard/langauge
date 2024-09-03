@@ -412,6 +412,11 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: \
  /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/bits/stl_tree.h \
  /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/bits/stl_map.h \
  /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/bits/stl_multimap.h \
+ /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/stack \
+ /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/deque \
+ /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/bits/stl_deque.h \
+ /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/bits/deque.tcc \
+ /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/bits/stl_stack.h \
  /home/nikolasd/dev/lang/src/parser/../parseHelpers.h \
  /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/locale \
  /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets_nonio.h \
@@ -422,9 +427,4 @@ CMakeFiles/llvm-hello-world.dir/main.cpp.o: \
  /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets_nonio.tcc \
  /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/bits/locale_conv.h \
  /home/nikolasd/dev/lang/src/lexer/lexer.cpp \
- /home/nikolasd/dev/lang/src/lexer/lexer.h \
- /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/stack \
- /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/deque \
- /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/bits/stl_deque.h \
- /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/bits/deque.tcc \
- /nix/store/fg7ass3a5m5pgl26qzfdniicbwbgzccy-gcc-13.2.0/include/c++/13.2.0/bits/stl_stack.h
+ /home/nikolasd/dev/lang/src/lexer/lexer.h
