@@ -10,13 +10,15 @@
 #include <llvm/Support/raw_ostream.h>
 
 struct functionInfo {
-    functionInfo(llvm::IRBuilder<>::InsertPoint ip, std::map<std::string, llvm::BasicBlock *> bbs, llvm::Function *func, std::string id)
-        : insertionPoint(ip), function(func), name(id), basicBlocks(bbs) {}
+    functionInfo(llvm::IRBuilder<>::InsertPoint ip, int cid, std::map<std::string, llvm::BasicBlock *> bbs, llvm::Function *func, std::string id)
+        : insertionPoint(ip), contextId(cid), function(func), name(id), basicBlocks(bbs) {}
 
     llvm::IRBuilder<>::InsertPoint insertionPoint; // function's ip
     llvm::Function *function; // the function ref
     std::string name;
+    int contextId;
     std::map<std::string, llvm::BasicBlock *> basicBlocks;
+    std::map<std::string, llvm::Value*> variableMap; // holds all vars, and context id
 };
 
 class parser {
@@ -29,9 +31,8 @@ private:
     llvm::IRBuilder<> *Builder;
     llvm::LLVMContext *Context;
 
-    std::map<std::string, llvm::Value*> variableMap; // holds all vars
-
     int functionNests = 0;
+    int contextId = 0;
     llvm::FunctionCallee currentFunction;
     std::vector<llvm::Value *> currentArgs;
     std::stack<functionInfo> functionStack;
@@ -52,7 +53,7 @@ public:
         Context = Con;
         filename = newFilename;
         function = new functions(Module, Builder);
-        functionStack.push(functionInfo(Builder->saveIP(), {}, nullptr, "main"));
+        functionStack.push(functionInfo(Builder->saveIP(), contextId, {}, nullptr, "main"));
     }
     
     ~parser() {

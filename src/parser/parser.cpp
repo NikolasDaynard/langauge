@@ -14,8 +14,8 @@
 #include "../parseHelpers.h"
 
 llvm::Value* parser::getVariable(const std::string& name) {
-    auto it = variableMap.find(name);
-    if (it != variableMap.end()) {
+    auto it = functionStack.top().variableMap.find(name);
+    if (it != functionStack.top().variableMap.end()) {
         return it->second; // Return variable if found
     }
 
@@ -114,7 +114,7 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
 void parser::evaluateConditional(std::string name, std::string value, std::size_t i) {
     // Step 1: Save the current insertion point of the Builder (to return later)
     if (name == "cond") {
-        functionStack.push({Builder->saveIP(), {}, nullptr, "ifPrev"}); // push previous ip
+        // contextId++; // iterate the variable context id
 
         // Step 2: Create a temporary function to hold the conditional logic
         std::vector<llvm::Type *> FuncArgs = {llvm::Type::getDoubleTy(*Context)}; // One double argument
@@ -123,6 +123,8 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
 
         llvm::ArrayRef<llvm::Value *> Args = evaluateValue(value, value, i); // pass value to function
         Builder->CreateCall(TempFunc, Args);
+        
+        functionStack.push({Builder->saveIP(), contextId, {}, nullptr, "ifPrev"}); // push previous ip
 
         llvm::Argument *boolArg = TempFunc->getArg(0);
         boolArg->setName("boolArg");
@@ -143,7 +145,7 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
         llvm::BasicBlock *ElseBB = llvm::BasicBlock::Create(*Context, "else", TempFunc);
         llvm::BasicBlock *MergeBB = llvm::BasicBlock::Create(*Context, "merge", TempFunc);
 
-        functionStack.push({Builder->saveIP(), {{"then", ThenBB}, {"else", ElseBB}, {"merge", MergeBB}}, TempFunc, "ifEntry"});
+        functionStack.push({Builder->saveIP(), contextId, {{"then", ThenBB}, {"else", ElseBB}, {"merge", MergeBB}}, TempFunc, "ifEntry"});
 
         // Step 6: Create a conditional branch based on the condition
         Builder->CreateCondBr(Condition, ThenBB, ElseBB);
@@ -194,7 +196,7 @@ llvm::Value *parser::createVariable(std::string name, std::string value, std::si
     variable = Builder->CreateAlloca(varType, nullptr, name);
     llvm::Value* val = parser::evaluateValue(name, value, i);
     Builder->CreateStore(val, variable);
-    variableMap[name] = variable;
+    functionStack.top().variableMap[name] = variable;
 
     return variable;
 
