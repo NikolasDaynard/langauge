@@ -1,13 +1,14 @@
-set tmp0 add 1 2
-set var tmp0
+set tmp0 mul 2 0.1
+set tmp1 add 1 tmp0
+set var tmp1
 
 
 set tmp0 cmp 3 var
 cond tmp0
 set tmp0 call print "it equal"   end
 
-
-set tmp0 call print "nar"   end
+else
+set tmp0 call print "%f" var   end
 
 endcond
 

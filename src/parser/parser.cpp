@@ -114,8 +114,6 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
 void parser::evaluateConditional(std::string name, std::string value, std::size_t i) {
     // Step 1: Save the current insertion point of the Builder (to return later)
     if (name == "cond") {
-        // contextId++; // iterate the variable context id
-
         // Step 2: Create a temporary function to hold the conditional logic
         std::vector<llvm::Type *> FuncArgs = {llvm::Type::getDoubleTy(*Context)}; // One double argument
         llvm::FunctionType *FuncType = llvm::FunctionType::get(llvm::Type::getVoidTy(*Context), FuncArgs, false);
@@ -123,7 +121,7 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
 
         llvm::ArrayRef<llvm::Value *> Args = evaluateValue(value, value, i); // pass value to function
         Builder->CreateCall(TempFunc, Args);
-        
+
         functionStack.push({Builder->saveIP(), contextId, {}, nullptr, "ifPrev"}); // push previous ip
 
         llvm::Argument *boolArg = TempFunc->getArg(0);
@@ -157,16 +155,15 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
         llvm::BasicBlock *ElseBB = functionStack.top().basicBlocks.find("else")->second;
         llvm::BasicBlock *MergeBB = functionStack.top().basicBlocks.find("merge")->second;
 
-        Builder->CreateBr(MergeBB);
-
         // Step 8: Populate the "else" block
         Builder->SetInsertPoint(ElseBB);
-
-        llvm::FunctionCallee FooFunc = function->getFunction("foo");
-        Builder->CreateCall(FooFunc, Builder->CreateGlobalStringPtr("else", "constStr")); // Example call to a foo function
+        
     }else if (name == "endcond") {
+        llvm::BasicBlock *ThenBB = functionStack.top().basicBlocks.find("then")->second;
         llvm::BasicBlock *MergeBB = functionStack.top().basicBlocks.find("merge")->second;
         llvm::BasicBlock *ElseBB = functionStack.top().basicBlocks.find("else")->second;
+
+        Builder->SetInsertPoint(ThenBB);
         Builder->CreateBr(MergeBB);
         Builder->SetInsertPoint(ElseBB);
         Builder->CreateBr(MergeBB);
@@ -220,7 +217,7 @@ std::string parser::parseFile() {
             name = str;
             str = lexedCode[++i];
             parser::createVariable(name, str, i);
-        }else if (str == "cond" || str == "endcond") {
+        }else if (str == "cond" || str == "endcond" || str == "else") {
             name = lexedCode[i++];
             std::string value = lexedCode[i++];
             parser:evaluateConditional(name, value, i);

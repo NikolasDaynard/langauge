@@ -216,6 +216,11 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
         if (token == ",") {
             continue;
         }
+        if (token == "else") {
+            result += token;
+            continue;
+        }
+
         if (token.back() == '#') {
             result += "set tmp" + std::to_string(tempVarCounter) + " ";
             result += "call " + functionNames.top();
