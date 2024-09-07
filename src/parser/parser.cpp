@@ -121,12 +121,6 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
     if (name == "cond") {
         std::cout << "prev back" << functionStack.back().function->getName().str() << std::endl;
 
-        // Step 3: Create an entry block for the temporary function
-        llvm::BasicBlock *EntryBB = llvm::BasicBlock::Create(*Context, "enterIf", functionStack.back().function);
-        Builder->CreateBr(EntryBB);
-
-        Builder->SetInsertPoint(EntryBB);
-
         std::cout << "GOTTA EVALUATE" << value << std::endl;
         evaluateValue(value, value, i);
         std::cout << "GOTTA EVALUATE" << value << std::endl;

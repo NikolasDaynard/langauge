@@ -1,8 +1,7 @@
-var = 1 + 1
+var = 1 + 2
 
 if 3 == var {
-    va2r = 3
-else
-    print("%f is", var)
+    var = var + 1
 }
 print("this work?")
+print("%f is", var)

@@ -1,14 +1,14 @@
-set tmp0 add 1 1
+set tmp0 add 1 2
 set var tmp0
 
 
 set tmp0 cmp 3 var
 cond tmp0
-set va2r 3
-
-else
-set tmp0 call print "%f is" var   end
+set tmp0 add var 1
+set var tmp0
 
 endcond
 set tmp0 call print "this work?"   end
+
+set tmp0 call print "%f is" var   end
 
