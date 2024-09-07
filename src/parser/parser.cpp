@@ -121,11 +121,6 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
     if (name == "cond") {
         std::cout << "prev back" << functionStack.back().function->getName().str() << std::endl;
 
-        std::cout << "GOTTA EVALUATE" << value << std::endl;
-        evaluateValue(value, value, i);
-        std::cout << "GOTTA EVALUATE" << value << std::endl;
-        
-
         // Step 4: Evaluate the condition (assuming evaluateValue already returns an llvm::Value *)
         llvm::Value *Condition = Builder->CreateFCmpOEQ(
             evaluateValue(value, value, i), 

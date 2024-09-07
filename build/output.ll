@@ -22,16 +22,15 @@ entry:
   %boolToDouble = sitofp i32 %zext to double
   store double %boolToDouble, ptr %tmp0, align 8
   %loadedNum2 = load double, ptr %tmp0, align 8
-  %loadedNum3 = load double, ptr %tmp0, align 8
-  %cond = fcmp oeq double %loadedNum3, 1.000000e+00
+  %cond = fcmp oeq double %loadedNum2, 1.000000e+00
   br i1 %cond, label %then, label %else
 
 then:                                             ; preds = %entry
-  %loadedNum4 = load double, ptr %var, align 8
-  %AdditionTemp = fadd double %loadedNum4, 1.000000e+00
+  %loadedNum3 = load double, ptr %var, align 8
+  %AdditionTemp = fadd double %loadedNum3, 1.000000e+00
   store double %AdditionTemp, ptr %tmp0, align 8
-  %loadedNum5 = load double, ptr %tmp0, align 8
-  store double %loadedNum5, ptr %var, align 8
+  %loadedNum4 = load double, ptr %tmp0, align 8
+  store double %loadedNum4, ptr %var, align 8
   %va2 = alloca double, align 8
   store double 3.000000e-01, ptr %va2, align 8
   br label %merge

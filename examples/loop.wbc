@@ -1,0 +1,16 @@
+set tmp0 add 1 1
+set var tmp0
+
+
+set tmp0 cmp 3 var
+cond tmp0
+set tmp0 add var 1
+set var tmp0
+
+set va2 0.3
+
+else
+set tmp0 call print "not equal"   end
+
+endcond
+
