@@ -21,9 +21,10 @@ int main(int argc, char *argv[]) {
 
     if (argc > 1) { // run el codes
         int s;
-        s = system("clang -S -O1 -Wno-unused-command-line-argument -Wno-override-module -emit-llvm output.ll"); // optimize ll
+        s = system("clang -S -O1 -Wno-unused-command-line-argument -Wno-override-module -emit-llvm output.ll -o optimized.ll"); // optimize ll
+        // s = system("opt -S -O1 output.ll -o optimized.ll");
         // s = system("cat output.ll");
-        s = system("clang output.ll -Wno-unused-command-line-argument -o output");
+        s = system("clang optimized.ll -Wno-unused-command-line-argument -Wno-override-module -o output");
         s = system("./output");
     }
 

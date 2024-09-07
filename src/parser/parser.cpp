@@ -171,15 +171,10 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
 
             // Return to block
             Builder->SetInsertPoint(MergeBB);
-
-            // Step 10: Restore the original insertion point to continue building in the main function
-            // functionStack.pop_back();
-            // Builder->restoreIP(functionStack.back().insertionPoint);
         }
-        evaluateValue(value, value, i);
-        std::cout << "VAL DEBUG" << value << std::endl;
-    }
 
+        evaluateValue(value, value, i);
+    }
 }
 
 
@@ -225,7 +220,7 @@ std::string parser::parseFile() {
             std::string value = lexedCode[i];
             parser:evaluateConditional(name, value, i);
         }else {
-            currentArgs.push_back(parser::evaluateValue(str, str, i)); // args don't have names
+            // currentArgs.push_back(parser::evaluateValue(str, str, i)); // args don't have names
         }
 
     }

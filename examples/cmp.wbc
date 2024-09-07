@@ -1,4 +1,4 @@
-set tmp0 add 1 2
+set tmp0 add 1 1
 set var tmp0
 
 
@@ -7,8 +7,11 @@ cond tmp0
 set tmp0 add var 1
 set var tmp0
 
-endcond
-set tmp0 call print "this work?"   end
+set va2 0.3
 
-set tmp0 call print "%f is" var   end
+else
+set tmp0 call print "not equal"   end
+
+endcond
+
 
