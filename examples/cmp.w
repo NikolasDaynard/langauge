@@ -1,8 +1,11 @@
-var = 1 + 2 * 0.1
+var = 1 + 1
 
 if 3 == var {
-    print("it equal")
+    -- va2r = 3
+    va2r = 300
 else
-    print("f")
-} 
--- print("%f", 3 * 4 == 3)
+    print("%f is", 3)
+    print("%f is", 3)
+    print("%f is", 3)
+    print("%f is", 3)
+}

@@ -1,14 +1,19 @@
-set tmp0 mul 2 0.1
-set tmp1 add 1 tmp0
-set var tmp1
+set tmp0 add 1 1
+set var tmp0
 
 
 set tmp0 cmp 3 var
 cond tmp0
-set tmp0 call print "it equal"   end
+
+set va2r 300
 
 else
-set tmp0 call print "%f" var   end
+set tmp0 call print "%f is" 3   end
+
+set tmp0 call print "%f is" 3   end
+
+set tmp0 call print "%f is" 3   end
+
+set tmp0 call print "%f is" 3   end
 
 endcond
-

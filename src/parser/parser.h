@@ -35,10 +35,12 @@ private:
     int contextId = 0;
     llvm::FunctionCallee currentFunction;
     std::vector<llvm::Value *> currentArgs;
-    std::stack<functionInfo> functionStack;
+    std::vector<functionInfo> functionStack;
+    std::map<std::string, llvm::Value *> strings;
 public:
     llvm::Value *createVariable(std::string name, std::string value, std::size_t i);
     llvm::Value* getVariable(const std::string& name);
+    llvm::Value* getLoadVariable(const std::string& name);
     llvm::Value *evaluateValue(std::string name, std::string value, std::size_t i);
     void evaluateConditional(std::string name, std::string value, std::size_t i);
 
@@ -53,7 +55,7 @@ public:
         Context = Con;
         filename = newFilename;
         function = new functions(Module, Builder);
-        functionStack.push(functionInfo(Builder->saveIP(), contextId, {}, nullptr, "main"));
+        functionStack.push_back(functionInfo(Builder->saveIP(), contextId, {}, nullptr, "main"));
     }
     
     ~parser() {

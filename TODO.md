@@ -40,3 +40,7 @@
 
 OTHERS:
 - [ ] strip edge case ','
+- [ ] finish comments
+- [ ] MAKE VARIABLES PASS IN AND OUT OF IFS
+- - [ ] check local var context
+- - [ ] check all (global), if found load.
