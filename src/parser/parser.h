@@ -55,7 +55,7 @@ public:
         Context = Con;
         filename = newFilename;
         function = new functions(Module, Builder);
-        functionStack.push_back(functionInfo(Builder->saveIP(), contextId, {}, nullptr, "main"));
+        functionStack.push_back(functionInfo(Builder->saveIP(), contextId, {}, Builder->GetInsertBlock()->getParent(), "main"));
     }
     
     ~parser() {

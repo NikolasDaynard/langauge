@@ -4,11 +4,10 @@ set var tmp0
 
 set tmp0 cmp 3 var
 cond tmp0
-
-set va2r 300
+set va2r 3
 
 else
-set tmp0 call print "%f is" 3   end
+set tmp0 call print "%f is" var   end
 
 endcond
 set tmp0 call print "this work?"   end

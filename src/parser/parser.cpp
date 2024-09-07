@@ -119,36 +119,35 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
 void parser::evaluateConditional(std::string name, std::string value, std::size_t i) {
     // Step 1: Save the current insertion point of the Builder (to return later)
     if (name == "cond") {
-        // Step 2: Create a temporary function to hold the conditional logic
-        std::vector<llvm::Type *> FuncArgs = {llvm::Type::getDoubleTy(*Context)}; // One double argument
-        llvm::FunctionType *FuncType = llvm::FunctionType::get(llvm::Type::getVoidTy(*Context), FuncArgs, false);
-        llvm::Function *TempFunc = llvm::Function::Create(FuncType, llvm::Function::PrivateLinkage, "tempFunction", Module);
-
-        llvm::ArrayRef<llvm::Value *> Args = evaluateValue(value, value, i); // pass value to function
-        Builder->CreateCall(TempFunc, Args);
-
-        functionStack.push_back({Builder->saveIP(), contextId, {}, nullptr, "ifPrev"}); // push previous ip
-
-        llvm::Argument *boolArg = TempFunc->getArg(0);
-        boolArg->setName("boolArg");
+        std::cout << "prev back" << functionStack.back().function->getName().str() << std::endl;
 
         // Step 3: Create an entry block for the temporary function
-        llvm::BasicBlock *EntryBB = llvm::BasicBlock::Create(*Context, "entry", TempFunc);
+        llvm::BasicBlock *EntryBB = llvm::BasicBlock::Create(*Context, "enterIf", functionStack.back().function);
+        Builder->CreateBr(EntryBB);
+
         Builder->SetInsertPoint(EntryBB);
+
+        std::cout << "GOTTA EVALUATE" << value << std::endl;
+        evaluateValue(value, value, i);
+        std::cout << "GOTTA EVALUATE" << value << std::endl;
+        
 
         // Step 4: Evaluate the condition (assuming evaluateValue already returns an llvm::Value *)
         llvm::Value *Condition = Builder->CreateFCmpOEQ(
-            boolArg, 
+            evaluateValue(value, value, i), 
             llvm::ConstantFP::get(llvm::Type::getDoubleTy(*Context), 1.0), 
             "cond"
         );
+        std::cout << "evaled" << std::endl;
 
         // Step 5: Create the "then", "else", and "merge" blocks
-        llvm::BasicBlock *ThenBB = llvm::BasicBlock::Create(*Context, "then", TempFunc);
-        llvm::BasicBlock *ElseBB = llvm::BasicBlock::Create(*Context, "else", TempFunc);
-        llvm::BasicBlock *MergeBB = llvm::BasicBlock::Create(*Context, "merge", TempFunc);
+        llvm::BasicBlock *ThenBB = llvm::BasicBlock::Create(*Context, "then", functionStack.back().function);
+        llvm::BasicBlock *ElseBB = llvm::BasicBlock::Create(*Context, "else", functionStack.back().function);
+        llvm::BasicBlock *MergeBB = llvm::BasicBlock::Create(*Context, "merge", functionStack.back().function);
 
-        functionStack.push_back({Builder->saveIP(), contextId, {{"then", ThenBB}, {"else", ElseBB}, {"merge", MergeBB}}, TempFunc, "ifEntry"});
+        std::map<std::string, llvm::Value *> map = functionStack.back().variableMap;
+        functionStack.push_back({Builder->saveIP(), contextId, {{"then", ThenBB}, {"else", ElseBB}, {"merge", MergeBB}}, functionStack.back().function, "ifEntry"});
+        functionStack.back().variableMap = map;
 
         // Step 6: Create a conditional branch based on the condition
         Builder->CreateCondBr(Condition, ThenBB, ElseBB);
@@ -158,8 +157,6 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
 
     }else {
          if (name == "else") {
-            functionStack.push_back(functionStack.back());
-            functionStack.back().variableMap.clear(); // push a new blank variable map
 
             llvm::BasicBlock *ElseBB = functionStack.back().basicBlocks.find("else")->second;
             llvm::BasicBlock *MergeBB = functionStack.back().basicBlocks.find("merge")->second;
@@ -168,7 +165,6 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
             Builder->SetInsertPoint(ElseBB);
             
         }else if (name == "endcond") {
-            functionStack.pop_back(); // pop the temp else var map
 
             llvm::BasicBlock *ThenBB = functionStack.back().basicBlocks.find("then")->second;
             llvm::BasicBlock *MergeBB = functionStack.back().basicBlocks.find("merge")->second;
@@ -181,11 +177,10 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
 
             // Return to block
             Builder->SetInsertPoint(MergeBB);
-            Builder->CreateRet(nullptr);
 
             // Step 10: Restore the original insertion point to continue building in the main function
-            functionStack.pop_back();
-            Builder->restoreIP(functionStack.back().insertionPoint);
+            // functionStack.pop_back();
+            // Builder->restoreIP(functionStack.back().insertionPoint);
         }
         evaluateValue(value, value, i);
         std::cout << "VAL DEBUG" << value << std::endl;
