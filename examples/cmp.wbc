@@ -10,10 +10,6 @@ set va2r 300
 else
 set tmp0 call print "%f is" 3   end
 
-set tmp0 call print "%f is" 3   end
-
-set tmp0 call print "%f is" 3   end
-
-set tmp0 call print "%f is" 3   end
-
 endcond
+set tmp0 call print "this work?"   end
+

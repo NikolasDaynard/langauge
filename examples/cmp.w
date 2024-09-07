@@ -5,7 +5,5 @@ if 3 == var {
     va2r = 300
 else
     print("%f is", 3)
-    print("%f is", 3)
-    print("%f is", 3)
-    print("%f is", 3)
 }
+print("this work?")
