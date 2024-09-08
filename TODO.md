@@ -2,7 +2,7 @@
 - [x] Eval l -> r rather than r -> l
 - [x] Parenthisis (4 + 3) - 1 
 - [ ] Add more operators
-- - [ ] ==
+- - [x] ==
 - - [ ] >=
 - - [ ] <=
 - - [ ] >
@@ -10,7 +10,7 @@
 - - [ ] != # != or ~= ?
 - - [ ] ?= # nullish safe set operator
 
-- [ ] Add conditionals (if)
+- [x] Add conditionals (if)
 - [ ] Add function calls
 - - [ ] NOTE: lex function that goes over every token, if it see's a call, recursivly calc and then push the var back and iterate var, insert into main func call also insert at the beginning the new call set to the var. 
 - [ ] Add loops

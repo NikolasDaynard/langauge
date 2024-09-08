@@ -90,6 +90,7 @@ std::vector<std::string> tokenize(const std::string& line) {
     std::string token;
     bool readingString = false;
     int functionNests = 0;
+    std::string braceType = ""; // if{, while{, etc.
 
     for (size_t i = 0; i < line.length(); ++i) {
         char ch = line[i];
@@ -111,6 +112,10 @@ std::vector<std::string> tokenize(const std::string& line) {
 
         if (token.substr(0, std::min(2, (int)token.length())) == "if") {
             token = token.substr(2, token.length());
+            braceType = "if{";
+        }else if (token.substr(0, std::min(5, (int)token.length())) == "while") {
+            token = token.substr(5, token.length());
+            braceType = "while{";
         }
 
         if (isalnum(ch) || ch == '.' || ch == '_') {
@@ -130,6 +135,14 @@ std::vector<std::string> tokenize(const std::string& line) {
                     token.clear();
                 }
                 functionNests--;
+            }
+            if (ch == '{') {
+                // push last token
+                ch = ' ';
+                tokens.push_back(token);
+                // make the new brace
+                token = braceType;
+                braceType = "";
             }
 
             if (!token.empty()) {
@@ -165,7 +178,7 @@ std::vector<std::string> shuntingYard(const std::vector<std::string>& tokens) {
 
     for (const std::string& token : tokens) {
         std::cout << "sy: " << token << std::endl;
-        if (isalnum(token[0]) || token[0] == '\"' || token[0] == '#') {
+        if ((isalnum(token[0]) || token[0] == '\"' || token[0] == '#') && token.back() != '{') {
             output.push_back(token);
         } else if (precedence.find(token) != precedence.end()) {
             while (!operators.empty() && precedence[operators.top()] >= precedence[token]) {
@@ -173,6 +186,12 @@ std::vector<std::string> shuntingYard(const std::vector<std::string>& tokens) {
                 operators.pop();
             }
             operators.push(token);
+        }else if (token.back() == '{') {
+            while (!operators.empty()) {
+                output.push_back(operators.top());
+                operators.pop();
+            }
+            output.push_back(token);
         }else if (token == "(") {
             operators.push(token);
         } else if (token == ")") {
@@ -236,7 +255,7 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
             continue;
         }
 
-        if ((isalnum(token[0]) || token[0] == '\"') && token.back() != '#') {
+        if ((isalnum(token[0]) || token[0] == '\"') && token.back() != '#' && token.back() != '{') {
             evalStack.push(token);
         } else {
             if (token.front() == '#') {
@@ -246,8 +265,16 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
                 functionNames.push(token.substr(1, token.length()));
                 continue;
             }
-            if (token == "{") {
-                result += "cond " + evalStack.top();
+            if (token.back() == '{') {
+                // add the while / if / for
+                for (char c : token) {
+                    if (c != '{') { 
+                        result += c;
+                    }else{
+                        break;
+                    }
+                }
+                result +=  " cond " + evalStack.top();
                 continue;
             }
             if (token == "}") {

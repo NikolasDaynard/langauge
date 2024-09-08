@@ -1,9 +1,5 @@
-var = 1 + 1
+var = 3
 
-if 3 == var {
-    var = var + 1
-    va2 = 0.3
-else 
-    print("not equal")
+while var == 3 {
+    print("it's 3")
 }
-
