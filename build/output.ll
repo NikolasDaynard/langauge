@@ -31,7 +31,7 @@ then:                                             ; preds = %entry
 else:                                             ; preds = %entry
   br label %merge
 
-merge:                                            ; preds = %else, %then
+merge:                                            ; preds = %then, %else
   ret i32 0
 }
 

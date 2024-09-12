@@ -117,58 +117,85 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
 }
 
 void parser::evaluateConditional(std::string name, std::string value, std::size_t i) {
+    // Check for type (while if etc.)
+    std::string conditionType = lexedCode[i - 2];
     // Step 1: Save the current insertion point of the Builder (to return later)
-    if (name == "cond") {
-        std::cout << "prev back" << functionStack.back().function->getName().str() << std::endl;
+    if (conditionType == "if") {
+        if (name == "cond") {
+            std::cout << "prev back" << functionStack.back().function->getName().str() << std::endl;
 
-        // Step 4: Evaluate the condition (assuming evaluateValue already returns an llvm::Value *)
-        llvm::Value *Condition = Builder->CreateFCmpOEQ(
-            evaluateValue(value, value, i), 
-            llvm::ConstantFP::get(llvm::Type::getDoubleTy(*Context), 1.0), 
-            "cond"
-        );
-        std::cout << "evaled" << std::endl;
+            // Step 4: Evaluate the condition (assuming evaluateValue already returns an llvm::Value *)
+            llvm::Value *Condition = Builder->CreateFCmpOEQ(
+                evaluateValue(value, value, i), 
+                llvm::ConstantFP::get(llvm::Type::getDoubleTy(*Context), 1.0), 
+                "cond"
+            );
+            std::cout << "evaled" << std::endl;
 
-        // Step 5: Create the "then", "else", and "merge" blocks
-        llvm::BasicBlock *ThenBB = llvm::BasicBlock::Create(*Context, "then", functionStack.back().function);
-        llvm::BasicBlock *ElseBB = llvm::BasicBlock::Create(*Context, "else", functionStack.back().function);
-        llvm::BasicBlock *MergeBB = llvm::BasicBlock::Create(*Context, "merge", functionStack.back().function);
+            // Step 5: Create the "then", "else", and "merge" blocks
+            llvm::BasicBlock *ThenBB = llvm::BasicBlock::Create(*Context, "then", functionStack.back().function);
+            llvm::BasicBlock *ElseBB = llvm::BasicBlock::Create(*Context, "else", functionStack.back().function);
+            llvm::BasicBlock *MergeBB = llvm::BasicBlock::Create(*Context, "merge", functionStack.back().function);
 
-        std::map<std::string, llvm::Value *> map = functionStack.back().variableMap;
-        functionStack.push_back({Builder->saveIP(), contextId, {{"then", ThenBB}, {"else", ElseBB}, {"merge", MergeBB}}, functionStack.back().function, "ifEntry"});
-        functionStack.back().variableMap = map;
+            std::map<std::string, llvm::Value *> map = functionStack.back().variableMap;
+            functionStack.push_back({Builder->saveIP(), contextId, {{"then", ThenBB}, {"else", ElseBB}, {"merge", MergeBB}}, functionStack.back().function, "ifEntry"});
+            functionStack.back().variableMap = map;
 
-        // Step 6: Create a conditional branch based on the condition
-        Builder->CreateCondBr(Condition, ThenBB, ElseBB);
+            // Step 6: Create a conditional branch based on the condition
+            Builder->CreateCondBr(Condition, ThenBB, ElseBB);
 
-        // Step 7: Populate the "then" block
-        Builder->SetInsertPoint(ThenBB);
-
-    }else {
-         if (name == "else") {
-
-            llvm::BasicBlock *ElseBB = functionStack.back().basicBlocks.find("else")->second;
-            llvm::BasicBlock *MergeBB = functionStack.back().basicBlocks.find("merge")->second;
-
-            // Step 8: Populate the "else" block
-            Builder->SetInsertPoint(ElseBB);
-            
-        }else if (name == "endcond") {
-
-            llvm::BasicBlock *ThenBB = functionStack.back().basicBlocks.find("then")->second;
-            llvm::BasicBlock *MergeBB = functionStack.back().basicBlocks.find("merge")->second;
-            llvm::BasicBlock *ElseBB = functionStack.back().basicBlocks.find("else")->second;
-
+            // Step 7: Populate the "then" block
             Builder->SetInsertPoint(ThenBB);
-            Builder->CreateBr(MergeBB);
-            Builder->SetInsertPoint(ElseBB);
-            Builder->CreateBr(MergeBB);
+        }
+    }else if (conditionType == "while") {
+        if (name == "cond") {
+            // Step 4: Evaluate the condition (assuming evaluateValue already returns an llvm::Value *)
+            llvm::Value *Condition = Builder->CreateFCmpOEQ(
+                evaluateValue(value, value, i), 
+                llvm::ConstantFP::get(llvm::Type::getDoubleTy(*Context), 1.0), 
+                "cond"
+            );
+            
+            // Step 5: Create the "then", "else", and "merge" blocks
+            llvm::BasicBlock *LoopBB = llvm::BasicBlock::Create(*Context, "loop", functionStack.back().function);
+            llvm::BasicBlock *MergeBB = llvm::BasicBlock::Create(*Context, "merge", functionStack.back().function);
 
-            // Return to block
-            Builder->SetInsertPoint(MergeBB);
+            std::map<std::string, llvm::Value *> map = functionStack.back().variableMap;
+            functionStack.push_back({Builder->saveIP(), contextId, {{"loop", LoopBB}, {"merge", MergeBB}}, functionStack.back().function, "loopEntry"});
+            functionStack.back().variableMap = map;
+
+            // Step 6: Create a conditional branch based on the condition
+            Builder->CreateCondBr(Condition, LoopBB, MergeBB);
+
+            // Step 7: Populate the "then" block
+            Builder->SetInsertPoint(LoopBB);
+
+            Builder->CreateFCmpOEQ(
+                evaluateValue(value, value, i), 
+                llvm::ConstantFP::get(llvm::Type::getDoubleTy(*Context), 1.0), 
+                "cond"
+            );
+            Builder->CreateCondBr(Condition, LoopBB, MergeBB);
+        }
+    }else if (name == "endcond") {
+        llvm::BasicBlock *MergeBB = functionStack.back().basicBlocks.find("merge")->second;
+
+        for (std::pair<std::string, llvm::BasicBlock *> BB : functionStack.back().basicBlocks) {
+            std::cout << "Reading BB: " << BB.first << std::endl;
+            if (BB.first != "merge") {
+                Builder->SetInsertPoint(BB.second);
+                Builder->CreateBr(MergeBB);
+            }
         }
 
+        // Return to block
+        Builder->SetInsertPoint(MergeBB);
+
         evaluateValue(value, value, i);
+    }else if (name == "else") {
+        llvm::BasicBlock *ElseBB = functionStack.back().basicBlocks.find("else")->second;
+        Builder->SetInsertPoint(ElseBB);
+        
     }
 }
 

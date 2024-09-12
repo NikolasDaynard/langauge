@@ -2,7 +2,7 @@ set var 3
 
 
 set tmp0 cmp var 3
-while cond tmp0
+if cond tmp0
 set tmp0 call print "it's 3"   end
 
 endcond
