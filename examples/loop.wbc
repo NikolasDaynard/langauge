@@ -1,8 +1,14 @@
 set var 3
 
+set test 0
 
+
+while condblock do
 set tmp0 cmp var 3
-if cond tmp0
-set tmp0 call print "it's 3"   end
+while cond tmp0
+set tmp0 call print "it's %f \n" test   end
+
+set tmp0 add test 1
+set test tmp0
 
 endcond

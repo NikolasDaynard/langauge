@@ -267,13 +267,18 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
             }
             if (token.back() == '{') {
                 // add the while / if / for
+                std::string prefix = "";
                 for (char c : token) {
                     if (c != '{') { 
-                        result += c;
+                        result += c; // push if or while to back of cond
+                        prefix += c; // add to both so
+                        // while 
+                        // while cond tmp0
                     }else{
                         break;
                     }
                 }
+                result = prefix + " condblock do\n" + result;
                 result +=  " cond " + evalStack.top();
                 continue;
             }
