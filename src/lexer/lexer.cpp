@@ -173,7 +173,7 @@ std::vector<std::string> shuntingYard(const std::vector<std::string>& tokens) {
     std::stack<std::string> operators;
 
     std::map<std::string, int> precedence = { // PEMDAS
-        {"^", 6}, {"*", 5}, {"/", 4}, {"+", 3}, {"-", 2}, {"==", 1}, {"=", 0}, {"{", -1}, {"}", -2}
+        {"^", 6}, {"*", 5}, {"/", 4}, {"+", 3}, {"-", 2}, {"==", 1}, {"<", 1}, {"=", 0}, {"{", -1}, {"}", -2}
     };
 
     for (const std::string& token : tokens) {
@@ -225,7 +225,7 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
     int tempVarCounter = 0;  // Counter for temporary variables
 
     std::map<std::string, std::string> associations = {
-        {"^", "pow"}, {"*", "mul"}, {"/", "div"}, {"+", "add"}, {"-", "sub"}, {"=", "set"}, {"==", "cmp"}
+        {"^", "pow"}, {"*", "mul"}, {"/", "div"}, {"+", "add"}, {"-", "sub"}, {"=", "set"}, {"==", "cmp"}, {"<", "les"}
     };
 
     for (size_t i = 0; i < postfix.size(); ++i) {

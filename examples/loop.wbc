@@ -1,14 +1,56 @@
-set var 3
+set pi 0
 
-set test 0
+set numerator 4
+
+set denominator 1
+
+set sign 1
+
+set iterations 0
+
+set limit 30
 
 
 while condblock do
-set tmp0 cmp var 3
+set tmp0 les iterations limit
 while cond tmp0
-set tmp0 call print "it's %f \n" test   end
+set tmp0 div numerator denominator
+set term tmp0
 
-set tmp0 add test 1
-set test tmp0
+set tmp0 mul sign term
+set tmp1 add pi tmp0
+set pi tmp1
 
+
+set tmp0 add denominator 2
+set denominator tmp0
+
+set tmp0 sub 1 2
+set tmp1 mul sign tmp0
+set sign tmp1
+
+
+set tmp0 add iterations 1
+set iterations tmp0
+
+endcond
+
+set tmp0 call print "Approximation of Pi: %f\n" pi   end
+
+
+set iterations 0
+
+
+while condblock do
+set tmp0 les pi 40
+while cond tmp0
+set tmp0 add iterations 1
+set iterations tmp0
+
+if condblock do
+set tmp0 cmp iterations 30
+if cond tmp0
+set pi 1000
+
+endcond
 endcond

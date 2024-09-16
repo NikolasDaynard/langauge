@@ -36,7 +36,7 @@ inline std::string removeWhitespaceNotInString(std::string &str) {
 }
 
 bool isMathKeyword(std::string str) {
-    return str == "add" || str == "sub" || str == "div" || str == "mul" || str == "cmp" || str == "pow";
+    return str == "add" || str == "sub" || str == "div" || str == "mul" || str == "cmp" || str == "les" || str == "pow";
 }
 
 void replaceAllNotInString(std::string &str, const std::string &from, const std::string &to) {
