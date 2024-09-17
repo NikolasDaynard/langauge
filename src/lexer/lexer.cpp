@@ -55,7 +55,7 @@ std::vector<std::string> lexer::parseFile() {
 
     while(true) {
         if (!getline(file, line)) {
-            std::cout << std::endl;
+            std::cout << std::endl; // \n
             file.close();
             break;
         }
@@ -76,6 +76,7 @@ std::vector<std::string> lexer::parseFile() {
 }
 
 void lexer::writeLine(std::string line) {
+    if (line == "") { return; }
     std::string home = std::getenv("HOME");
 
     std::ofstream fileOUT(home + "/dev/lang/" + filename + "bc", std::ios::app); // open filename.txt in append mode

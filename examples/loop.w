@@ -3,7 +3,7 @@ numerator = 4
 denominator = 1
 sign = 1
 iterations = 0
-limit = 3000000000
+limit = 10
 
 while iterations < limit {
     term = numerator / denominator
@@ -14,27 +14,10 @@ while iterations < limit {
 
     iterations = iterations + 1
     if pi < 3.14 {
-        if 1 {
-            -- print("%f is less than ten\n", pi)
-        }
+        print("%f is less than ten\n", pi)
+    else
+        print("%f is more (or equal) to ten\n", pi)
     }
 }
 
--- if iterations < 30000 {
---     print("its less")
---     if iterations < 400000 {
---         print("\ntea")
---     }
---     print("\nmhm")
--- }
 print("Approximation of Pi: %f\n", pi)
-
--- iterations = 0
-
--- while pi < 40 {
---     iterations = iterations + 1
---     if iterations == 30 {
---         pi = 1000
---     }
--- }
--- print("iterations? %f", iterations)

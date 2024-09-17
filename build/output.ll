@@ -1,7 +1,9 @@
 ; ModuleID = 'test'
 source_filename = "test"
 
-@constStr = private unnamed_addr constant [25 x i8] c"Approximation of Pi: %f\0A\00", align 1
+@constStr = private unnamed_addr constant [21 x i8] c"%f is less than ten\0A\00", align 1
+@constStr.1 = private unnamed_addr constant [30 x i8] c"%f is more (or equal) to ten\0A\00", align 1
+@constStr.2 = private unnamed_addr constant [25 x i8] c"Approximation of Pi: %f\0A\00", align 1
 
 define i32 @main() {
 entry:
@@ -22,7 +24,7 @@ entry:
   %iterations = alloca double, align 8
   store double 0.000000e+00, ptr %iterations, align 8
   %limit = alloca double, align 8
-  store double 3.000000e+09, ptr %limit, align 8
+  store double 1.000000e+01, ptr %limit, align 8
   br label %cond
 
 cond:                                             ; preds = %merge23, %entry
@@ -76,10 +78,10 @@ loop:                                             ; preds = %cond
   br label %cond22
 
 merge:                                            ; preds = %cond
-  %tmp034 = alloca double, align 8
-  %loadedNum35 = load double, ptr %pi, align 8
-  %0 = call i32 (...) @printf(ptr @constStr, double %loadedNum35)
-  store i32 %0, ptr %tmp034, align 4
+  %tmp032 = alloca double, align 8
+  %loadedNum33 = load double, ptr %pi, align 8
+  %0 = call i32 (...) @printf(ptr @constStr.2, double %loadedNum33)
+  store i32 %0, ptr %tmp032, align 4
   ret i32 0
 
 cond22:                                           ; preds = %loop
@@ -93,25 +95,19 @@ cond22:                                           ; preds = %loop
   br i1 %cond29, label %then, label %else
 
 then:                                             ; preds = %cond22
-  br label %cond30
+  %loadedNum30 = load double, ptr %pi, align 8
+  %1 = call i32 (...) @printf(ptr @constStr, double %loadedNum30)
+  store i32 %1, ptr %tmp0, align 4
+  br label %merge23
 
 else:                                             ; preds = %cond22
+  %loadedNum31 = load double, ptr %pi, align 8
+  %2 = call i32 (...) @printf(ptr @constStr.1, double %loadedNum31)
+  store i32 %2, ptr %tmp0, align 4
   br label %merge23
 
-merge23:                                          ; preds = %else, %merge33
+merge23:                                          ; preds = %then, %else
   br label %cond
-
-cond30:                                           ; preds = %then
-  br i1 true, label %then31, label %else32
-
-then31:                                           ; preds = %cond30
-  br label %merge33
-
-else32:                                           ; preds = %cond30
-  br label %merge33
-
-merge33:                                          ; preds = %then31, %else32
-  br label %merge23
 }
 
 declare i32 @printf(...)

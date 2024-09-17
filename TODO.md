@@ -11,6 +11,7 @@
 - - [ ] ?= # nullish safe set operator
 - - [ ] ^ # pow
 - [x] Add conditionals (if)
+- [ ] Add elseif (else if? more consistent?)
 - [ ] Add nil
 - [ ] Add function calls
 - - [ ] NOTE: lex function that goes over every token, if it see's a call, recursivly calc and then push the var back and iterate var, insert into main func call also insert at the beginning the new call set to the var. 
