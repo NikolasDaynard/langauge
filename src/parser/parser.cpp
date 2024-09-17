@@ -235,10 +235,13 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
 
         // Return to block
         Builder->SetInsertPoint(MergeBB);
-        if (mergeBlocksBack != 0 && functionStack[functionStack.size() - 1].basicBlocks.find("merge")->second->getName().str() != "" &&
-            functionStack[functionStack.size() - 1].basicBlocks.find("loop")->first == "" ) {
+        if (mergeBlocksBack != 0 && functionStack[functionStack.size() - 1].basicBlocks.find("merge")->second->getName().str() != "") {
             // std::cout << "adding the thing" << std::endl;
-            functionStack.back().mergeRet = functionStack[functionStack.size() - 1].basicBlocks.find("merge")->second;
+            if (functionStack[functionStack.size() - 1].basicBlocks.find("loop")->first == "") {
+                functionStack.back().mergeRet = functionStack[functionStack.size() - 1].basicBlocks.find("merge")->second;
+            }else { // if it's a loop, jump to the conditional
+                functionStack.back().mergeRet = functionStack[functionStack.size() - 1].basicBlocks.find("cond")->second;
+            }
         }
 
         evaluateValue(value, value, i);

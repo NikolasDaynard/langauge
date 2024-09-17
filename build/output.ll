@@ -1,10 +1,8 @@
 ; ModuleID = 'test'
 source_filename = "test"
 
-@constStr = private unnamed_addr constant [9 x i8] c"its less\00", align 1
-@constStr.1 = private unnamed_addr constant [5 x i8] c"\0Atea\00", align 1
-@constStr.2 = private unnamed_addr constant [5 x i8] c"\0Amhm\00", align 1
-@constStr.3 = private unnamed_addr constant [25 x i8] c"Approximation of Pi: %f\0A\00", align 1
+@constStr = private unnamed_addr constant [21 x i8] c"%f is less than ten\0A\00", align 1
+@constStr.1 = private unnamed_addr constant [25 x i8] c"Approximation of Pi: %f\0A\00", align 1
 
 define i32 @main() {
 entry:
@@ -28,7 +26,7 @@ entry:
   store double 3.000000e+01, ptr %limit, align 8
   br label %cond
 
-cond:                                             ; preds = %loop, %entry
+cond:                                             ; preds = %merge23, %entry
   %tmp0 = alloca double, align 8
   %loadedNum = load double, ptr %iterations, align 8
   %loadedNum1 = load double, ptr %limit, align 8
@@ -76,58 +74,47 @@ loop:                                             ; preds = %cond
   store double %AdditionTemp20, ptr %tmp0, align 8
   %loadedNum21 = load double, ptr %tmp0, align 8
   store double %loadedNum21, ptr %iterations, align 8
-  br label %cond
-
-merge:                                            ; preds = %cond
   br label %cond22
 
-cond22:                                           ; preds = %merge
-  %tmp024 = alloca double, align 8
-  %loadedNum25 = load double, ptr %iterations, align 8
-  %FCMP26 = fcmp olt double %loadedNum25, 3.000000e+04
-  %zext27 = zext i1 %FCMP26 to i32
-  %boolToDouble28 = sitofp i32 %zext27 to double
-  store double %boolToDouble28, ptr %tmp024, align 8
-  %loadedNum29 = load double, ptr %tmp024, align 8
-  %cond30 = fcmp oeq double %loadedNum29, 1.000000e+00
-  br i1 %cond30, label %then, label %else
+merge:                                            ; preds = %cond
+  %tmp035 = alloca double, align 8
+  %loadedNum36 = load double, ptr %pi, align 8
+  %0 = call i32 (...) @printf(ptr @constStr.1, double %loadedNum36)
+  store i32 %0, ptr %tmp035, align 4
+  ret i32 0
+
+cond22:                                           ; preds = %loop
+  %loadedNum24 = load double, ptr %pi, align 8
+  %FCMP25 = fcmp olt double %loadedNum24, 3.140000e+00
+  %zext26 = zext i1 %FCMP25 to i32
+  %boolToDouble27 = sitofp i32 %zext26 to double
+  store double %boolToDouble27, ptr %tmp0, align 8
+  %loadedNum28 = load double, ptr %tmp0, align 8
+  %cond29 = fcmp oeq double %loadedNum28, 1.000000e+00
+  br i1 %cond29, label %then, label %else
 
 then:                                             ; preds = %cond22
-  %0 = call i32 (...) @printf(ptr @constStr)
-  store i32 %0, ptr %tmp024, align 4
-  br label %cond31
+  br label %cond30
 
 else:                                             ; preds = %cond22
   br label %merge23
 
-merge23:                                          ; preds = %else, %merge34
-  %tmp041 = alloca double, align 8
-  %loadedNum42 = load double, ptr %pi, align 8
-  %1 = call i32 (...) @printf(ptr @constStr.3, double %loadedNum42)
-  store i32 %1, ptr %tmp041, align 4
-  ret i32 0
+merge23:                                          ; preds = %else, %merge33
+  br label %cond
 
-cond31:                                           ; preds = %then
-  %loadedNum35 = load double, ptr %iterations, align 8
-  %FCMP36 = fcmp olt double %loadedNum35, 4.000000e+05
-  %zext37 = zext i1 %FCMP36 to i32
-  %boolToDouble38 = sitofp i32 %zext37 to double
-  store double %boolToDouble38, ptr %tmp024, align 8
-  %loadedNum39 = load double, ptr %tmp024, align 8
-  %cond40 = fcmp oeq double %loadedNum39, 1.000000e+00
-  br i1 %cond40, label %then32, label %else33
+cond30:                                           ; preds = %then
+  br i1 true, label %then31, label %else32
 
-then32:                                           ; preds = %cond31
-  %2 = call i32 (...) @printf(ptr @constStr.1)
-  store i32 %2, ptr %tmp024, align 4
-  br label %merge34
+then31:                                           ; preds = %cond30
+  %loadedNum34 = load double, ptr %pi, align 8
+  %1 = call i32 (...) @printf(ptr @constStr, double %loadedNum34)
+  store i32 %1, ptr %tmp0, align 4
+  br label %merge33
 
-else33:                                           ; preds = %cond31
-  br label %merge34
+else32:                                           ; preds = %cond30
+  br label %merge33
 
-merge34:                                          ; preds = %then32, %else33
-  %3 = call i32 (...) @printf(ptr @constStr.2)
-  store i32 %3, ptr %tmp024, align 4
+merge33:                                          ; preds = %then31, %else32
   br label %merge23
 }
 

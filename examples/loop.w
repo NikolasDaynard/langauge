@@ -13,15 +13,20 @@ while iterations < limit {
     sign = sign * (0 - 1)
 
     iterations = iterations + 1
+    if pi < 3.14 {
+        if 1 {
+            print("%f is less than ten\n", pi)
+        }
+    }
 }
 
-if iterations < 30000 {
-    print("its less")
-    if iterations < 400000 {
-        print("\ntea")
-    }
-    print("\nmhm")
-}
+-- if iterations < 30000 {
+--     print("its less")
+--     if iterations < 400000 {
+--         print("\ntea")
+--     }
+--     print("\nmhm")
+-- }
 print("Approximation of Pi: %f\n", pi)
 
 -- iterations = 0

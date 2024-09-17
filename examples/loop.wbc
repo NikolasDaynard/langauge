@@ -33,22 +33,24 @@ set sign tmp1
 set tmp0 add iterations 1
 set iterations tmp0
 
-endcond
-
 if condblock do
-set tmp0 les iterations 30000
+set tmp0 les pi 3.14
 if cond tmp0
-set tmp0 call print "its less"   end
-
 if condblock do
-set tmp0 les iterations 400000
-if cond tmp0
-set tmp0 call print "\ntea"   end
+if cond 1
+set tmp0 call print "%f is less than ten\n" pi   end
 
 endcond
-set tmp0 call print "\nmhm"   end
-
 endcond
+endcond
+
+
+
+
+
+
+
+
 set tmp0 call print "Approximation of Pi: %f\n" pi   end
 
 
