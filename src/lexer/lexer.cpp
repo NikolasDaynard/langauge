@@ -121,6 +121,11 @@ std::vector<std::string> tokenize(const std::string& line) {
         if (isalnum(ch) || ch == '.' || ch == '_') {
             token += ch;
         } else {
+            if (ch == '-' && !isalnum(line[i - 1])) { // negative number (0 - num)
+                tokens.insert(tokens.end(), {"(", "0", "-", std::string(1, line[++i]), ")"});
+                continue;
+            }
+
             if (ch == '(') { // function calls
                 if (isalnum(line[i - 1])) {
                     token = "#" + token; // #" is a function string

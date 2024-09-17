@@ -8,7 +8,7 @@ set sign 1
 
 set iterations 0
 
-set limit 30
+set limit 3000000000
 
 
 while condblock do
@@ -38,7 +38,6 @@ set tmp0 les pi 3.14
 if cond tmp0
 if condblock do
 if cond 1
-set tmp0 call print "%f is less than ten\n" pi   end
 
 endcond
 endcond

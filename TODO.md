@@ -9,11 +9,14 @@
 - - [x] <
 - - [ ] != # != or ~= ?
 - - [ ] ?= # nullish safe set operator
-
+- - [ ] ^ # pow
 - [x] Add conditionals (if)
+- [ ] Add nil
 - [ ] Add function calls
 - - [ ] NOTE: lex function that goes over every token, if it see's a call, recursivly calc and then push the var back and iterate var, insert into main func call also insert at the beginning the new call set to the var. 
 - [ ] Add loops
+- - [ ] For
+- - [x] While
 - [ ] String vars
 - [ ] Tables ( synatic sugar ily (for e in table {})) 
 - [ ] Finish stdlib

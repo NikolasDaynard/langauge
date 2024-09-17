@@ -1,8 +1,7 @@
 ; ModuleID = 'test'
 source_filename = "test"
 
-@constStr = private unnamed_addr constant [21 x i8] c"%f is less than ten\0A\00", align 1
-@constStr.1 = private unnamed_addr constant [25 x i8] c"Approximation of Pi: %f\0A\00", align 1
+@constStr = private unnamed_addr constant [25 x i8] c"Approximation of Pi: %f\0A\00", align 1
 
 define i32 @main() {
 entry:
@@ -23,7 +22,7 @@ entry:
   %iterations = alloca double, align 8
   store double 0.000000e+00, ptr %iterations, align 8
   %limit = alloca double, align 8
-  store double 3.000000e+01, ptr %limit, align 8
+  store double 3.000000e+09, ptr %limit, align 8
   br label %cond
 
 cond:                                             ; preds = %merge23, %entry
@@ -77,10 +76,10 @@ loop:                                             ; preds = %cond
   br label %cond22
 
 merge:                                            ; preds = %cond
-  %tmp035 = alloca double, align 8
-  %loadedNum36 = load double, ptr %pi, align 8
-  %0 = call i32 (...) @printf(ptr @constStr.1, double %loadedNum36)
-  store i32 %0, ptr %tmp035, align 4
+  %tmp034 = alloca double, align 8
+  %loadedNum35 = load double, ptr %pi, align 8
+  %0 = call i32 (...) @printf(ptr @constStr, double %loadedNum35)
+  store i32 %0, ptr %tmp034, align 4
   ret i32 0
 
 cond22:                                           ; preds = %loop
@@ -106,9 +105,6 @@ cond30:                                           ; preds = %then
   br i1 true, label %then31, label %else32
 
 then31:                                           ; preds = %cond30
-  %loadedNum34 = load double, ptr %pi, align 8
-  %1 = call i32 (...) @printf(ptr @constStr, double %loadedNum34)
-  store i32 %1, ptr %tmp0, align 4
   br label %merge33
 
 else32:                                           ; preds = %cond30

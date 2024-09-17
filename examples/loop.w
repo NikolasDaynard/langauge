@@ -3,19 +3,19 @@ numerator = 4
 denominator = 1
 sign = 1
 iterations = 0
-limit = 30
+limit = 3000000000
 
 while iterations < limit {
     term = numerator / denominator
     pi = pi + (sign * term)
 
     denominator = denominator + 2
-    sign = sign * (0 - 1)
+    sign = sign * -1
 
     iterations = iterations + 1
     if pi < 3.14 {
         if 1 {
-            print("%f is less than ten\n", pi)
+            -- print("%f is less than ten\n", pi)
         }
     }
 }
