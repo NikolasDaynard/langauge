@@ -25,7 +25,7 @@ set pi tmp1
 set tmp0 add denominator 2
 set denominator tmp0
 
-set tmp0 sub 1 2
+set tmp0 sub 0 1
 set tmp1 mul sign tmp0
 set sign tmp1
 
@@ -35,22 +35,29 @@ set iterations tmp0
 
 endcond
 
+if condblock do
+set tmp0 les iterations 30000
+if cond tmp0
+set tmp0 call print "its less"   end
+
+if condblock do
+set tmp0 les iterations 400000
+if cond tmp0
+set tmp0 call print "\ntea"   end
+
+endcond
+set tmp0 call print "\nmhm"   end
+
+endcond
 set tmp0 call print "Approximation of Pi: %f\n" pi   end
 
 
-set iterations 0
 
 
-while condblock do
-set tmp0 les pi 40
-while cond tmp0
-set tmp0 add iterations 1
-set iterations tmp0
 
-if condblock do
-set tmp0 cmp iterations 30
-if cond tmp0
-set pi 1000
 
-endcond
-endcond
+
+
+
+
+

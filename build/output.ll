@@ -1,7 +1,10 @@
 ; ModuleID = 'test'
 source_filename = "test"
 
-@constStr = private unnamed_addr constant [25 x i8] c"Approximation of Pi: %f\0A\00", align 1
+@constStr = private unnamed_addr constant [9 x i8] c"its less\00", align 1
+@constStr.1 = private unnamed_addr constant [5 x i8] c"\0Atea\00", align 1
+@constStr.2 = private unnamed_addr constant [5 x i8] c"\0Amhm\00", align 1
+@constStr.3 = private unnamed_addr constant [25 x i8] c"Approximation of Pi: %f\0A\00", align 1
 
 define i32 @main() {
 entry:
@@ -76,53 +79,56 @@ loop:                                             ; preds = %cond
   br label %cond
 
 merge:                                            ; preds = %cond
-  %loadedNum22 = load double, ptr %pi, align 8
-  %0 = call i32 (...) @printf(ptr @constStr, double %loadedNum22)
-  store i32 %0, ptr %tmp0, align 4
-  store double 0.000000e+00, ptr %iterations, align 8
-  br label %cond23
+  br label %cond22
 
-cond23:                                           ; preds = %merge
-  %loadedNum26 = load double, ptr %pi, align 8
-  %FCMP27 = fcmp olt double %loadedNum26, 4.000000e+01
-  %zext28 = zext i1 %FCMP27 to i32
-  %boolToDouble29 = sitofp i32 %zext28 to double
-  store double %boolToDouble29, ptr %tmp0, align 8
-  %loadedNum30 = load double, ptr %tmp0, align 8
-  %cond31 = fcmp oeq double %loadedNum30, 1.000000e+00
-  br i1 %cond31, label %loop24, label %merge25
+cond22:                                           ; preds = %merge
+  %tmp024 = alloca double, align 8
+  %loadedNum25 = load double, ptr %iterations, align 8
+  %FCMP26 = fcmp olt double %loadedNum25, 3.000000e+04
+  %zext27 = zext i1 %FCMP26 to i32
+  %boolToDouble28 = sitofp i32 %zext27 to double
+  store double %boolToDouble28, ptr %tmp024, align 8
+  %loadedNum29 = load double, ptr %tmp024, align 8
+  %cond30 = fcmp oeq double %loadedNum29, 1.000000e+00
+  br i1 %cond30, label %then, label %else
 
-loop24:                                           ; preds = %cond23
-  %loadedNum32 = load double, ptr %iterations, align 8
-  %AdditionTemp33 = fadd double %loadedNum32, 1.000000e+00
-  store double %AdditionTemp33, ptr %tmp0, align 8
-  %loadedNum34 = load double, ptr %tmp0, align 8
-  store double %loadedNum34, ptr %iterations, align 8
-  br label %cond35
+then:                                             ; preds = %cond22
+  %0 = call i32 (...) @printf(ptr @constStr)
+  store i32 %0, ptr %tmp024, align 4
+  br label %cond31
 
-merge25:                                          ; preds = %cond23
+else:                                             ; preds = %cond22
+  br label %merge23
 
-cond35:                                           ; preds = %loop24
-  %loadedNum37 = load double, ptr %iterations, align 8
-  %FCMP38 = fcmp oeq double %loadedNum37, 3.000000e+01
-  %zext39 = zext i1 %FCMP38 to i32
-  %boolToDouble40 = sitofp i32 %zext39 to double
-  store double %boolToDouble40, ptr %tmp0, align 8
-  %loadedNum41 = load double, ptr %tmp0, align 8
-  %cond42 = fcmp oeq double %loadedNum41, 1.000000e+00
-  br i1 %cond42, label %then, label %else
-
-then:                                             ; preds = %cond35
-  store double 1.000000e+03, ptr %pi, align 8
-  br label %merge36
-  br label %merge36
-
-else:                                             ; preds = %cond35
-  br label %merge36
-  br label %merge36
-
-merge36:                                          ; preds = %then, %else, %then, %else
+merge23:                                          ; preds = %else, %merge34
+  %tmp041 = alloca double, align 8
+  %loadedNum42 = load double, ptr %pi, align 8
+  %1 = call i32 (...) @printf(ptr @constStr.3, double %loadedNum42)
+  store i32 %1, ptr %tmp041, align 4
   ret i32 0
+
+cond31:                                           ; preds = %then
+  %loadedNum35 = load double, ptr %iterations, align 8
+  %FCMP36 = fcmp olt double %loadedNum35, 4.000000e+05
+  %zext37 = zext i1 %FCMP36 to i32
+  %boolToDouble38 = sitofp i32 %zext37 to double
+  store double %boolToDouble38, ptr %tmp024, align 8
+  %loadedNum39 = load double, ptr %tmp024, align 8
+  %cond40 = fcmp oeq double %loadedNum39, 1.000000e+00
+  br i1 %cond40, label %then32, label %else33
+
+then32:                                           ; preds = %cond31
+  %2 = call i32 (...) @printf(ptr @constStr.1)
+  store i32 %2, ptr %tmp024, align 4
+  br label %merge34
+
+else33:                                           ; preds = %cond31
+  br label %merge34
+
+merge34:                                          ; preds = %then32, %else33
+  %3 = call i32 (...) @printf(ptr @constStr.2)
+  store i32 %3, ptr %tmp024, align 4
+  br label %merge23
 }
 
 declare i32 @printf(...)

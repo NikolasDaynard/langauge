@@ -102,7 +102,7 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
 
             // Convert the i32 result to a double (64-bit floating point)
             llvm::Value *DoubleResult = Builder->CreateSIToFP(IntResult, llvm::Type::getDoubleTy(*Context), "boolToDouble");
-            
+
             return DoubleResult;
         }else if (lexedCode[originalIndex] == "les") { // <
             // Create the floating-point comparison
@@ -197,21 +197,49 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
             Builder->SetInsertPoint(functionStack.back().basicBlocks.find("loop")->second); 
         }
     }else if (name == "endcond") {
+        if (functionStack.back().mergeRet != nullptr) {
+            Builder->CreateBr(functionStack.back().mergeRet);
+            functionStack.back().mergeRet = nullptr; // just to be safe
+        }
+
         llvm::BasicBlock *MergeBB = functionStack.back().basicBlocks.find("merge")->second;
 
         for (std::pair<std::string, llvm::BasicBlock *> BB : functionStack.back().basicBlocks) {
             std::cout << "Reading BB: " << BB.first << std::endl;
-            if (BB.first != "merge" && BB.first != "cond" && BB.first != "loop") {
-                Builder->SetInsertPoint(BB.second);
-                Builder->CreateBr(MergeBB);
-            }else if (BB.first == "loop") {
-                Builder->SetInsertPoint(BB.second);
-                Builder->CreateBr(functionStack.back().basicBlocks.find("cond")->second);
+            if (!BB.second->getTerminator()) { // dont merge if we've already broken
+                if (BB.first != "merge" && BB.first != "cond" && BB.first != "loop") {
+                    Builder->SetInsertPoint(BB.second);
+                    Builder->CreateBr(MergeBB);
+                }else if (BB.first == "loop") { // TODO merging after loop doesn't retain the bb meta
+                    // loop
+                    // if cond
+                    // merge
+                    // how do i know to loop to cond???
+                    Builder->SetInsertPoint(BB.second);
+                    Builder->CreateBr(functionStack.back().basicBlocks.find("cond")->second);
+                }
             }
+        }
+        functionStack.pop_back();
+        int mergeBlocksBack = 0;
+
+        test:
+        std::cout << mergeBlocksBack << " back" << std::endl;
+
+        if (functionStack[functionStack.size() - (1 + mergeBlocksBack)].basicBlocks.find("merge")->first != "" && 
+            functionStack[functionStack.size() - (1 + mergeBlocksBack)].basicBlocks.find("merge")->second->getName().str() != "") {
+            
+            mergeBlocksBack = mergeBlocksBack + 1;
+            goto test;
         }
 
         // Return to block
         Builder->SetInsertPoint(MergeBB);
+        if (mergeBlocksBack != 0 && functionStack[functionStack.size() - 1].basicBlocks.find("merge")->second->getName().str() != "" &&
+            functionStack[functionStack.size() - 1].basicBlocks.find("loop")->first == "" ) {
+            // std::cout << "adding the thing" << std::endl;
+            functionStack.back().mergeRet = functionStack[functionStack.size() - 1].basicBlocks.find("merge")->second;
+        }
 
         evaluateValue(value, value, i);
     }else if (name == "else") {

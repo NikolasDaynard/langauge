@@ -16,6 +16,7 @@ struct functionInfo {
     llvm::IRBuilder<>::InsertPoint insertionPoint; // function's ip
     llvm::Function *function; // the function ref
     std::string name;
+    llvm::BasicBlock *mergeRet = nullptr; // where to return on a endcond
     int contextId;
     std::map<std::string, llvm::BasicBlock *> basicBlocks;
     std::map<std::string, llvm::Value*> variableMap; // holds all vars, and context id
