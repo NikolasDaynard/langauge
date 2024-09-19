@@ -129,8 +129,14 @@ std::vector<std::string> tokenize(const std::string& line) {
 
             if (ch == '(') { // function calls
                 if (isalnum(line[i - 1])) {
-                    token = "#" + token; // #" is a function string
-                    functionNests++;
+                    if (line[line.length() - 2] == '{') {
+                        std::cout << "function def" << std::endl;
+                        token = "$" + token; // $ is a function def
+                        functionNests++;
+                    }else{
+                        token = "#" + token; // # is a function string
+                        functionNests++;
+                    }
                 }
             }
             if (ch == ')') {
@@ -184,7 +190,7 @@ std::vector<std::string> shuntingYard(const std::vector<std::string>& tokens) {
 
     for (const std::string& token : tokens) {
         std::cout << "sy: " << token << std::endl;
-        if ((isalnum(token[0]) || token[0] == '\"' || token[0] == '#') && token.back() != '{') {
+        if ((isalnum(token[0]) || token[0] == '\"' || token[0] == '#' || token[0] == '$') && token.back() != '{') {
             output.push_back(token);
         } else if (precedence.find(token) != precedence.end()) {
             while (!operators.empty() && precedence[operators.top()] >= precedence[token]) {
@@ -236,7 +242,7 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
 
     for (size_t i = 0; i < postfix.size(); ++i) {
         const std::string &token = postfix[i];
-        std::cout << "parsing token" << token << std::endl;
+        std::cout << "parsing token " << token << std::endl;
 
         if (token == ",") {
             continue;
@@ -247,15 +253,26 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
         }
 
         if (token.back() == '#') {
-            result += "set tmp" + std::to_string(tempVarCounter) + " ";
-            result += "call " + functionNames.top();
-            functionNames.pop();
-
             std::string args = "";
-            while (evalStack.top() != "|") {
+            bool isCond = false;
+            while (true) {
                 args = evalStack.top() + " " + args; // invert args
                 evalStack.pop();
+                if (evalStack.top() == "|endcond") {
+                    isCond = true;
+                    break;
+                }else if (evalStack.top() == "|endfunc") {
+                    isCond = false;
+                    break;
+                }
             }
+            if (isCond) {
+                result += "set tmp" + std::to_string(tempVarCounter) + " ";
+                result += "call " + functionNames.top();
+            }else {
+                result += "func " + functionNames.top();
+            }
+            functionNames.pop();
             result += " " + args + " " + token.substr(0, token.length() - 1) + " end\n";
             evalStack.push("tmp" + std::to_string(tempVarCounter++)); 
             continue;
@@ -264,9 +281,13 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
         if ((isalnum(token[0]) || token[0] == '\"') && token.back() != '#' && token.back() != '{') {
             evalStack.push(token);
         } else {
-            if (token.front() == '#') {
+            if (token.front() == '#' || token.front() == '$') {
                 if (functionNames.size() == 0) { // if this is the first function call, safeguard the stack
-                    evalStack.push("|");
+                    if (token.front() == '#') {
+                        evalStack.push("|endcond");
+                    }else if (token.front() == '$') {
+                        evalStack.push("|endfunc");
+                    }
                 }
                 functionNames.push(token.substr(1, token.length()));
                 continue;

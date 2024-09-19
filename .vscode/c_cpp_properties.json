@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/nix/store/sclxn4650bn16qid7i8bg21yhz1jkkyj-llvm-18.1.8-dev/**"
+                "/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/**",
+                "/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include"
             ],
             "defines": [],
             "compilerPath": "/run/current-system/sw/bin/clang",

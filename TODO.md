@@ -10,6 +10,7 @@
 - - [ ] != # != or ~= ?
 - - [ ] ?= # nullish safe set operator
 - - [ ] ^ # pow
+- - [ ] [] # table indexing
 - [x] Add conditionals (if)
 - [ ] Add elseif (else if? more consistent?)
 - [ ] Add nil

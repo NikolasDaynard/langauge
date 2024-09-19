@@ -1,12 +1,44 @@
-set test 1
+set pi 0
+
+set numerator 4
+
+set denominator 1
+
+set sign 1
+
+set iterations 0
+
+set limit 10
+
+while condblock do
+set tmp0 les iterations limit
+while cond tmp0
+set tmp0 div numerator denominator
+set term tmp0
+
+set tmp0 mul sign term
+set tmp1 add pi tmp0
+set pi tmp1
+
+set tmp0 add denominator 2
+set denominator tmp0
+
+set tmp0 sub 0 1
+set tmp1 mul sign tmp0
+set sign tmp1
+
+set tmp0 add iterations 1
+set iterations tmp0
 
 if condblock do
-set tmp0 cmp 0 1
+set tmp0 les pi 3.14
 if cond tmp0
-set tmp0 call print "1 == 1"   end
+set tmp0 call print "%f is less than ten\n" pi   end
 
-set tmp0 cmp elseiftest 1
-
-set tmp0 call print "test"   end
+else
+set tmp0 call print "%f is more (or equal) to ten\n" pi   end
 
 endcond
+endcond
+set tmp0 call print "Approximation of Pi: %f\n" pi   end
+
