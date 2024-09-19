@@ -14,8 +14,8 @@
 #include "../parseHelpers.h"
 
 llvm::Value* parser::getVariable(const std::string& name) {
-    auto it = functionStack.back().variableMap.find(name);
-    if (it != functionStack.back().variableMap.end()) {
+    auto it = contextStack.back().variableMap.find(name);
+    if (it != contextStack.back().variableMap.end()) {
         return it->second; // Return variable if found
     }
 
@@ -134,23 +134,23 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
     std::string conditionType = lexedCode[i - 2];
     if (conditionType == "if") {
         if (name == "condblock") {
-            std::cout << "prev back" << functionStack.back().function->getName().str() << std::endl;
+            std::cout << "prev back" << contextStack.back().function->getName().str() << std::endl;
 
             // Step 5: Create the "then", "else", and "merge" blocks
-            llvm::BasicBlock *CondBB = llvm::BasicBlock::Create(*Context, "cond", functionStack.back().function);
-            llvm::BasicBlock *ThenBB = llvm::BasicBlock::Create(*Context, "then", functionStack.back().function);
-            llvm::BasicBlock *ElseBB = llvm::BasicBlock::Create(*Context, "else", functionStack.back().function);
-            llvm::BasicBlock *MergeBB = llvm::BasicBlock::Create(*Context, "merge", functionStack.back().function);
+            llvm::BasicBlock *CondBB = llvm::BasicBlock::Create(*Context, "cond", contextStack.back().function);
+            llvm::BasicBlock *ThenBB = llvm::BasicBlock::Create(*Context, "then", contextStack.back().function);
+            llvm::BasicBlock *ElseBB = llvm::BasicBlock::Create(*Context, "else", contextStack.back().function);
+            llvm::BasicBlock *MergeBB = llvm::BasicBlock::Create(*Context, "merge", contextStack.back().function);
 
-            std::map<std::string, llvm::Value *> map = functionStack.back().variableMap;
-            functionStack.push_back({Builder->saveIP(), contextId, {{"cond", CondBB}, {"then", ThenBB}, {"else", ElseBB}, {"merge", MergeBB}}, functionStack.back().function, "ifEntry"});
-            functionStack.back().variableMap = map;
+            std::map<std::string, llvm::Value *> map = contextStack.back().variableMap;
+            contextStack.push_back({Builder->saveIP(), contextId, {{"cond", CondBB}, {"then", ThenBB}, {"else", ElseBB}, {"merge", MergeBB}}, contextStack.back().function, "ifEntry"});
+            contextStack.back().variableMap = map;
 
             Builder->CreateBr(CondBB);
 
             Builder->SetInsertPoint(CondBB);
         }else if (name == "cond") {
-            std::cout << "prev back" << functionStack.back().function->getName().str() << std::endl;
+            std::cout << "prev back" << contextStack.back().function->getName().str() << std::endl;
 
             // Step 4: Evaluate the condition (assuming evaluateValue already returns an llvm::Value *)
             llvm::Value *Condition = Builder->CreateFCmpOEQ(
@@ -160,23 +160,23 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
             );
 
             // Step 6: Create a conditional branch based on the condition
-            Builder->CreateCondBr(Condition, functionStack.back().basicBlocks.find("then")->second, functionStack.back().basicBlocks.find("else")->second);
+            Builder->CreateCondBr(Condition, contextStack.back().basicBlocks.find("then")->second, contextStack.back().basicBlocks.find("else")->second);
 
             // Step 7: Populate the "then" block
-            Builder->SetInsertPoint(functionStack.back().basicBlocks.find("then")->second);
+            Builder->SetInsertPoint(contextStack.back().basicBlocks.find("then")->second);
         }
     }else if (conditionType == "while") {
         if (name == "condblock") {
-            std::cout << "prev back" << functionStack.back().function->getName().str() << std::endl;
+            std::cout << "prev back" << contextStack.back().function->getName().str() << std::endl;
 
             // Step 5: Create the "then", "else", and "merge" blocks
-            llvm::BasicBlock *CondBB = llvm::BasicBlock::Create(*Context, "cond", functionStack.back().function);
-            llvm::BasicBlock *LoopBB = llvm::BasicBlock::Create(*Context, "loop", functionStack.back().function);
-            llvm::BasicBlock *MergeBB = llvm::BasicBlock::Create(*Context, "merge", functionStack.back().function);
-            std::map<std::string, llvm::Value *> map = functionStack.back().variableMap;
+            llvm::BasicBlock *CondBB = llvm::BasicBlock::Create(*Context, "cond", contextStack.back().function);
+            llvm::BasicBlock *LoopBB = llvm::BasicBlock::Create(*Context, "loop", contextStack.back().function);
+            llvm::BasicBlock *MergeBB = llvm::BasicBlock::Create(*Context, "merge", contextStack.back().function);
+            std::map<std::string, llvm::Value *> map = contextStack.back().variableMap;
 
-            functionStack.push_back({Builder->saveIP(), contextId, {{"cond", CondBB}, {"loop", LoopBB}, {"merge", MergeBB}}, functionStack.back().function, "loopEntry"});
-            functionStack.back().variableMap = map;
+            contextStack.push_back({Builder->saveIP(), contextId, {{"cond", CondBB}, {"loop", LoopBB}, {"merge", MergeBB}}, contextStack.back().function, "loopEntry"});
+            contextStack.back().variableMap = map;
 
             Builder->CreateBr(CondBB);
 
@@ -191,20 +191,20 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
 
 
             // Step 6: Create a conditional branch based on the condition
-            Builder->CreateCondBr(Condition, functionStack.back().basicBlocks.find("loop")->second, functionStack.back().basicBlocks.find("merge")->second);
+            Builder->CreateCondBr(Condition, contextStack.back().basicBlocks.find("loop")->second, contextStack.back().basicBlocks.find("merge")->second);
 
             // Step 7: Populate the "then" block
-            Builder->SetInsertPoint(functionStack.back().basicBlocks.find("loop")->second); 
+            Builder->SetInsertPoint(contextStack.back().basicBlocks.find("loop")->second); 
         }
     }else if (name == "endcond") {
-        if (functionStack.back().mergeRet != nullptr) {
-            Builder->CreateBr(functionStack.back().mergeRet);
-            functionStack.back().mergeRet = nullptr; // just to be safe
+        if (contextStack.back().mergeRet != nullptr) {
+            Builder->CreateBr(contextStack.back().mergeRet);
+            contextStack.back().mergeRet = nullptr; // just to be safe
         }
 
-        llvm::BasicBlock *MergeBB = functionStack.back().basicBlocks.find("merge")->second;
+        llvm::BasicBlock *MergeBB = contextStack.back().basicBlocks.find("merge")->second;
 
-        for (std::pair<std::string, llvm::BasicBlock *> BB : functionStack.back().basicBlocks) {
+        for (std::pair<std::string, llvm::BasicBlock *> BB : contextStack.back().basicBlocks) {
             std::cout << "Reading BB: " << BB.first << std::endl;
             if (!BB.second->getTerminator()) { // dont merge if we've already broken
                 if (BB.first != "merge" && BB.first != "cond" && BB.first != "loop") {
@@ -216,18 +216,18 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
                     // merge
                     // how do i know to loop to cond???
                     Builder->SetInsertPoint(BB.second);
-                    Builder->CreateBr(functionStack.back().basicBlocks.find("cond")->second);
+                    Builder->CreateBr(contextStack.back().basicBlocks.find("cond")->second);
                 }
             }
         }
-        functionStack.pop_back();
+        contextStack.pop_back();
         int mergeBlocksBack = 0;
 
         test:
         std::cout << mergeBlocksBack << " back" << std::endl;
 
-        if (functionStack[functionStack.size() - (1 + mergeBlocksBack)].basicBlocks.find("merge")->first != "" && 
-            functionStack[functionStack.size() - (1 + mergeBlocksBack)].basicBlocks.find("merge")->second->getName().str() != "") {
+        if (contextStack[contextStack.size() - (1 + mergeBlocksBack)].basicBlocks.find("merge")->first != "" && 
+            contextStack[contextStack.size() - (1 + mergeBlocksBack)].basicBlocks.find("merge")->second->getName().str() != "") {
             
             mergeBlocksBack = mergeBlocksBack + 1;
             goto test;
@@ -235,18 +235,18 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
 
         // Return to block
         Builder->SetInsertPoint(MergeBB);
-        if (mergeBlocksBack != 0 && functionStack[functionStack.size() - 1].basicBlocks.find("merge")->second->getName().str() != "") {
+        if (mergeBlocksBack != 0 && contextStack[contextStack.size() - 1].basicBlocks.find("merge")->second->getName().str() != "") {
             // std::cout << "adding the thing" << std::endl;
-            if (functionStack[functionStack.size() - 1].basicBlocks.find("loop")->first == "") {
-                functionStack.back().mergeRet = functionStack[functionStack.size() - 1].basicBlocks.find("merge")->second;
+            if (contextStack[contextStack.size() - 1].basicBlocks.find("loop")->first == "") {
+                contextStack.back().mergeRet = contextStack[contextStack.size() - 1].basicBlocks.find("merge")->second;
             }else { // if it's a loop, jump to the conditional
-                functionStack.back().mergeRet = functionStack[functionStack.size() - 1].basicBlocks.find("cond")->second;
+                contextStack.back().mergeRet = contextStack[contextStack.size() - 1].basicBlocks.find("cond")->second;
             }
         }
 
         evaluateValue(value, value, i);
     }else if (name == "else") {
-        llvm::BasicBlock *ElseBB = functionStack.back().basicBlocks.find("else")->second;
+        llvm::BasicBlock *ElseBB = contextStack.back().basicBlocks.find("else")->second;
         Builder->SetInsertPoint(ElseBB);
     }
     if (name == "condblock") {
@@ -255,6 +255,10 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
         // str = lexedCode[++i];
         // parser::createVariable(name, str, i);
     }
+}
+
+void parser::evaluateFunction(std::string name, std::string value, std::size_t i) {
+    
 }
 
 
@@ -271,7 +275,7 @@ llvm::Value *parser::createVariable(std::string name, std::string value, std::si
     variable = Builder->CreateAlloca(varType, nullptr, name);
     llvm::Value* val = parser::evaluateValue(name, value, i);
     Builder->CreateStore(val, variable);
-    functionStack.back().variableMap[name] = variable;
+    contextStack.back().variableMap[name] = variable;
 
     return variable;
 
@@ -299,8 +303,8 @@ std::string parser::parseFile() {
             name = lexedCode[i++];
             std::string value = lexedCode[i];
             parser:evaluateConditional(name, value, i);
-        }else {
-            // currentArgs.push_back(parser::evaluateValue(str, str, i)); // args don't have names
+        }else if (str == "func") {
+
         }
 
     }

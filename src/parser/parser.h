@@ -9,8 +9,8 @@
 #include <llvm/IR/Verifier.h>
 #include <llvm/Support/raw_ostream.h>
 
-struct functionInfo {
-    functionInfo(llvm::IRBuilder<>::InsertPoint ip, int cid, std::map<std::string, llvm::BasicBlock *> bbs, llvm::Function *func, std::string id)
+struct contextInfo {
+    contextInfo(llvm::IRBuilder<>::InsertPoint ip, int cid, std::map<std::string, llvm::BasicBlock *> bbs, llvm::Function *func, std::string id)
         : insertionPoint(ip), contextId(cid), function(func), name(id), basicBlocks(bbs) {}
 
     llvm::IRBuilder<>::InsertPoint insertionPoint; // function's ip
@@ -36,7 +36,7 @@ private:
     int contextId = 0;
     llvm::FunctionCallee currentFunction;
     std::vector<llvm::Value *> currentArgs;
-    std::vector<functionInfo> functionStack;
+    std::vector<contextInfo> contextStack;
     std::map<std::string, llvm::Value *> strings;
 public:
     llvm::Value *createVariable(std::string name, std::string value, std::size_t i);
@@ -44,6 +44,7 @@ public:
     llvm::Value* getLoadVariable(const std::string& name);
     llvm::Value *evaluateValue(std::string name, std::string value, std::size_t i);
     void evaluateConditional(std::string name, std::string value, std::size_t i);
+    void evaluateFunction(std::string name, std::string value, std::size_t i);
 
     std::string parseFile();
     void writeLine(std::string line);
@@ -56,7 +57,7 @@ public:
         Context = Con;
         filename = newFilename;
         function = new functions(Module, Builder);
-        functionStack.push_back(functionInfo(Builder->saveIP(), contextId, {}, Builder->GetInsertBlock()->getParent(), "main"));
+        contextStack.push_back(contextInfo(Builder->saveIP(), contextId, {}, Builder->GetInsertBlock()->getParent(), "main"));
     }
     
     ~parser() {

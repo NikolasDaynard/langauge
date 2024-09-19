@@ -3,4 +3,5 @@ test (arg1, arg2) {
     return 1
 }
 
+
 test(1)
