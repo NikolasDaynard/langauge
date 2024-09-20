@@ -10,7 +10,7 @@
 
 #include "functions.h"
 
-void functions::initStdLib() {
+void functionWrapper::initStdLib() {
     // llvm::FunctionType *PrintfType = llvm::FunctionType::get(Builder->getInt32Ty(), true);
     // llvm::FunctionCallee Printf = Module->getOrInsertFunction("printf", PrintfType);
 
@@ -33,7 +33,7 @@ void functions::initStdLib() {
     // llvm::verifyFunction(*MyFunction);
 }
 
-std::optional<llvm::FunctionCallee> functions::getStdlibFunction(std::string name) {
+std::optional<llvm::FunctionCallee> functionWrapper::getStdlibFunction(std::string name) {
     llvm::FunctionType *retI32 = llvm::FunctionType::get(Builder->getInt32Ty(), true);
     llvm::FunctionType *retDouble = llvm::FunctionType::get(Builder->getDoubleTy(), true);
     if (name == "print") {
@@ -58,9 +58,20 @@ std::optional<llvm::FunctionCallee> functions::getStdlibFunction(std::string nam
     return std::nullopt;
 }
 
-llvm::FunctionCallee functions::getFunction(std::string name) {
+llvm::FunctionCallee functionWrapper::getFunction(std::string name) {
     // Try to get the function from the standard library
     std::optional<llvm::FunctionCallee> function = getStdlibFunction(name);
+    auto it = functionMap.find(name);
+    if (it != functionMap.end()) {
+        std::cout << "Found function: " << name << std::endl;
+
+        llvm::Function* func = it->second;  // Get the function from the map
+        llvm::FunctionType* funcType = func->getFunctionType();
+
+// WHYYYYY FOENST HTIN WORK IT WORKDS IWITH PRINTokreofeojpjifejiwfojiefw
+
+        return Module->getOrInsertFunction(name, funcType);
+    }
 
     if (function.has_value()) {
         std::cout << "Function found in the standard library." << std::endl;
@@ -69,4 +80,9 @@ llvm::FunctionCallee functions::getFunction(std::string name) {
         std::cout << "Function not found in the standard library." << std::endl;
     }
     return llvm::FunctionCallee();
+}
+
+void functionWrapper::addFunction(std::string name, llvm::Function *func) {
+    functionMap.insert({name, func});
+    return;
 }

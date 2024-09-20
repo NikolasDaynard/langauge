@@ -19,13 +19,13 @@ struct contextInfo {
     llvm::BasicBlock *mergeRet = nullptr; // where to return on a endcond
     int contextId;
     std::map<std::string, llvm::BasicBlock *> basicBlocks;
-    std::map<std::string, llvm::Value*> variableMap; // holds all vars, and context id
+    std::map<std::string, llvm::Value *> variableMap; // holds all vars, and context id
 };
 
 class parser {
 private:
     std::vector<std::string> lexedCode;
-    functions *function;
+    functionWrapper *functionsWrapper;
 
     std::string filename;
     llvm::Module *Module;
@@ -37,6 +37,8 @@ private:
     llvm::FunctionCallee currentFunction;
     std::vector<llvm::Value *> currentArgs;
     std::vector<contextInfo> contextStack;
+    std::vector<std::vector<contextInfo>> functionStack; // every function has a stack of context
+    
     std::map<std::string, llvm::Value *> strings;
 public:
     llvm::Value *createVariable(std::string name, std::string value, std::size_t i);
@@ -56,7 +58,7 @@ public:
         Builder = Build;
         Context = Con;
         filename = newFilename;
-        function = new functions(Module, Builder);
+        functionsWrapper = new functionWrapper(Module, Builder);
         contextStack.push_back(contextInfo(Builder->saveIP(), contextId, {}, Builder->GetInsertBlock()->getParent(), "main"));
     }
     

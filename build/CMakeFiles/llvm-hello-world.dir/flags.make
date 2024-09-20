@@ -4,7 +4,7 @@
 # compile CXX with /run/current-system/sw/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/include -isystem /nix/store/zspzg7pdn7g04s87jldvn0lphdzzhj9a-zlib-1.3.1-dev/include
+CXX_INCLUDES = -I/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include -isystem /nix/store/ybsf7n23znq5dr0mfzm3kly07hf9995s-zlib-1.3.1-dev/include
 
 CXX_FLAGS =  -lm -g   -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
 

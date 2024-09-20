@@ -1,7 +1,5 @@
-test (arg1, arg2) {
-    print("test %f", arg1)
-    return 1
+test(arg1, arg2) {
+    print("test")
 }
-
 
 test(1)

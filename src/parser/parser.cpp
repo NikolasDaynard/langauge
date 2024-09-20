@@ -25,11 +25,11 @@ llvm::Value* parser::getVariable(const std::string& name) {
 llvm::Value *parser::evaluateValue(std::string name, std::string value, std::size_t i) {
     if (lexedCode[i] == "call") {
         i++;
-        currentFunction = function->getFunction(lexedCode[i]);
+        currentFunction = functionsWrapper->getFunction(lexedCode[i]);
         currentArgs.clear();
         while (true) {
             i++;
-            if (lexedCode[i] == "end") {
+            if (lexedCode[i] == "end" || lexedCode[i - 1] == "end") {
                 break;
             }
             std::cout << "looped " + lexedCode[i] << std::endl;
@@ -41,9 +41,10 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
 
     if(functionNests != 0 && lexedCode[i] == "end") {
         llvm::Value *call = Builder->CreateCall(currentFunction, currentArgs);
-        std::cout << "--" << std::endl;
+        std::cout << call << std::endl;
         currentArgs.clear(); // remove all args
         functionNests--;
+        std::cout << "returning call" << std::endl;
         return call;
     }
 
@@ -116,7 +117,7 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
 
             return DoubleResult;
         }else if (lexedCode[originalIndex] == "pow") {
-            return Builder->CreateCall(function->getFunction("pow"), {first, second}); // TODO: this is undefined
+            return Builder->CreateCall(functionsWrapper->getFunction("pow"), {first, second}); // TODO: this is undefined
         }
         i++;
 
@@ -210,11 +211,7 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
                 if (BB.first != "merge" && BB.first != "cond" && BB.first != "loop") {
                     Builder->SetInsertPoint(BB.second);
                     Builder->CreateBr(MergeBB);
-                }else if (BB.first == "loop") { // TODO merging after loop doesn't retain the bb meta
-                    // loop
-                    // if cond
-                    // merge
-                    // how do i know to loop to cond???
+                }else if (BB.first == "loop") {
                     Builder->SetInsertPoint(BB.second);
                     Builder->CreateBr(contextStack.back().basicBlocks.find("cond")->second);
                 }
@@ -225,6 +222,11 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
 
         test:
         std::cout << mergeBlocksBack << " back" << std::endl;
+        if (contextStack.size() <= 1) { // this is a function
+            Builder->CreateRet(Builder->getInt32(0));
+            Builder->SetInsertPoint(contextStack.back().insertionPoint.getBlock());
+            return; 
+        }
 
         if (contextStack[contextStack.size() - (1 + mergeBlocksBack)].basicBlocks.find("merge")->first != "" && 
             contextStack[contextStack.size() - (1 + mergeBlocksBack)].basicBlocks.find("merge")->second->getName().str() != "") {
@@ -258,8 +260,31 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
 }
 
 void parser::evaluateFunction(std::string name, std::string value, std::size_t i) {
-    
+    std::cout << "evaluating function " << name << " with return type " << value << std::endl;
+
+    // Create the function type (example with void return type and no arguments)
+    llvm::Type *returnType = llvm::Type::getInt32Ty(*Context);
+    llvm::FunctionType *functionType = llvm::FunctionType::get(returnType, true);
+
+    // Create the function with external linkage (can be changed to internal as needed)
+    llvm::Function *function = llvm::Function::Create(functionType, llvm::Function::ExternalLinkage, value, Module);
+
+    llvm::BasicBlock *MainBB = llvm::BasicBlock::Create(*Context, "ma2in", function);
+
+    Builder->SetInsertPoint(MainBB);
+
+    contextStack.push_back(contextInfo(Builder->saveIP(), contextId, {}, function, "mainw"));
+    contextStack.back().variableMap = {};
+
+    functionsWrapper->addFunction(value, function);
+        for (auto &Func : Module->getFunctionList()) {
+        llvm::outs() << "Function name: " << Func.getName() << "\n";
+        llvm::outs() << "  Is declaration: " << (Func.isDeclaration() ? "yes" : "no") << "\n";
+        llvm::outs() << "  Number of arguments: " << Func.arg_size() << "\n";
+    }
+    std::cout << "Function " << name << " created successfully" << std::endl;
 }
+
 
 
 
@@ -302,9 +327,11 @@ std::string parser::parseFile() {
         }else if (str == "cond" || str == "endcond" || str == "else" || str == "condblock") {
             name = lexedCode[i++];
             std::string value = lexedCode[i];
-            parser:evaluateConditional(name, value, i);
+            parser::evaluateConditional(name, value, i);
         }else if (str == "func") {
-
+            name = lexedCode[i++];
+            std::string value = lexedCode[i];
+            parser::evaluateFunction(name, value, i);
         }
 
     }

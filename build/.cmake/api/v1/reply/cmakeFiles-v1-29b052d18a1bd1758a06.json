@@ -148,15 +148,15 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/lib/cmake/llvm/LLVMConfigVersion.cmake"
+			"path" : "/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/lib/cmake/llvm/LLVMConfigVersion.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/lib/cmake/llvm/LLVMConfig.cmake"
+			"path" : "/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/lib/cmake/llvm/LLVMConfig.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/lib/cmake/llvm/FindFFI.cmake"
+			"path" : "/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/lib/cmake/llvm/FindFFI.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -170,7 +170,7 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/lib/cmake/llvm/FindTerminfo.cmake"
+			"path" : "/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/lib/cmake/llvm/FindTerminfo.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -244,15 +244,15 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/lib/cmake/llvm/LLVMExports.cmake"
+			"path" : "/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/lib/cmake/llvm/LLVMExports.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/lib/cmake/llvm/LLVMExports-release.cmake"
+			"path" : "/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/lib/cmake/llvm/LLVMExports-release.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "/nix/store/p0cninw60jl8ii6zaak8vv2ysszcxlwg-llvm-18.1.8-dev/lib/cmake/llvm/LLVM-Config.cmake"
+			"path" : "/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/lib/cmake/llvm/LLVM-Config.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",
