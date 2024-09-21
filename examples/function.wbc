@@ -1,4 +1,11 @@
+func other   end
+
+set tmp0 call print "hello from other"   end
+
+endcond
 func test arg1 arg2   end
+
+set tmp0 call other   end
 
 set tmp0 call print "test"   end
 
