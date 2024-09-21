@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
 
     codegen *gen = new codegen(Module);
 
-    gen->parse("examples/function.w");
+    gen->parse("examples/loop.w");
     gen->write();
     gen->print();
 

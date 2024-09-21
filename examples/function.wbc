@@ -3,9 +3,5 @@ func test arg1 arg2   end
 set tmp0 call print "test"   end
 
 endcond
-set tmp0 call test 1   end
-
-set tmp0 call print "test4"   end
-
 set tmp0 call test   end
 

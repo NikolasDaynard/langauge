@@ -41,10 +41,8 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
 
     if(functionNests != 0 && lexedCode[i] == "end") {
         llvm::Value *call = Builder->CreateCall(currentFunction, currentArgs);
-        std::cout << call << std::endl;
         currentArgs.clear(); // remove all args
         functionNests--;
-        std::cout << "returning call" << std::endl;
         return call;
     }
 
@@ -217,12 +215,14 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
                 }
             }
         }
+        contextInfo savedContext = contextStack.back();
         contextStack.pop_back();
         int mergeBlocksBack = 0;
 
         test:
         std::cout << mergeBlocksBack << " back" << std::endl;
-        if (contextStack.size() <= 1) { // this is a function
+        if (contextStack.size() <= 1 && savedContext.function->getName().str() != "mainBodyFunc") { // this is a function
+            std::cout << "context stack undersized " << savedContext.function->getName().str() << std::endl;
             Builder->CreateRet(Builder->getInt32(0));
             Builder->SetInsertPoint(contextStack.back().insertionPoint.getBlock());
             return; 
