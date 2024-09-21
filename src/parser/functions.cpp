@@ -68,13 +68,11 @@ llvm::FunctionCallee functionWrapper::getFunction(std::string name) {
         llvm::Function* func = it->second;  // Get the function from the map
         llvm::FunctionType* funcType = func->getFunctionType();
 
-// WHYYYYY FOENST HTIN WORK IT WORKDS IWITH PRINTokreofeojpjifejiwfojiefw
-
         return Module->getOrInsertFunction(name, funcType);
     }
 
     if (function.has_value()) {
-        std::cout << "Function found in the standard library." << std::endl;
+        std::cout << "Function found in the standard library; " << function.value().getCallee()->getName().str() << std::endl;
         return function.value();
     } else {
         std::cout << "Function not found in the standard library." << std::endl;

@@ -13,7 +13,7 @@
 #include "parser.h"
 #include "../parseHelpers.h"
 
-llvm::Value* parser::getVariable(const std::string& name) {
+Variable parser::getVariable(const std::string& name) {
     auto it = contextStack.back().variableMap.find(name);
     if (it != contextStack.back().variableMap.end()) {
         return it->second; // Return variable if found
@@ -65,11 +65,9 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
         return variable;
     }
 
-
-    llvm::Type *varType = llvm::Type::getDoubleTy(*Context);
-    llvm::Value *val = parser::getVariable(value);
-    if (val != nullptr) {
-        return Builder->CreateLoad(Builder->getDoubleTy(), val, "loadedNum");
+    Variable val = parser::getVariable(value);
+    if (val.val != nullptr) {
+        return Builder->CreateLoad(val.type, val.val, "loadedVar");
     }
 
     if (isMathKeyword(value)) {
@@ -119,7 +117,7 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
         }
         i++;
 
-        return val;
+        return val.val;
     }
 
     std::cout << value + " was not evaluated" << std::endl;
@@ -141,7 +139,7 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
             llvm::BasicBlock *ElseBB = llvm::BasicBlock::Create(*Context, "else", contextStack.back().function);
             llvm::BasicBlock *MergeBB = llvm::BasicBlock::Create(*Context, "merge", contextStack.back().function);
 
-            std::map<std::string, llvm::Value *> map = contextStack.back().variableMap;
+            std::map<std::string, Variable> map = contextStack.back().variableMap;
             contextStack.push_back({Builder->saveIP(), contextId, {{"cond", CondBB}, {"then", ThenBB}, {"else", ElseBB}, {"merge", MergeBB}}, contextStack.back().function, "ifEntry"});
             contextStack.back().variableMap = map;
 
@@ -172,7 +170,7 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
             llvm::BasicBlock *CondBB = llvm::BasicBlock::Create(*Context, "cond", contextStack.back().function);
             llvm::BasicBlock *LoopBB = llvm::BasicBlock::Create(*Context, "loop", contextStack.back().function);
             llvm::BasicBlock *MergeBB = llvm::BasicBlock::Create(*Context, "merge", contextStack.back().function);
-            std::map<std::string, llvm::Value *> map = contextStack.back().variableMap;
+            std::map<std::string, Variable> map = contextStack.back().variableMap;
 
             contextStack.push_back({Builder->saveIP(), contextId, {{"cond", CondBB}, {"loop", LoopBB}, {"merge", MergeBB}}, contextStack.back().function, "loopEntry"});
             contextStack.back().variableMap = map;
@@ -286,12 +284,13 @@ void parser::evaluateFunction(std::string name, std::string value, std::size_t i
     contextStack.back().variableMap = {};
 
     llvm::Function::arg_iterator args = function->arg_begin();
-    
+
     for (std::size_t id = 0; id < varNames.size(); ++id, ++args) {
         llvm::Value *arg = &*args;  // Get the argument value
         llvm::Value *variable = Builder->CreateAlloca(llvm::Type::getDoubleTy(*Context), nullptr, varNames[id]);
         Builder->CreateStore(arg, variable);
         contextStack.back().variableMap[varNames[id]] = variable;
+        contextStack.back().variableMap[varNames[id]].type = llvm::Type::getDoubleTy(*Context);
     }
 
     functionsWrapper->addFunction(name, function);
@@ -303,20 +302,24 @@ void parser::evaluateFunction(std::string name, std::string value, std::size_t i
 
 
 llvm::Value *parser::createVariable(std::string name, std::string value, std::size_t i) {
+    Variable variable = parser::getVariable(name);
 
-    llvm::Value *variable = parser::getVariable(name);
-    if (variable != nullptr) {
-        Builder->CreateStore(parser::evaluateValue(name, value, i), variable);
-        return variable;
+    if (variable.val != nullptr) {
+        if (value == "call") { // assume it's right 
+            Builder->CreateStore(parser::evaluateValue(name, value, i), variable.val);
+            return variable.val;
+        }else if (variable.type == parser::evaluateValue(name, value, i)->getType()) {
+            Builder->CreateStore(parser::evaluateValue(name, value, i), variable.val);
+            return variable.val;
+        }
     }
-
-    llvm::Type *varType = llvm::Type::getDoubleTy(*Context);
-    variable = Builder->CreateAlloca(varType, nullptr, name);
     llvm::Value* val = parser::evaluateValue(name, value, i);
-    Builder->CreateStore(val, variable);
-    contextStack.back().variableMap[name] = variable;
 
-    return variable;
+    variable = Builder->CreateAlloca(val->getType(), nullptr, name);
+    Builder->CreateStore(val, variable.val);
+    contextStack.back().variableMap[name] = variable;
+    contextStack.back().variableMap[name].type = val->getType();
+    return variable.val;
 
     std::cout << "varaible initlization failed" << std::endl;
     return NULL;

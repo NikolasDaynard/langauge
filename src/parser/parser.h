@@ -9,6 +9,18 @@
 #include <llvm/IR/Verifier.h>
 #include <llvm/Support/raw_ostream.h>
 
+struct Variable {
+    llvm::Value *val;
+    llvm::Type *type;
+
+    // Default constructor
+    Variable() : val(nullptr), type(nullptr) {}
+
+    // Constructor that sets both value and type based on llvm::Value
+    Variable(llvm::Value* v) : val(v), type(v != nullptr ? v->getType() : nullptr) {}
+};
+
+
 struct contextInfo {
     contextInfo(llvm::IRBuilder<>::InsertPoint ip, int cid, std::map<std::string, llvm::BasicBlock *> bbs, llvm::Function *func, std::string id)
         : insertionPoint(ip), contextId(cid), function(func), name(id), basicBlocks(bbs) {}
@@ -19,7 +31,7 @@ struct contextInfo {
     llvm::BasicBlock *mergeRet = nullptr; // where to return on a endcond
     int contextId;
     std::map<std::string, llvm::BasicBlock *> basicBlocks;
-    std::map<std::string, llvm::Value *> variableMap; // holds all vars, and context id
+    std::map<std::string, Variable> variableMap; // holds all vars, and context id
 };
 
 class parser {
@@ -42,7 +54,7 @@ private:
     std::map<std::string, llvm::Value *> strings;
 public:
     llvm::Value *createVariable(std::string name, std::string value, std::size_t i);
-    llvm::Value* getVariable(const std::string& name);
+    Variable getVariable(const std::string& name);
     llvm::Value* getLoadVariable(const std::string& name);
     llvm::Value *evaluateValue(std::string name, std::string value, std::size_t i);
     void evaluateConditional(std::string name, std::string value, std::size_t i);

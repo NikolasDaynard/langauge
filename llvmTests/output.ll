@@ -31,3 +31,26 @@ attributes #3 = { nounwind }
 !1 = !{i32 8, !"PIC Level", i32 2}
 !2 = !{i32 7, !"uwtable", i32 2}
 !3 = !{!"clang version 17.0.6"}
+
+
+; ModuleID = 'test'
+source_filename = "test"
+
+@constStr = private unnamed_addr constant [8 x i8] c"var1 %f\00", align 1
+
+define i32 @main() {
+entry:
+  %0 = call i32 @mainBodyFunc()
+  ret i32 0
+}
+
+define private i32 @mainBodyFunc() {
+entry:
+  %var = alloca double, align 8
+  store double 3.000000e+00, ptr %var, align 8
+  %tmp0 = alloca double, align 8
+  %loadedNum = load double, ptr %var, align 8
+  %0 = call i32 (...) @printf(ptr @constStr, double %loadedNum)
+  store i32 %0, ptr %tmp0, align 4
+  ret i32 0
+}

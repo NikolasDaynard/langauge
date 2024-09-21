@@ -1,0 +1,6 @@
+set var 3
+
+set var1 "string %f"
+
+set tmp0 call print var1 var   end
+

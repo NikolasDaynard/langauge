@@ -12,14 +12,19 @@ int main(int argc, char *argv[]) {
     llvm::IRBuilder<> Builder(Context);
 
     codegen *gen = new codegen(Module);
-
-    gen->parse("examples/function.w");
+    if (argc > 1) {
+        std::cout << "reading " << std::string(argv[1]) << std::endl;
+        gen->parse("examples/" + std::string(argv[1]) + ".w");
+    }else {
+        std::cout << "no file provided" << std::endl;
+        return 1;
+    }
     gen->write();
     gen->print();
 
     delete Module;
 
-    if (argc > 1) { // run el codes
+    if (argc > 2) { // run el codes
         int s;
         s = system("clang -S -O1 -Wno-unused-command-line-argument -Wno-override-module -emit-llvm output.ll -o optimized.ll"); // optimize ll
         // s = system("opt -S -O1 output.ll -o optimized.ll");

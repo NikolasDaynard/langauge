@@ -1,6 +1,11 @@
+set rest 3
 
+set r 2
 
-set test "string"
+set tmp0 add 1 4
+set tmp1 mul tmp0 3
+set tmp2 sub 2 tmp1
+set vaw tmp2
 
-
+set tmp0 call print "var: %f" vaw   end
 
