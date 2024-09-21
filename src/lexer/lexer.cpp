@@ -256,8 +256,6 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
             std::string args = "";
             bool isCond = false;
             while (true) {
-                args = evalStack.top() + " " + args; // invert args
-                evalStack.pop();
                 if (evalStack.top() == "|endcond") {
                     isCond = true;
                     break;
@@ -265,6 +263,8 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
                     isCond = false;
                     break;
                 }
+                args = evalStack.top() + " " + args; // invert args
+                evalStack.pop();
             }
             if (isCond) {
                 result += "set tmp" + std::to_string(tempVarCounter) + " ";

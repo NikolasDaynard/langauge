@@ -2,6 +2,7 @@
 source_filename = "test"
 
 @constStr = private unnamed_addr constant [5 x i8] c"test\00", align 1
+@constStr.1 = private unnamed_addr constant [6 x i8] c"test4\00", align 1
 
 define i32 @main() {
 entry:
@@ -14,6 +15,10 @@ entry:
   %tmp0 = alloca double, align 8
   %0 = call i32 (...) @test(double 1.000000e+00)
   store i32 %0, ptr %tmp0, align 4
+  %1 = call i32 (...) @printf(ptr @constStr.1)
+  store i32 %1, ptr %tmp0, align 4
+  %2 = call i32 (...) @test()
+  store i32 %2, ptr %tmp0, align 4
   ret i32 0
 }
 

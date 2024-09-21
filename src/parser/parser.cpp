@@ -260,6 +260,7 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
 }
 
 void parser::evaluateFunction(std::string name, std::string value, std::size_t i) {
+    name = value;
     std::cout << "evaluating function " << name << " with return type " << value << std::endl;
 
     // Create the function type (example with void return type and no arguments)
@@ -267,7 +268,7 @@ void parser::evaluateFunction(std::string name, std::string value, std::size_t i
     llvm::FunctionType *functionType = llvm::FunctionType::get(returnType, true);
 
     // Create the function with external linkage (can be changed to internal as needed)
-    llvm::Function *function = llvm::Function::Create(functionType, llvm::Function::ExternalLinkage, value, Module);
+    llvm::Function *function = llvm::Function::Create(functionType, llvm::Function::ExternalLinkage, name, Module);
 
     llvm::BasicBlock *MainBB = llvm::BasicBlock::Create(*Context, "ma2in", function);
 
@@ -276,12 +277,8 @@ void parser::evaluateFunction(std::string name, std::string value, std::size_t i
     contextStack.push_back(contextInfo(Builder->saveIP(), contextId, {}, function, "mainw"));
     contextStack.back().variableMap = {};
 
-    functionsWrapper->addFunction(value, function);
-        for (auto &Func : Module->getFunctionList()) {
-        llvm::outs() << "Function name: " << Func.getName() << "\n";
-        llvm::outs() << "  Is declaration: " << (Func.isDeclaration() ? "yes" : "no") << "\n";
-        llvm::outs() << "  Number of arguments: " << Func.arg_size() << "\n";
-    }
+    functionsWrapper->addFunction(name, function);
+
     std::cout << "Function " << name << " created successfully" << std::endl;
 }
 

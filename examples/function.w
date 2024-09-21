@@ -3,3 +3,5 @@ test(arg1, arg2) {
 }
 
 test(1)
+print("test4")
+test()
