@@ -265,17 +265,34 @@ void parser::evaluateFunction(std::string name, std::string value, std::size_t i
 
     // Create the function type (example with void return type and no arguments)
     llvm::Type *returnType = llvm::Type::getInt32Ty(*Context);
-    llvm::FunctionType *functionType = llvm::FunctionType::get(returnType, true);
+    
+    std::vector<llvm::Type *> argTypes;
+    std::vector<std::string> varNames;
+    while (lexedCode[++i] != "end") { // first one is name
+        argTypes.push_back(llvm::Type::getDoubleTy(*Context));
+        varNames.push_back(lexedCode[i]);
+    }
+
+    llvm::FunctionType *functionType = llvm::FunctionType::get(returnType, argTypes, true);
 
     // Create the function with external linkage (can be changed to internal as needed)
     llvm::Function *function = llvm::Function::Create(functionType, llvm::Function::ExternalLinkage, name, Module);
 
-    llvm::BasicBlock *MainBB = llvm::BasicBlock::Create(*Context, "ma2in", function);
+    llvm::BasicBlock *MainBB = llvm::BasicBlock::Create(*Context, "main", function);
 
     Builder->SetInsertPoint(MainBB);
 
-    contextStack.push_back(contextInfo(Builder->saveIP(), contextId, {}, function, "mainw"));
+    contextStack.push_back(contextInfo(Builder->saveIP(), contextId, {}, function, "main"));
     contextStack.back().variableMap = {};
+
+    llvm::Function::arg_iterator args = function->arg_begin();
+    
+    for (std::size_t id = 0; id < varNames.size(); ++id, ++args) {
+        llvm::Value *arg = &*args;  // Get the argument value
+        llvm::Value *variable = Builder->CreateAlloca(llvm::Type::getDoubleTy(*Context), nullptr, varNames[id]);
+        Builder->CreateStore(arg, variable);
+        contextStack.back().variableMap[varNames[id]] = variable;
+    }
 
     functionsWrapper->addFunction(name, function);
 

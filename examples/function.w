@@ -1,10 +1,10 @@
-other() {
-    print("hello from other")
+other(num) {
+    print("hello from other got %f", num)
 }
 
 test(arg1, arg2) {
-    other()
-    print("test")
+    other(arg1)
+    print("\ntest %f %f", arg1, arg2)
 }
 
-test()
+test(1, 2)

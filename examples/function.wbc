@@ -1,14 +1,14 @@
-func other   end
+func other num   end
 
-set tmp0 call print "hello from other"   end
+set tmp0 call print "hello from other got %f" num   end
 
 endcond
 func test arg1 arg2   end
 
-set tmp0 call other   end
+set tmp0 call other arg1   end
 
-set tmp0 call print "test"   end
+set tmp0 call print "\ntest %f %f" arg1 arg2   end
 
 endcond
-set tmp0 call test   end
+set tmp0 call test 1 2   end
 
