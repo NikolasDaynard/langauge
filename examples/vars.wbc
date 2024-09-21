@@ -1,6 +1,15 @@
-set var 3
+set seconds 10
 
-set var1 "string %f"
+set tmp0 call print "Countdown starting from %f seconds...\n" seconds   end
 
-set tmp0 call print var1 var   end
+while condblock do
+set tmp0 les 0 seconds
+while cond tmp0
+set tmp0 call print "%f seconds remaining...\n" seconds   end
+
+set tmp0 sub seconds 1
+set seconds tmp0
+
+endcond
+set tmp0 call print "Time's up!\n"   end
 

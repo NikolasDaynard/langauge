@@ -14,13 +14,14 @@
 - [x] Add conditionals (if)
 - [ ] Add elseif (else if? more consistent?)
 - [ ] Add nil
-- [ ] Add function calls
-- - [ ] NOTE: lex function that goes over every token, if it see's a call, recursivly calc and then push the var back and iterate var, insert into main func call also insert at the beginning the new call set to the var. 
+- [x] Add function calls
 - [ ] Add loops
 - - [ ] For
 - - [x] While
-- [ ] String vars
-- [ ] Tables ( synatic sugar ily (for e in table {})) 
+- [ ] More types
+- - [x] String vars
+- - [x] Bool vars
+- - [ ] Tables ( synatic sugar ily (for e in table {})) 
 - [ ] Finish stdlib
 - - [ ] Math funcs (pow max min sin atan2)
 - - [ ] Cli arg support

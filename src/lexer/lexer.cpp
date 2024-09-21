@@ -119,6 +119,14 @@ std::vector<std::string> tokenize(const std::string& line) {
             braceType = "while{";
         }
 
+        if (token == "true") {
+            token = "";
+            ch = '1';
+        }else if (token == "false") {
+            token = "";
+            ch = '0';
+        }
+
         if (isalnum(ch) || ch == '.' || ch == '_') {
             token += ch;
         } else {
