@@ -50,10 +50,10 @@ std::optional<llvm::FunctionCallee> functionWrapper::getStdlibFunction(std::stri
         return Pow;
     }
 
-    std::cout << "Function " + name + " NOT FOUND, defaulting to print" << std::endl;
+    std::cout << "Function " + name + " NOT FOUND, defaulting to whatever stdlib has" << std::endl;
 
-    llvm::FunctionCallee Printf = Module->getOrInsertFunction("printf", retI32);
-    return Printf;
+    llvm::FunctionCallee potNull = Module->getFunction("printf");
+    return potNull;
 
     return std::nullopt;
 }

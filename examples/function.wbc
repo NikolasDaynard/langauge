@@ -7,8 +7,10 @@ func test arg1 arg2   end
 
 set tmp0 call other arg1   end
 
-set tmp0 call print "\ntest %f %f" arg1 arg2   end
+set tmp0 call print "\ntest %f" arg1   end
+
+set tmp0 call print "recived %s" arg2   end
 
 endcond
-set tmp0 call test 1 2   end
+set tmp0 call test 1 "string"   end
 

@@ -287,10 +287,10 @@ void parser::evaluateFunction(std::string name, std::string value, std::size_t i
 
     for (std::size_t id = 0; id < varNames.size(); ++id, ++args) {
         llvm::Value *arg = &*args;  // Get the argument value
-        llvm::Value *variable = Builder->CreateAlloca(llvm::Type::getDoubleTy(*Context), nullptr, varNames[id]);
+        llvm::Value *variable = Builder->CreateAlloca(arg->getType(), nullptr, varNames[id]);
         Builder->CreateStore(arg, variable);
         contextStack.back().variableMap[varNames[id]] = variable;
-        contextStack.back().variableMap[varNames[id]].type = llvm::Type::getDoubleTy(*Context);
+        contextStack.back().variableMap[varNames[id]].type = arg->getType();
     }
 
     functionsWrapper->addFunction(name, function);
