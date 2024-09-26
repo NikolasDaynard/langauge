@@ -11,6 +11,15 @@ make
 
 To compile, then run "clang output.ll -o output" to compile to an exe
 
+This langauge does not support untyped variable reassignment. 
+```
+var = 3
+var = "string"
+```
+Is NOT valid, you need to define different variables.
+
+Functions can only be called with one set of variable types if it's double string double, you can't call it with double string string 
+
 lang examples. It's similar to lua sytatically, with optional semicolon terminators. It has the sytatic sugar of feeling like lua but allows for extreme low level programming. It is 0 indexed. Designed with string manipulation as a core feature
 
 This language drops the then end syntax in favor of easier to write c style braces

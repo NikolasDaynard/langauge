@@ -52,6 +52,7 @@ private:
     std::vector<std::vector<contextInfo>> functionStack; // every function has a stack of context
     
     std::map<std::string, llvm::Value *> strings;
+    std::map<std::string, int> functionPositions; // stores function positions in the lexedCode
 public:
     llvm::Value *createVariable(std::string name, std::string value, std::size_t i);
     Variable getVariable(const std::string& name);
@@ -59,6 +60,7 @@ public:
     llvm::Value *evaluateValue(std::string name, std::string value, std::size_t i);
     void evaluateConditional(std::string name, std::string value, std::size_t i);
     void evaluateFunction(std::string name, std::string value, std::size_t i);
+    int handleString(std::size_t i);
 
     std::string parseFile();
     void writeLine(std::string line);

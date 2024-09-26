@@ -24,6 +24,22 @@ Variable parser::getVariable(const std::string& name) {
 
 llvm::Value *parser::evaluateValue(std::string name, std::string value, std::size_t i) {
     if (lexedCode[i] == "call") {
+        std::cout << "evaling call" << std::endl;
+        if (functionPositions.find(lexedCode[i + 1]) != functionPositions.end() && functionPositions[lexedCode[i + 1]] != -1) {
+            std::cout << "func " << lexedCode[i + 1] << " was in the pos at " <<functionPositions[lexedCode[i + 1]] << std::endl; 
+            int pos = functionPositions[lexedCode[i + 1]];
+            functionPositions[lexedCode[i + 1]] = -1;
+
+            for (std::size_t i = pos; i < lexedCode.size(); i++) {
+                // std::cout << "at pos in func" << lexedCode[i] << std::endl;
+                if (lexedCode[i] == "endcond") {
+                    handleString(i);
+                    break;
+                }
+                i = handleString(i);
+            }
+
+        }
         i++;
         currentFunction = functionsWrapper->getFunction(lexedCode[i]);
         currentArgs.clear();
@@ -120,7 +136,7 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
         return val.val;
     }
 
-    std::cout << value + " was not evaluated" << std::endl;
+    std::cout << "\033[33m" << value + " was not evaluated" << "\033[0m" << std::endl;
 
     return nullptr;
 }
@@ -325,32 +341,46 @@ llvm::Value *parser::createVariable(std::string name, std::string value, std::si
     return NULL;
 }
 
-std::string parser::parseFile() {
-    bool calling = false;
-    bool setting = false;
-    bool readingArgs = false;
+int parser::handleString(std::size_t i) {
     std::string name;
+    std::string& str = lexedCode[i];
+
+    std::cout << "reading: " << str << std::endl;
+
+    if (str == "set") {
+        str = lexedCode[++i];
+        name = str;
+        str = lexedCode[++i];
+        parser::createVariable(name, str, i);
+    }else if (str == "cond" || str == "endcond" || str == "else" || str == "condblock") {
+        name = lexedCode[i++];
+        std::string value = lexedCode[i];
+        parser::evaluateConditional(name, value, i);
+    }else if (str == "func") {
+        name = lexedCode[i++];
+        std::string value = lexedCode[i];
+        parser::evaluateFunction(name, value, i);
+    }
+    return i;
+}
+
+std::string parser::parseFile() {
+    bool skippingCond = false;
 
     for (std::size_t i = 0; i < lexedCode.size(); ++i) {
-        std::string& str = lexedCode[i];
-
-        std::cout << "reading: " << str << std::endl;
-        if (str == "\n") {
-        }else if (str == "set") {
-            str = lexedCode[++i];
-            name = str;
-            str = lexedCode[++i];
-            parser::createVariable(name, str, i);
-        }else if (str == "cond" || str == "endcond" || str == "else" || str == "condblock") {
-            name = lexedCode[i++];
-            std::string value = lexedCode[i];
-            parser::evaluateConditional(name, value, i);
-        }else if (str == "func") {
-            name = lexedCode[i++];
-            std::string value = lexedCode[i];
-            parser::evaluateFunction(name, value, i);
+        if (skippingCond) {
+            skippingCond = true;
+            if (lexedCode[i] == "endcond") { skippingCond = false; }
+            continue;
         }
-
+        if (lexedCode[i] == "func") {
+            std::string value = lexedCode[i + 1];
+            functionPositions[value] = i;
+            skippingCond = true;
+            std::cout << "adding func to poses " << i << " " << value << std::endl;
+            continue;
+        }
+        i = handleString(i);
     }
 
     Builder->CreateRet(Builder->getInt32(0)); // return at the end of the main
