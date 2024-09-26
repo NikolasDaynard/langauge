@@ -29,12 +29,18 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
             std::cout << "func " << lexedCode[i + 1] << " was in the pos at " <<functionPositions[lexedCode[i + 1]] << std::endl; 
             int pos = functionPositions[lexedCode[i + 1]];
             functionPositions[lexedCode[i + 1]] = -1;
+            int condBuffer = 0;
 
             for (std::size_t i = pos; i < lexedCode.size(); i++) {
-                // std::cout << "at pos in func" << lexedCode[i] << std::endl;
+                if (lexedCode[i] == "if" && lexedCode[i + 1] == "cond") {
+                    condBuffer++;
+                }
                 if (lexedCode[i] == "endcond") {
-                    handleString(i);
-                    break;
+                    if (condBuffer == 0) {
+                        handleString(i);
+                        break;
+                    }
+                    condBuffer--;
                 }
                 i = handleString(i);
             }
@@ -147,7 +153,7 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
     std::string conditionType = lexedCode[i - 2];
     if (conditionType == "if") {
         if (name == "condblock") {
-            std::cout << "prev back" << contextStack.back().function->getName().str() << std::endl;
+            std::cout << "prev back " << contextStack.back().function->getName().str() << std::endl;
 
             // Step 5: Create the "then", "else", and "merge" blocks
             llvm::BasicBlock *CondBB = llvm::BasicBlock::Create(*Context, "cond", contextStack.back().function);
@@ -158,12 +164,13 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
             std::map<std::string, Variable> map = contextStack.back().variableMap;
             contextStack.push_back({Builder->saveIP(), contextId, {{"cond", CondBB}, {"then", ThenBB}, {"else", ElseBB}, {"merge", MergeBB}}, contextStack.back().function, "ifEntry"});
             contextStack.back().variableMap = map;
+            std::cout << "PUSHED NEW CONTEXTSTACK" << std::endl;
 
             Builder->CreateBr(CondBB);
 
             Builder->SetInsertPoint(CondBB);
         }else if (name == "cond") {
-            std::cout << "prev back" << contextStack.back().function->getName().str() << std::endl;
+            std::cout << "prev back " << contextStack.back().function->getName().str() << std::endl;
 
             // Step 4: Evaluate the condition (assuming evaluateValue already returns an llvm::Value *)
             llvm::Value *Condition = Builder->CreateFCmpOEQ(
@@ -236,21 +243,23 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
         test:
         std::cout << mergeBlocksBack << " back" << std::endl;
         if (contextStack.size() <= 1 && savedContext.function->getName().str() != "mainBodyFunc") { // this is a function
-            std::cout << "context stack undersized " << savedContext.function->getName().str() << std::endl;
+            std::cout << "context stack undersized " << savedContext.function->getName().str() << " w/ size " << contextStack.size() << std::endl;
             Builder->CreateRet(Builder->getInt32(0));
             Builder->SetInsertPoint(contextStack.back().insertionPoint.getBlock());
             return; 
         }
-
-        if (contextStack[contextStack.size() - (1 + mergeBlocksBack)].basicBlocks.find("merge")->first != "" && 
-            contextStack[contextStack.size() - (1 + mergeBlocksBack)].basicBlocks.find("merge")->second->getName().str() != "") {
-            
-            mergeBlocksBack = mergeBlocksBack + 1;
-            goto test;
+        if (contextStack.size() >= (1 + mergeBlocksBack)) {
+            if (contextStack[contextStack.size() - (1 + mergeBlocksBack)].basicBlocks.find("merge")->first != "" && 
+                contextStack[contextStack.size() - (1 + mergeBlocksBack)].basicBlocks.find("merge")->second->getName().str() != "") {
+                
+                mergeBlocksBack = mergeBlocksBack + 1;
+                goto test;
+            }
         }
 
         // Return to block
         Builder->SetInsertPoint(MergeBB);
+
         if (mergeBlocksBack != 0 && contextStack[contextStack.size() - 1].basicBlocks.find("merge")->second->getName().str() != "") {
             // std::cout << "adding the thing" << std::endl;
             if (contextStack[contextStack.size() - 1].basicBlocks.find("loop")->first == "") {
@@ -264,12 +273,6 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
     }else if (name == "else") {
         llvm::BasicBlock *ElseBB = contextStack.back().basicBlocks.find("else")->second;
         Builder->SetInsertPoint(ElseBB);
-    }
-    if (name == "condblock") {
-        // std::string str = lexedCode[++i];
-        // name = str;
-        // str = lexedCode[++i];
-        // parser::createVariable(name, str, i);
     }
 }
 
@@ -365,18 +368,18 @@ int parser::handleString(std::size_t i) {
 }
 
 std::string parser::parseFile() {
-    bool skippingCond = false;
+    int skippingCond = 0;
 
     for (std::size_t i = 0; i < lexedCode.size(); ++i) {
-        if (skippingCond) {
-            skippingCond = true;
-            if (lexedCode[i] == "endcond") { skippingCond = false; }
+        if (skippingCond > 0) {
+            if (lexedCode[i] == "endcond") { skippingCond--; }
             continue;
         }
+
         if (lexedCode[i] == "func") {
             std::string value = lexedCode[i + 1];
             functionPositions[value] = i;
-            skippingCond = true;
+            skippingCond++;
             std::cout << "adding func to poses " << i << " " << value << std::endl;
             continue;
         }
