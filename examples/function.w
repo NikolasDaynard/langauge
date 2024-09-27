@@ -1,5 +1,9 @@
 other(string, num) {
+    print("\n")
     print(string, num)
+    if num > 5 {
+        other(string, num + 1)
+    }
 }
 
 foo(str, num, bool) {

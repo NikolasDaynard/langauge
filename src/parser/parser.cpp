@@ -137,9 +137,14 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
             llvm::Value *DoubleResult = Builder->CreateSIToFP(IntResult, llvm::Type::getDoubleTy(*Context), "boolToDouble");
 
             return DoubleResult;
-        }else if (lexedCode[originalIndex] == "les") { // <
+        }else if (lexedCode[originalIndex] == "les" || lexedCode[originalIndex] == "grt") { // <
             // Create the floating-point comparison
-            llvm::Value *FCmp = Builder->CreateFCmpOLT(first, second, "FCMP");
+            llvm::Value *FCmp;
+            if (lexedCode[originalIndex] == "les") {
+                FCmp = Builder->CreateFCmpOLT(first, second, "FCMP");
+            }else if (lexedCode[originalIndex] == "grt") {
+                FCmp = Builder->CreateFCmpOGT(first, second, "FCMP");
+            }
 
             // Convert the i1 result (boolean) to i32 (32-bit integer)
             llvm::Value *IntResult = Builder->CreateZExt(FCmp, llvm::Type::getInt32Ty(*Context), "zext");

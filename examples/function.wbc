@@ -1,7 +1,16 @@
 func other string num   end
 
+set tmp0 call print "\n"   end
+
 set tmp0 call print string num   end
 
+if condblock do
+set tmp0 grt num 5
+if cond tmp0
+set tmp0 add num 1
+set tmp1 call other string tmp0   end
+
+endcond
 endcond
 func foo str num bool   end
 
