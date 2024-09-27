@@ -1,8 +1,8 @@
 foo(num) {
     print("test")
-    if num {
+    if num + 3 == 3 {
         print("test")
     }
 }
 
-foo(1)
+foo(0)

@@ -238,11 +238,13 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
         }
         contextInfo savedContext = contextStack.back();
         contextStack.pop_back();
+        std::cout << "POPPED CS" << std::endl;
         int mergeBlocksBack = 0;
 
         test:
         std::cout << mergeBlocksBack << " back" << std::endl;
         if (contextStack.size() <= 1 && savedContext.function->getName().str() != "mainBodyFunc") { // this is a function
+            std::cout << "Popped " << savedContext.function->getName().str() << std::endl;
             std::cout << "context stack undersized " << savedContext.function->getName().str() << " w/ size " << contextStack.size() << std::endl;
             Builder->CreateRet(Builder->getInt32(0));
             Builder->SetInsertPoint(contextStack.back().insertionPoint.getBlock());
@@ -301,6 +303,7 @@ void parser::evaluateFunction(std::string name, std::string value, std::size_t i
 
     contextStack.push_back(contextInfo(Builder->saveIP(), contextId, {}, function, "main"));
     contextStack.back().variableMap = {};
+    std::cout << "PUSHED NEW FUNC CONTEXTSTACK" << std::endl;
 
     llvm::Function::arg_iterator args = function->arg_begin();
 
@@ -371,6 +374,9 @@ std::string parser::parseFile() {
     int skippingCond = 0;
 
     for (std::size_t i = 0; i < lexedCode.size(); ++i) {
+        if (lexedCode[i] == "if" && lexedCode[i + 1] == "cond") {
+            skippingCond++;
+        }
         if (skippingCond > 0) {
             if (lexedCode[i] == "endcond") { skippingCond--; }
             continue;

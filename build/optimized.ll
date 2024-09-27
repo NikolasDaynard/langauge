@@ -8,12 +8,22 @@ target triple = "x86_64-unknown-linux-gnu"
 define i32 @main() local_unnamed_addr {
 entry:
   %0 = tail call i32 (...) @printf(ptr nonnull @constStr)
+  %1 = tail call i32 (...) @printf(ptr nonnull @constStr)
   ret i32 0
 }
 
 define i32 @foo(double %0, ...) local_unnamed_addr {
 main:
   %1 = tail call i32 (...) @printf(ptr nonnull @constStr)
+  %AdditionTemp2 = fadd double %0, 3.000000e+00
+  %FCMP = fcmp oeq double %AdditionTemp2, 3.000000e+00
+  br i1 %FCMP, label %then, label %merge
+
+then:                                             ; preds = %main
+  %2 = tail call i32 (...) @printf(ptr nonnull @constStr)
+  br label %merge
+
+merge:                                            ; preds = %main, %then
   ret i32 0
 }
 

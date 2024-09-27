@@ -3,10 +3,12 @@ func foo num   end
 set tmp0 call print "test"   end
 
 if condblock do
-if cond num
+set tmp0 add num 3
+set tmp1 cmp tmp0 3
+if cond tmp1
 set tmp0 call print "test"   end
 
 endcond
 endcond
-set tmp0 call foo 1   end
+set tmp0 call foo 0   end
 

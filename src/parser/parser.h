@@ -49,7 +49,6 @@ private:
     llvm::FunctionCallee currentFunction;
     std::vector<llvm::Value *> currentArgs;
     std::vector<contextInfo> contextStack;
-    std::vector<std::vector<contextInfo>> functionStack; // every function has a stack of context
     
     std::map<std::string, llvm::Value *> strings;
     std::map<std::string, int> functionPositions; // stores function positions in the lexedCode
