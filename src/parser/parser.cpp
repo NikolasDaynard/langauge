@@ -40,7 +40,7 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
                 currentArgs.push_back(evaluateValue(lexedCode[i], lexedCode[i], i));
             }
 
-            std::cout << "func " << lexedCode[orginalI + 1] << " was in the pos at " <<functionPositions[lexedCode[orginalI + 1]] << std::endl; 
+            std::cout << "func " << lexedCode[orginalI + 1] << " was in the pos at " << functionPositions[lexedCode[orginalI + 1]] << std::endl; 
             int pos = functionPositions[lexedCode[orginalI + 1]];
             functionPositions[lexedCode[orginalI + 1]] = -1;
             int condBuffer = 0;
@@ -257,7 +257,7 @@ void parser::evaluateConditional(std::string name, std::string value, std::size_
 
         test:
         std::cout << mergeBlocksBack << " back" << std::endl;
-        if (contextStack.size() <= 1 && savedContext.function->getName().str() != "mainBodyFunc") { // this is a function
+        if (contextStack.size() > 0 && savedContext.basicBlocks.find("cond") == savedContext.basicBlocks.end() && savedContext.function->getName().str() != "mainBodyFunc") { // this is a function
             std::cout << "Popped " << savedContext.function->getName().str() << std::endl;
             std::cout << "context stack undersized " << savedContext.function->getName().str() << " w/ size " << contextStack.size() << std::endl;
             Builder->CreateRet(Builder->getInt32(0));

@@ -15,13 +15,13 @@
 - [ ] Add elseif (else if? more consistent?)
 - [ ] Add nil
 - [x] Add function calls
-- - [x] Parse functions after call types so can predict types needed, throwing error if a call doesn't match types of other call (foo(4, "str"), we now know foo takes a num and a string every time)
+- - [+] Parse functions after call types so can predict types needed, throwing error if a call doesn't match types of other call (foo(4, "str"), we now know foo takes a num and a string every time)
 - [ ] Add loops
 - - [ ] For
 - - [x] While
 - [ ] More types
 - - [x] String vars
-- - [x] Bool vars
+- - [+] Bool vars
 - - [ ] Tables ( synatic sugar ily (for e in table {})) 
 - [ ] Finish stdlib
 - - [ ] Math funcs (pow max min sin atan2)
@@ -33,6 +33,7 @@
 - - [ ] Make it not recompile the whole project, only changed files
 - - [ ] Make c funcs accessible from .w
 - [ ] Make a c / cpp header for the library (to call and execute scripts, w from c)
+- [ ] Add compiler errors with line numbers and src
 - [ ] Fix comments
 - - [ ] MAKE IT CLEAN
 - - [ ] Remove clang and use own thing (jit faster? check.)
