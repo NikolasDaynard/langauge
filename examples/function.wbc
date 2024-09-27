@@ -1,14 +1,9 @@
-func foo num   end
+func foo num str bool   end
 
-set tmp0 call print "test"   end
+set tmp0 call print num str   end
 
-if condblock do
-set tmp0 add num 3
-set tmp1 cmp tmp0 3
-if cond tmp1
-set tmp0 call print "test"   end
+set tmp0 call print "\n%f" bool   end
 
 endcond
-endcond
-set tmp0 call foo 0   end
+set tmp0 call foo "str %f" 4 3   end
 

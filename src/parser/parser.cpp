@@ -23,31 +23,46 @@ Variable parser::getVariable(const std::string& name) {
 }
 
 llvm::Value *parser::evaluateValue(std::string name, std::string value, std::size_t i) {
+
     if (lexedCode[i] == "call") {
         std::cout << "evaling call" << std::endl;
-        if (functionPositions.find(lexedCode[i + 1]) != functionPositions.end() && functionPositions[lexedCode[i + 1]] != -1) {
-            std::cout << "func " << lexedCode[i + 1] << " was in the pos at " <<functionPositions[lexedCode[i + 1]] << std::endl; 
-            int pos = functionPositions[lexedCode[i + 1]];
-            functionPositions[lexedCode[i + 1]] = -1;
+        int orginalI = i;
+
+        if (functionPositions.find(lexedCode[orginalI + 1]) != functionPositions.end() && functionPositions[lexedCode[orginalI + 1]] != -1) {
+            i++;
+            currentArgs.clear();
+            while (true) {
+                i++;
+                if (lexedCode[i] == "end" || lexedCode[i - 1] == "end") {
+                    break;
+                }
+                std::cout << "looped " + lexedCode[i] << std::endl;
+                currentArgs.push_back(evaluateValue(lexedCode[i], lexedCode[i], i));
+            }
+
+            std::cout << "func " << lexedCode[orginalI + 1] << " was in the pos at " <<functionPositions[lexedCode[orginalI + 1]] << std::endl; 
+            int pos = functionPositions[lexedCode[orginalI + 1]];
+            functionPositions[lexedCode[orginalI + 1]] = -1;
             int condBuffer = 0;
 
-            for (std::size_t i = pos; i < lexedCode.size(); i++) {
-                if (lexedCode[i] == "if" && lexedCode[i + 1] == "cond") {
+            for (std::size_t j = pos; j < lexedCode.size(); j++) {
+                if (lexedCode[j] == "if" && lexedCode[j + 1] == "cond") {
                     condBuffer++;
                 }
-                if (lexedCode[i] == "endcond") {
+                if (lexedCode[j] == "endcond") {
                     if (condBuffer == 0) {
-                        handleString(i);
+                        handleString(j);
                         break;
                     }
                     condBuffer--;
                 }
-                i = handleString(i);
+                j = handleString(j);
             }
 
         }
+        i = orginalI;
         i++;
-        currentFunction = functionsWrapper->getFunction(lexedCode[i]);
+        currentFunction = functionsWrapper->getFunction(lexedCode[orginalI + 1]);
         currentArgs.clear();
         while (true) {
             i++;
@@ -57,7 +72,6 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
             std::cout << "looped " + lexedCode[i] << std::endl;
             currentArgs.push_back(evaluateValue(lexedCode[i], lexedCode[i], i));
         }
-
         functionNests++;
     }
 
@@ -287,9 +301,11 @@ void parser::evaluateFunction(std::string name, std::string value, std::size_t i
     
     std::vector<llvm::Type *> argTypes;
     std::vector<std::string> varNames;
+    int currentArg = 0;
     while (lexedCode[++i] != "end") { // first one is name
-        argTypes.push_back(llvm::Type::getDoubleTy(*Context));
+        argTypes.push_back(currentArgs.at(currentArg)->getType());
         varNames.push_back(lexedCode[i]);
+        currentArg++;
     }
 
     llvm::FunctionType *functionType = llvm::FunctionType::get(returnType, argTypes, true);

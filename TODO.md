@@ -15,7 +15,7 @@
 - [ ] Add elseif (else if? more consistent?)
 - [ ] Add nil
 - [x] Add function calls
-- - [ ] Parse functions after call types so can predict types needed, throwing error if a call doesn't match types of other call (foo(4, "str"), we now know foo takes a num and a string every time)
+- - [x] Parse functions after call types so can predict types needed, throwing error if a call doesn't match types of other call (foo(4, "str"), we now know foo takes a num and a string every time)
 - [ ] Add loops
 - - [ ] For
 - - [x] While

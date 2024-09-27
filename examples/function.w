@@ -1,8 +1,6 @@
-foo(num) {
-    print("test")
-    if num + 3 == 3 {
-        print("test")
-    }
+foo(num, str, bool) {
+    print(num, str)
+    print("\n%f", bool)
 }
 
-foo(0)
+foo("str %f", 4, 3)
