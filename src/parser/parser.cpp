@@ -374,10 +374,10 @@ std::string parser::parseFile() {
     int skippingCond = 0;
 
     for (std::size_t i = 0; i < lexedCode.size(); ++i) {
-        if (lexedCode[i] == "if" && lexedCode[i + 1] == "cond") {
-            skippingCond++;
-        }
         if (skippingCond > 0) {
+            if (lexedCode[i] == "if" && lexedCode[i + 1] == "cond") { // only iterate if already in func
+                skippingCond++;
+            }
             if (lexedCode[i] == "endcond") { skippingCond--; }
             continue;
         }

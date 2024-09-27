@@ -1,1 +1,2 @@
-call print  "%d"  2434 
+set tmp0 call print "%f" 2434   end
+

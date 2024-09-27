@@ -1,9 +1,9 @@
 set tmp0 add 1 1
 set var tmp0
 
-
+if condblock do
 set tmp0 cmp 3 var
-cond tmp0
+if cond tmp0
 set tmp0 add var 1
 set var tmp0
 
@@ -13,5 +13,33 @@ else
 set tmp0 call print "not equal"   end
 
 endcond
+if condblock do
+set tmp0 cmp 3 3
+if cond tmp0
+if condblock do
+set tmp0 cmp 4 4
+if cond tmp0
+set tmp0 call print "that makes sense"   end
 
+endcond
+endcond
+if condblock do
+set tmp0 cmp 3 3
+if cond tmp0
+if condblock do
+set tmp0 cmp 4 4
+if cond tmp0
+set tmp0 call print "that makes sense"   end
+
+if condblock do
+set tmp0 cmp 5 5
+if cond tmp0
+set tmp0 call print "0"   end
+
+endcond
+endcond
+set tmp0 call print "AHHH MY GOD"   end
+
+endcond
+set tmp0 call print "2"   end
 
