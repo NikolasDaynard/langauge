@@ -1,3 +1,5 @@
+# THIS IS AN AWFUL LANGUAGE RIGHT NOW DO NOT INTERACT
+
 A lang written as an example for nixos
 
 Run nix-shell to enter the dev enviroment then run
