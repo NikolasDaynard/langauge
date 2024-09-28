@@ -25,7 +25,7 @@
 - - [ ] Tables ( synatic sugar ily (for e in table {})) 
 - [ ] Finish stdlib
 - - [ ] Math funcs (pow max min sin atan2)
-- - [ ] Cli arg support
+- - [x] Cli arg support
 - - [ ] Check compilation speed and only include required imports
 - - [ ] String operations, (substring, concat ect.)
 - - [ ] Table functions (push pop index len)

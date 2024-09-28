@@ -169,24 +169,24 @@ RISCVTargetParserTableGen/fast:
 .PHONY : RISCVTargetParserTableGen/fast
 
 #=============================================================================
-# Target rules for targets named llvm-hello-world
+# Target rules for targets named wlang
 
 # Build rule for target.
-llvm-hello-world: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 llvm-hello-world
-.PHONY : llvm-hello-world
+wlang: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 wlang
+.PHONY : wlang
 
 # fast build rule for target.
-llvm-hello-world/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llvm-hello-world.dir/build.make CMakeFiles/llvm-hello-world.dir/build
-.PHONY : llvm-hello-world/fast
+wlang/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wlang.dir/build.make CMakeFiles/wlang.dir/build
+.PHONY : wlang/fast
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llvm-hello-world.dir/build.make CMakeFiles/llvm-hello-world.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wlang.dir/build.make CMakeFiles/wlang.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -194,7 +194,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llvm-hello-world.dir/build.make CMakeFiles/llvm-hello-world.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wlang.dir/build.make CMakeFiles/wlang.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -202,7 +202,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llvm-hello-world.dir/build.make CMakeFiles/llvm-hello-world.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wlang.dir/build.make CMakeFiles/wlang.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -217,7 +217,7 @@ help:
 	@echo "... acc_gen"
 	@echo "... intrinsics_gen"
 	@echo "... omp_gen"
-	@echo "... llvm-hello-world"
+	@echo "... wlang"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

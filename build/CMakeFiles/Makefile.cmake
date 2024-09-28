@@ -64,5 +64,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/omp_gen.dir/DependInfo.cmake"
   "CMakeFiles/acc_gen.dir/DependInfo.cmake"
   "CMakeFiles/RISCVTargetParserTableGen.dir/DependInfo.cmake"
-  "CMakeFiles/llvm-hello-world.dir/DependInfo.cmake"
+  "CMakeFiles/wlang.dir/DependInfo.cmake"
   )

@@ -95,6 +95,12 @@ for(i, 5) {
 }
 ```
 
+Table syntax
+```
+foo[] = {}; 
+foo[0] = val; -- first index
+```
+
 Much like lua, it has easy language integration, you can call c / cpp by using
 
 ```

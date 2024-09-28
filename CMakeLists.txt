@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(LLVMHelloWorld)
+project(LLVMLang)
 
 SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -lm")
 
@@ -11,9 +11,9 @@ find_package(LLVM REQUIRED CONFIG)
 include_directories(${LLVM_INCLUDE_DIRS})
 add_definitions(${LLVM_DEFINITIONS})
 
-add_executable(llvm-hello-world main.cpp)
+add_executable(wlang main.cpp)
 
 llvm_map_components_to_libnames(llvm_libs support core irreader)
 
-target_link_libraries(llvm-hello-world ${llvm_libs})
+target_link_libraries(wlang ${llvm_libs})
 

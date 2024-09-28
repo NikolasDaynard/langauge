@@ -1,0 +1,255 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "wlang"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"set_target_properties",
+			"include",
+			"find_package",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt",
+			"/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/lib/cmake/llvm/LLVMExports.cmake",
+			"/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/lib/cmake/llvm/LLVMConfig.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 14,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 18,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 9,
+				"parent" : 0
+			},
+			{
+				"file" : 2,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 347,
+				"parent" : 4
+			},
+			{
+				"file" : 1,
+				"parent" : 5
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 131,
+				"parent" : 6
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 89,
+				"parent" : 6
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 425,
+				"parent" : 6
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 58,
+				"parent" : 6
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 11,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -lm -g   -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 11,
+					"path" : "/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/nix/store/ybsf7n23znq5dr0mfzm3kly07hf9995s-zlib-1.3.1-dev/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"id" : "wlang::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-lm -g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/nix/store/98p3vdaf5xnp0lg7qfqnqx75dhprbidi-zlib-1.3.1/lib:/nix/store/zkmxm571ds0j8gzchb2dxs1hizmr10ad-ncurses-6.4/lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/nix/store/gbms892wh4phzzm74dyr7py5rw9pwxia-llvm-18.1.8-lib/lib/libLLVMSupport.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/nix/store/gbms892wh4phzzm74dyr7py5rw9pwxia-llvm-18.1.8-lib/lib/libLLVMCore.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/nix/store/gbms892wh4phzzm74dyr7py5rw9pwxia-llvm-18.1.8-lib/lib/libLLVMIRReader.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 7,
+				"fragment" : "/nix/store/gbms892wh4phzzm74dyr7py5rw9pwxia-llvm-18.1.8-lib/lib/libLLVMAsmParser.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 7,
+				"fragment" : "/nix/store/gbms892wh4phzzm74dyr7py5rw9pwxia-llvm-18.1.8-lib/lib/libLLVMBitReader.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/nix/store/gbms892wh4phzzm74dyr7py5rw9pwxia-llvm-18.1.8-lib/lib/libLLVMCore.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 8,
+				"fragment" : "/nix/store/gbms892wh4phzzm74dyr7py5rw9pwxia-llvm-18.1.8-lib/lib/libLLVMBinaryFormat.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 8,
+				"fragment" : "/nix/store/gbms892wh4phzzm74dyr7py5rw9pwxia-llvm-18.1.8-lib/lib/libLLVMRemarks.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 8,
+				"fragment" : "/nix/store/gbms892wh4phzzm74dyr7py5rw9pwxia-llvm-18.1.8-lib/lib/libLLVMTargetParser.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 9,
+				"fragment" : "/nix/store/gbms892wh4phzzm74dyr7py5rw9pwxia-llvm-18.1.8-lib/lib/libLLVMBitstreamReader.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/nix/store/gbms892wh4phzzm74dyr7py5rw9pwxia-llvm-18.1.8-lib/lib/libLLVMSupport.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "-lrt",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "-ldl",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "-lm",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "/nix/store/98p3vdaf5xnp0lg7qfqnqx75dhprbidi-zlib-1.3.1/lib/libz.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "/nix/store/zkmxm571ds0j8gzchb2dxs1hizmr10ad-ncurses-6.4/lib/libtinfo.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "/nix/store/gbms892wh4phzzm74dyr7py5rw9pwxia-llvm-18.1.8-lib/lib/libLLVMDemangle.a",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "wlang",
+	"nameOnDisk" : "wlang",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "main.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

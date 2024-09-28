@@ -2,6 +2,6 @@
 /home/nikolasd/dev/lang/build/CMakeFiles/omp_gen.dir
 /home/nikolasd/dev/lang/build/CMakeFiles/acc_gen.dir
 /home/nikolasd/dev/lang/build/CMakeFiles/RISCVTargetParserTableGen.dir
-/home/nikolasd/dev/lang/build/CMakeFiles/llvm-hello-world.dir
+/home/nikolasd/dev/lang/build/CMakeFiles/wlang.dir
 /home/nikolasd/dev/lang/build/CMakeFiles/edit_cache.dir
 /home/nikolasd/dev/lang/build/CMakeFiles/rebuild_cache.dir

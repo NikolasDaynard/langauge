@@ -147,7 +147,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=LLVMHelloWorld
+CMAKE_PROJECT_NAME:STATIC=LLVMLang
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/run/current-system/sw/bin/ranlib
@@ -240,6 +240,15 @@ LLVMHelloWorld_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 LLVMHelloWorld_SOURCE_DIR:STATIC=/home/nikolasd/dev/lang
+
+//Value Computed by CMake
+LLVMLang_BINARY_DIR:STATIC=/home/nikolasd/dev/lang/build
+
+//Value Computed by CMake
+LLVMLang_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+LLVMLang_SOURCE_DIR:STATIC=/home/nikolasd/dev/lang
 
 //The directory containing a CMake configuration file for LLVM.
 LLVM_DIR:PATH=/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/lib/cmake/llvm
