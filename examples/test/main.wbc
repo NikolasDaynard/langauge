@@ -1,2 +1,7 @@
+set tmp0 call include "cFile.c"   end
+
 set tmp0 call print "hellow world"   end
+
+set tmp0 call sum "%f" 3 4   end
+set tmp1 call print tmp0   end
 
