@@ -2,6 +2,9 @@
 #include <algorithm> 
 #include <cctype>
 #include <locale>
+#include <string>
+#include <vector>
+#include <map>
 
 // trim from start (in place)
 inline void ltrim(std::string &s) {
@@ -35,10 +38,6 @@ inline std::string removeWhitespaceNotInString(std::string &str) {
     return result;
 }
 
-bool isMathKeyword(std::string str) {
-    return str == "add" || str == "sub" || str == "div" || str == "mul" || str == "cmp" || str == "les" || str == "grt" || str == "pow";
-}
-
 void replaceAllNotInString(std::string &str, const std::string &from, const std::string &to) {
     size_t startPos = 0;
     bool inString = false;
@@ -67,4 +66,61 @@ void replaceAll(std::string &str, const std::string &from, const std::string &to
         str.replace(startPos, from.length(), to);
         startPos += to.length(); // Advance startPos to avoid infinite loop if 'to' contains 'from'
     }
+}
+
+struct token {
+    int precedence;
+    std::string name;
+    std::string association;
+    bool isMathKeyword;
+    token(std::string n, int prec, bool isMath) {
+        name = n;
+        precedence = prec;
+        isMathKeyword = isMath;
+        association = "";
+    }
+    token(std::string n, std::string assoc, int prec, bool isMath) {
+        name = n;
+        precedence = prec;
+        isMathKeyword = isMath;
+        association = assoc;
+    }
+};
+
+class tokenHolder {
+public:
+    std::map<std::string, token> tokens;
+    std::vector<token> tokenVector;
+    std::map<std::string, int> precedenceMap;
+    std::map<std::string, std::string> associationMap;
+
+    tokenHolder() {
+        tokenVector = {
+            token("^", "pow", 6, true),
+            token("*", "mul", 5, true),
+            token("/", "div", 4, true),
+            token("+", "add", 3, true),
+            token("-", "sub", 2, true),
+            token("==", "cmp", 1, true),
+            token("<", "les", 1, true),
+            token(">", "grt", 1, true),
+            token("=", "set", 0, true),
+            token("{", -1, true),
+            token("}", -2, true)
+        };
+        for (const auto& tok : tokenVector) {
+            tokens.emplace(tok.name, tok);
+            precedenceMap[tok.name] = tok.precedence;
+            associationMap[tok.name] = tok.association;
+        }
+    }
+};
+
+bool isMathKeyword(std::string key, tokenHolder holder) {
+    for (token tok : holder.tokenVector) {
+        if (tok.association == key && tok.isMathKeyword) {
+            return true;
+        }
+    }
+    return false;
 }

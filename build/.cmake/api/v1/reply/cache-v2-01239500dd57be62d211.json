@@ -1330,42 +1330,6 @@
 			"value" : "LIBXML2_XMLLINT_EXECUTABLE-NOTFOUND"
 		},
 		{
-			"name" : "LLVMHelloWorld_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/home/nikolasd/dev/lang/build"
-		},
-		{
-			"name" : "LLVMHelloWorld_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "LLVMHelloWorld_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/home/nikolasd/dev/lang"
-		},
-		{
 			"name" : "LLVMLang_BINARY_DIR",
 			"properties" : 
 			[

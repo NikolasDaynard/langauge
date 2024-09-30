@@ -233,15 +233,6 @@ LIBXML2_LIBRARY:FILEPATH=LIBXML2_LIBRARY-NOTFOUND
 LIBXML2_XMLLINT_EXECUTABLE:FILEPATH=LIBXML2_XMLLINT_EXECUTABLE-NOTFOUND
 
 //Value Computed by CMake
-LLVMHelloWorld_BINARY_DIR:STATIC=/home/nikolasd/dev/lang/build
-
-//Value Computed by CMake
-LLVMHelloWorld_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-LLVMHelloWorld_SOURCE_DIR:STATIC=/home/nikolasd/dev/lang
-
-//Value Computed by CMake
 LLVMLang_BINARY_DIR:STATIC=/home/nikolasd/dev/lang/build
 
 //Value Computed by CMake

@@ -10,8 +10,8 @@
 #include <llvm/IR/BasicBlock.h>
 
 #include "functions.cpp"
-#include "parser.h"
 #include "../parseHelpers.h"
+#include "parser.h"
 
 Variable parser::getVariable(const std::string& name) {
     auto it = contextStack.back().variableMap.find(name);
@@ -106,12 +106,12 @@ llvm::Value *parser::evaluateValue(std::string name, std::string value, std::siz
         return Builder->CreateLoad(val.type, val.val, "loadedVar");
     }
 
-    if (isMathKeyword(value)) {
+    if (isMathKeyword(value, tokenHold)) {
         std::cout << "oh dear god it's math" << std::endl;
         llvm::Value *first;
         llvm::Value *second;
         int originalIndex = i;
-        if (isMathKeyword(lexedCode[i])) {
+        if (isMathKeyword(lexedCode[i], tokenHold)) {
             i++;
             first = evaluateValue(lexedCode[i], lexedCode[i], i);
             i++;

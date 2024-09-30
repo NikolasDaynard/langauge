@@ -410,12 +410,6 @@ CMakeFiles/wlang.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
  /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/stl_tree.h \
  /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/stl_map.h \
  /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/stl_multimap.h \
- /home/nikolasd/dev/lang/src/parser/parser.h \
- /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/stack \
- /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/deque \
- /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/stl_deque.h \
- /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/deque.tcc \
- /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/stl_stack.h \
  /home/nikolasd/dev/lang/src/parser/../parseHelpers.h \
  /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/locale \
  /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets_nonio.h \
@@ -425,5 +419,11 @@ CMakeFiles/wlang.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
  /nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/libintl.h \
  /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets_nonio.tcc \
  /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/locale_conv.h \
+ /home/nikolasd/dev/lang/src/parser/parser.h \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/stack \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/deque \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/stl_deque.h \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/deque.tcc \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/stl_stack.h \
  /home/nikolasd/dev/lang/src/lexer/lexer.cpp \
  /home/nikolasd/dev/lang/src/lexer/lexer.h

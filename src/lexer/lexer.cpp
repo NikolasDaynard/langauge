@@ -188,20 +188,16 @@ std::vector<std::string> tokenize(const std::string& line) {
 }
 
 /** Evaluates the tokens to generate an optimized list of token placed in operational order */
-std::vector<std::string> shuntingYard(const std::vector<std::string>& tokens) {
+std::vector<std::string> lexer::shuntingYard(const std::vector<std::string>& tokens) {
     std::vector<std::string> output;
     std::stack<std::string> operators;
-
-    std::map<std::string, int> precedence = { // PEMDAS
-        {"^", 6}, {"*", 5}, {"/", 4}, {"+", 3}, {"-", 2}, {"==", 1}, {"<", 1}, {">", 1}, {"=", 0}, {"{", -1}, {"}", -2}
-    };
 
     for (const std::string& token : tokens) {
         std::cout << "sy: " << token << std::endl;
         if ((isalnum(token[0]) || token[0] == '\"' || token[0] == '#' || token[0] == '$') && token.back() != '{') {
             output.push_back(token);
-        } else if (precedence.find(token) != precedence.end()) {
-            while (!operators.empty() && precedence[operators.top()] >= precedence[token]) {
+        } else if (tokenHold.precedenceMap.find(token) != tokenHold.precedenceMap.end()) {
+            while (!operators.empty() && tokenHold.precedenceMap[operators.top()] >= tokenHold.precedenceMap[token]) {
                 output.push_back(operators.top());
                 operators.pop();
             }
@@ -243,10 +239,6 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
     std::string result;
     std::string originalVar = postfix[0];
     int tempVarCounter = 0;  // Counter for temporary variables
-
-    std::map<std::string, std::string> associations = {
-        {"^", "pow"}, {"*", "mul"}, {"/", "div"}, {"+", "add"}, {"-", "sub"}, {"=", "set"}, {"==", "cmp"}, {"<", "les"}, {">", "grt"}
-    };
 
     for (size_t i = 0; i < postfix.size(); ++i) {
         const std::string &token = postfix[i];
@@ -336,7 +328,7 @@ std::string lexer::postfixToLLVM(const std::vector<std::string>& postfix) {
             // technically this fails on the last set, but because lua doesn't have double assigment, we chillin 
             evalStack.push("tmp" + std::to_string(tempVarCounter++)); 
 
-            result += (associations.find(token) != associations.end() ? associations.find(token)->second : "") + 
+            result += (tokenHold.associationMap.find(token) != tokenHold.associationMap.end() ? tokenHold.associationMap.find(token)->second : "") + 
                     " " + lhs + " " + rhs + "\n";
         }
     }

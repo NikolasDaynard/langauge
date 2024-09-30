@@ -36,6 +36,8 @@ struct contextInfo {
 
 class parser {
 private:
+    tokenHolder tokenHold;
+    
     std::vector<std::string> lexedCode;
     functionWrapper *functionsWrapper;
 
@@ -73,6 +75,7 @@ public:
         filename = newFilename;
         functionsWrapper = new functionWrapper(Module, Builder);
         contextStack.push_back(contextInfo(Builder->saveIP(), contextId, {}, Builder->GetInsertBlock()->getParent(), "main"));
+        tokenHold = tokenHolder();
     }
     
     ~parser() {
