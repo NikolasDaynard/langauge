@@ -11,6 +11,7 @@
 #include "codegen.h"
 #include "parser/parser.cpp"
 #include "lexer/lexer.cpp"
+#include "include/include.cpp"
 
 int codegen::print() {
     Module->print(llvm::outs(), nullptr);
@@ -32,6 +33,8 @@ int codegen::write() {
 }
 
 int codegen::parse(std::string filename) {
+    // includer *inc = new includer();
+    // inc->addFile("test");
     lexer *lex = new lexer(filename);
     std::vector<std::string> lexedCode = lex->parseFile();
 

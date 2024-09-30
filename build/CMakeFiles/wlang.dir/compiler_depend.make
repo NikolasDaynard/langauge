@@ -4,6 +4,7 @@
 CMakeFiles/wlang.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
   /home/nikolasd/dev/lang/src/codegen.cpp \
   /home/nikolasd/dev/lang/src/codegen.h \
+  /home/nikolasd/dev/lang/src/include/include.cpp \
   /home/nikolasd/dev/lang/src/lexer/lexer.cpp \
   /home/nikolasd/dev/lang/src/lexer/lexer.h \
   /home/nikolasd/dev/lang/src/parseHelpers.h \
@@ -452,8 +453,6 @@ CMakeFiles/wlang.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/ctype.h:
 
-/nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/bits/wchar2.h:
-
 /nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/bits/uintn-identity.h:
 
 /nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/bits/types/timer_t.h:
@@ -630,6 +629,10 @@ CMakeFiles/wlang.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/deque:
 
+/nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/debug/debug.h:
+
+/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/Support/Format.h:
+
 /nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/ADT/GraphTraits.h:
 
 /nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/IR/LLVMContext.h:
@@ -700,10 +703,6 @@ CMakeFiles/wlang.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/sstream.tcc:
 
-/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/Support/Format.h:
-
-/nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/debug/debug.h:
-
 /nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/Support/MD5.h:
 
 /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/node_handle.h:
@@ -762,6 +761,8 @@ CMakeFiles/wlang.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/shared_ptr.h:
 
+/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/IR/Attributes.inc:
+
 /nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/IR/Instruction.def:
 
 /nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/IR/SymbolTableListTraits.h:
@@ -778,13 +779,9 @@ CMakeFiles/wlang.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/IR/Argument.h:
 
-/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/IR/Attributes.inc:
+/nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/bits/wchar2.h:
 
-/nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/libintl.h:
-
-/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/ADT/DenseMapInfo.h:
-
-/nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/stl_map.h:
+/home/nikolasd/dev/lang/src/include/include.cpp:
 
 /nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/ADT/SmallPtrSet.h:
 
@@ -799,6 +796,26 @@ CMakeFiles/wlang.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /home/nikolasd/dev/lang/src/parseHelpers.h:
 
 /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/string_view.tcc:
+
+/nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/bits/endian.h:
+
+/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/IR/Module.h:
+
+/home/nikolasd/dev/lang/src/parser/parser.h:
+
+/nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/errno.h:
+
+/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/ADT/FloatingPointMode.h:
+
+/nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/stringfwd.h:
+
+/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm-c/ExternC.h:
+
+/home/nikolasd/dev/lang/src/codegen.cpp:
+
+/nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/bits/long-double.h:
+
+/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/ADT/STLExtras.h:
 
 /nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/IR/CallingConv.h:
 
@@ -822,26 +839,6 @@ CMakeFiles/wlang.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm-c/DataTypes.h:
 
-/home/nikolasd/dev/lang/src/codegen.cpp:
-
-/nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/bits/long-double.h:
-
-/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/ADT/STLExtras.h:
-
-/nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/bits/endian.h:
-
-/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/IR/Module.h:
-
-/home/nikolasd/dev/lang/src/parser/parser.h:
-
-/nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/errno.h:
-
-/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/ADT/FloatingPointMode.h:
-
-/nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/stringfwd.h:
-
-/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm-c/ExternC.h:
-
 /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/memory:
 
 /nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/ADT/DenseMap.h:
@@ -853,6 +850,18 @@ CMakeFiles/wlang.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/stack:
 
 /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/uniform_int_dist.h:
+
+/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/IR/InstrTypes.h:
+
+/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/ADT/Bitfields.h:
+
+/nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/os_defines.h:
+
+/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/IR/DataLayout.h:
+
+/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/ADT/ilist_base.h:
+
+/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/Support/Error.h:
 
 /nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/bits/timex.h:
 
@@ -878,6 +887,12 @@ CMakeFiles/wlang.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/locale_facets_nonio.h:
 
+/nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/libintl.h:
+
+/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/ADT/DenseMapInfo.h:
+
+/nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/stl_map.h:
+
 /nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/IR/FPEnv.h:
 
 /nix/store/yp441ann6ch705yk708h61ywxn7ayhj3-glibc-2.39-52-dev/include/bits/stdio2.h:
@@ -888,19 +903,7 @@ CMakeFiles/wlang.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /home/nikolasd/dev/lang/src/lexer/lexer.h:
 
-/nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/x86_64-unknown-linux-gnu/bits/os_defines.h:
-
-/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/IR/DataLayout.h:
-
-/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/ADT/Bitfields.h:
-
 /home/nikolasd/dev/lang/src/codegen.h:
-
-/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/IR/InstrTypes.h:
-
-/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/Support/Error.h:
-
-/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/ADT/ilist_base.h:
 
 /nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/ADT/DenseSet.h:
 
@@ -1176,9 +1179,9 @@ CMakeFiles/wlang.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
 
 /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/ostream.tcc:
 
-/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/Support/ManagedStatic.h:
-
 /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/deque.tcc:
+
+/nix/store/l45sz3aiywym259wl8xws9x5xc8grkl3-llvm-18.1.8-dev/include/llvm/Support/ManagedStatic.h:
 
 /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/stl_stack.h:
 

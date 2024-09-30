@@ -426,4 +426,19 @@ CMakeFiles/wlang.dir/main.cpp.o: /home/nikolasd/dev/lang/main.cpp \
  /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/deque.tcc \
  /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/stl_stack.h \
  /home/nikolasd/dev/lang/src/lexer/lexer.cpp \
- /home/nikolasd/dev/lang/src/lexer/lexer.h
+ /home/nikolasd/dev/lang/src/lexer/lexer.h \
+ /home/nikolasd/dev/lang/src/include/include.cpp \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/regex \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bitset \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/regex_constants.h \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/regex_error.h \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/regex_automaton.h \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/regex_automaton.tcc \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/regex_scanner.h \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/regex_scanner.tcc \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/regex_compiler.h \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/regex_compiler.tcc \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/regex.h \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/regex.tcc \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/regex_executor.h \
+ /nix/store/skkw2fidr9h2ikq8gzgfm6rysj1mal0r-gcc-13.2.0/include/c++/13.2.0/bits/regex_executor.tcc
